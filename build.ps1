@@ -12,7 +12,7 @@ $exitCode = 0
 
 try {
     Write-Host "====================================================="
-    Write-Host " DynamicMaps Extended 0.7.0 - SPT 4.1.x Builder"
+    Write-Host " DynamicMaps Extended 1.0.0 - SPT 4.1.x Builder"
     Write-Host "====================================================="
     Write-Host ""
 
@@ -108,7 +108,7 @@ try {
     Copy-Item (Join-Path $SourceRoot "LICENSE") $pluginOut
     Copy-Item (Join-Path $SourceRoot "THIRD-PARTY.md") $pluginOut
 
-    $zip = Join-Path $SourceRoot "release\DynamicMaps-Extended-0.7.0-SPT4.1.zip"
+    $zip = Join-Path $SourceRoot "release\DynamicMaps-Extended-1.0.0-SPT4.1.zip"
     Remove-Item $zip -Force -ErrorAction SilentlyContinue
     Compress-Archive -Path (Join-Path $releaseRoot "*") -DestinationPath $zip -Force
 
