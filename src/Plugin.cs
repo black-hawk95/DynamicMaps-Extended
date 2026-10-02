@@ -5,7 +5,7 @@ using HarmonyLib;
 
 namespace DynamicMapsExtended
 {
-    [BepInPlugin("com.blackhawk.dynamicmapsextended", "DynamicMaps Extended", "0.7.0")]
+    [BepInPlugin("com.blackhawk.dynamicmapsextended", "DynamicMaps Extended", "1.0.0")]
     [BepInDependency("com.mpstark.dynamicmaps", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.lennoxp90.mapvariants", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.lennoxp90.factoryclassic", BepInDependency.DependencyFlags.SoftDependency)]
@@ -17,7 +17,7 @@ namespace DynamicMapsExtended
     {
         public const string Guid = "com.blackhawk.dynamicmapsextended";
         public const string Name = "DynamicMaps Extended";
-        public const string Version = "0.7.0";
+        public const string Version = "1.0.0";
 
         public const string DynamicMapsGuid = "com.mpstark.dynamicmaps";
         public const string MapVariantsGuid = "com.lennoxp90.mapvariants";
