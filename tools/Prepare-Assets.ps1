@@ -226,5 +226,5 @@ Stitch-Tiles "Shoreline-Ground" "https://assets.tarkov.dev/maps/shoreline/main_s
 $inter = [double[]](0.265,150.6,0.265,134.6)
 Stitch-Tiles "Interchange-Ground" "https://assets.tarkov.dev/maps/interchange/main/{z}/{x}/{y}.png" 256 256 3 -433 -442 598 426 180 $inter (Join-Path $OutputRoot "StyleAssets\Interchange_Backport\Satellite\Interchange-Ground.png")
 
-Set-Content -LiteralPath (Join-Path $OutputRoot ".style-assets-v070.ready") -Value "DynamicMaps Extended 0.7.0 assets prepared" -Encoding UTF8
+Set-Content -LiteralPath (Join-Path $OutputRoot ".style-assets-v100.ready") -Value "DynamicMaps Extended 1.0.0 assets prepared" -Encoding UTF8
 Write-Host "Asset preparation complete."
