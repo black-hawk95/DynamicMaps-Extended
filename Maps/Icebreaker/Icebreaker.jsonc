@@ -1,0 +1,29 @@
+{
+  "DisplayName": "Icebreaker (Tarkov.dev / TarkovBOT.eu)",
+  "Author": "TarkovBOT.eu via Tarkov.dev",
+  "AuthorLink": "https://tarkovbot.eu/",
+  "MapInternalNames": [ "icebreaker" ],
+  "CoordinateRotation": 180,
+  "Bounds": {"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},
+  "DefaultLevel": 6,
+  "Layers": {
+    "Control Room":{"Level":0,"ImagePath":"Maps/Icebreaker/Layers/00-Control-Room.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":-10000},"Max":{"x":77,"y":67.4,"z":3.5}}]},
+    "Engine Room":{"Level":1,"ImagePath":"Maps/Icebreaker/Layers/01-Engine-Room.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":3.6},"Max":{"x":77,"y":67.4,"z":5.6}}]},
+    "Engine Room (upper)":{"Level":2,"ImagePath":"Maps/Icebreaker/Layers/02-Engine-Room-Upper.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":5.7},"Max":{"x":77,"y":67.4,"z":8.7}}]},
+    "Fuel Pumps (lower)":{"Level":3,"ImagePath":"Maps/Icebreaker/Layers/03-Fuel-Pumps-Lower.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":8.8},"Max":{"x":77,"y":67.4,"z":11.8}}]},
+    "Fuel Pumps":{"Level":4,"ImagePath":"Maps/Icebreaker/Layers/04-Fuel-Pumps.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":11.9},"Max":{"x":77,"y":67.4,"z":14.9}}]},
+    "Storage / Security":{"Level":5,"ImagePath":"Maps/Icebreaker/Layers/05-Storage-Security.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":15},"Max":{"x":77,"y":67.4,"z":18.93}}]},
+    "Infirmary":{"Level":6,"ImagePath":"Maps/Icebreaker/Layers/06-Infirmary.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":18.92},"Max":{"x":77,"y":67.4,"z":19.56}}]},
+    "Helipad":{"Level":7,"ImagePath":"Maps/Icebreaker/Layers/07-Helipad.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":19.57},"Max":{"x":77,"y":67.4,"z":22.1}}]},
+    "Gym / Canteen":{"Level":8,"ImagePath":"Maps/Icebreaker/Layers/08-Gym-Canteen.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":22.2},"Max":{"x":77,"y":67.4,"z":25.2}}]},
+    "Accommodation (lower)":{"Level":9,"ImagePath":"Maps/Icebreaker/Layers/09-Accommodation-Lower.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":25.3},"Max":{"x":77,"y":67.4,"z":28.2}}]},
+    "Accommodation (mid)":{"Level":10,"ImagePath":"Maps/Icebreaker/Layers/10-Accommodation-Mid.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":28.3},"Max":{"x":77,"y":67.4,"z":31.3}}]},
+    "Accommodation (upper)":{"Level":11,"ImagePath":"Maps/Icebreaker/Layers/11-Accommodation-Upper.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":31.4},"Max":{"x":77,"y":67.4,"z":34.4}}]},
+    "Officers' Deck":{"Level":12,"ImagePath":"Maps/Icebreaker/Layers/12-Officers-Deck.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":34.5},"Max":{"x":77,"y":67.4,"z":37.5}}]},
+    "Stairs (blocked)":{"Level":13,"ImagePath":"Maps/Icebreaker/Layers/13-Stairs-Blocked.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":37.6},"Max":{"x":77,"y":67.4,"z":40.6}}]},
+    "Bridge":{"Level":14,"ImagePath":"Maps/Icebreaker/Layers/14-Bridge.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":40.7},"Max":{"x":77,"y":67.4,"z":43.7}}]},
+    "Bridge Roof":{"Level":15,"ImagePath":"Maps/Icebreaker/Layers/15-Bridge-Roof.png","TesselationIndex":0,"ImageBounds":{"Min":{"x":-65.5,"y":-64.5},"Max":{"x":77,"y":67.4}},"GameBounds":[{"Min":{"x":-65.5,"y":-64.5,"z":43.8},"Max":{"x":77,"y":67.4,"z":10000}}]}
+  },
+  "Labels": [],
+  "StaticMarkers": []
+}
