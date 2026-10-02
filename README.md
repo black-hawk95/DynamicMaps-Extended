@@ -1,168 +1,53 @@
-# DynamicMaps Extended 0.7.0
+# DynamicMaps Extended
 
-A self-contained extension for **DynamicMaps** on **SPT 4.1.x / EFT 40743**.
+An extension for **DynamicMaps** on **SPT 4.1.x**.
 
-It adds support for newer/backported map layouts while leaving the original DynamicMaps installation untouched and preserving DynamicMaps' normal player tracking, minimap, floor selection, quest markers, extracts, transits and other marker providers.
+It adds map support for newer/backported layouts and lets you switch between **Abstract** and **Satellite** map artwork when both styles are available.
 
-## One-folder install / uninstall
+## Features
 
-The release contains one extension folder:
+- Adds DynamicMaps support for **Factory Classic**
+- Adds support for **Icebreaker**
+- Adds support for **Manimal Interchange**
+- Adds support for **Manimal Labs**
+- **Abstract / Satellite** style selector in F12
+- Per-map style overrides
+- Style can be changed **during a raid**
+- If a floor does not have the selected style, it automatically uses the artwork that exists
+- Keeps DynamicMaps player tracking, quest markers, extracts, floors, minimap and other normal features unchanged
+- Does not patch or replace Fika player synchronization
 
-```text
-BepInEx/
-└─ plugins/
-   ├─ mpstark-dynamicmaps/
-   │  └─ ...original DynamicMaps files only
-   │
-   └─ DynamicMaps-Extended/
-      ├─ DynamicMaps.Extended.dll
-      ├─ Maps/
-      │  ├─ Icebreaker/
-      │  ├─ Interchange_Backport/
-      │  ├─ Labs_Backport/
-      │  ├─ Factory_Classic/             (packaged static Classic map)
-      │  └─ StyleAssets/                 (verified alternate artwork)
-      ├─ README.md
-      ├─ LICENSE
-      └─ THIRD-PARTY.md
-```
+## Requirements
 
-**Install:** copy `DynamicMaps-Extended` into `BepInEx/plugins/`.
+- [DynamicMaps](https://github.com/acidphantasm/SPT-DynamicMaps)
+- [MapVariants](https://github.com/LennoxP90/SPT-MapVariants)
 
-**Uninstall:** delete `BepInEx/plugins/DynamicMaps-Extended/`.
+The related map/backport mods are required only for the maps you want to use.
 
-The extension does **not** copy files into `mpstark-dynamicmaps`, MapVariants or any backport mod.
+## Install
 
-## Dependencies
-
-Required:
-- DynamicMaps
-- MapVariants
-
-Optional:
-- FactoryClassic
-- Manimal Interchange
-- Manimal Lighthouse
-- Manimal Labs / LabsBoiler
-- Manimal Icebreaker
-
-## Included map support
-
-- Icebreaker
-- Manimal Interchange
-- Manimal Labs / LabsBoiler expansion
-- Factory Classic
-- original/backport selection through MapVariants where MapVariants manages the location
-- Manimal Lighthouse continues using DynamicMaps' native Lighthouse artwork until a verified/generated Manimal-specific overhead map exists
-
-**Terminal is not included in 0.7.0.**
-
-## DynamicMaps integration
-
-DynamicMaps continues loading its own `Maps` directory normally.
-
-`DynamicMaps.Extended.dll` adds the extension's separate `Maps` folder to DynamicMaps' map-definition collection at runtime. The extension map image paths are resolved to absolute paths inside `DynamicMaps-Extended`, so both SVG and PNG layers remain self-contained in this folder.
-
-The real EFT map ID is not replaced globally. Private aliases are only used at DynamicMaps' map-filter step where variant selection requires them.
-
-DynamicMaps still owns:
-- live player tracking
-- friendly/Fika player markers
-- minimap updates
-- automatic floor selection
-- quest markers
-- extracts/transits
-- corpse/backpack/loot markers
-- all other DynamicMaps marker providers
-
-## Abstract / Satellite artwork selector
-
-F12 contains:
+Copy:
 
 ```text
-DynamicMaps Extended
-├─ Map Style
-│  └─ Preferred Style = Abstract / Satellite
-├─ Map Style Overrides
-│  ├─ Ground Zero = UseGlobal / Abstract / Satellite
-│  ├─ Customs = UseGlobal / Abstract / Satellite
-│  ├─ Factory = UseGlobal / Abstract / Satellite
-│  ├─ Factory Classic = UseGlobal / Abstract / Satellite
-│  ├─ Woods = UseGlobal / Abstract / Satellite
-│  ├─ Interchange = UseGlobal / Abstract / Satellite
-│  ├─ Labs = UseGlobal / Abstract / Satellite
-│  ├─ Lighthouse = UseGlobal / Abstract / Satellite
-│  ├─ Icebreaker = UseGlobal / Abstract / Satellite
-│  ├─ Reserve = UseGlobal / Abstract / Satellite
-│  ├─ Shoreline = UseGlobal / Abstract / Satellite
-│  ├─ Streets = UseGlobal / Abstract / Satellite
-│  └─ Labyrinth = UseGlobal / Abstract / Satellite
-└─ Debug
-   └─ EnableDebugLogging
+DynamicMaps-Extended
 ```
 
-The style switch changes **artwork only**. **No missing style is generated or fabricated.** Satellite PNGs prepared by the builder are stitched only from real existing Tarkov.dev tile assets.
-
-Style selection is **per floor/layer**, so mixed maps are supported. For example, Interchange can use Satellite for the ground floor while upper floors stay Abstract when only Abstract artwork exists.
-
-Style changes apply immediately to the currently loaded DynamicMaps map during a raid when possible. Only existing layer sprites are refreshed; player tracking, Fika markers, extracts, quests, zoom, map position, selected floor and DynamicMaps marker systems remain intact.
-
-## Fika
-
-The extension does not patch Fika DLLs, create Fika packets, or replace multiplayer synchronization/player tracking.
-
-MapVariants / FactoryClassic remain responsible for their own variant synchronization. DynamicMaps continues handling live map/player markers.
-
-## Raster performance
-
-PNG/JPG layers are skipped during DynamicMaps' global all-map startup precache.
-
-When an extension raster map is selected, raster floors for **that selected map only** are preloaded. Raster textures use `markNonReadable=true`, are cached for the raid, and are released on map switch / raid end. The extension never calls `Resources.UnloadUnusedAssets()` during a raid.
-
-DynamicMaps' SVG cache remains untouched.
-
-## F12 debug
-
-Enable **Debug -> EnableDebugLogging** before reproducing a problem and send `BepInEx/LogOutput.log`.
-
-Diagnostics include current map, dependency/Fika detection, MapVariants/FactoryClassic state, alias decisions, extension MapDef loading, live artwork-switch decisions, layer/fallback details, raster decode timing/memory, cache state, and aspect-ratio warnings that can expose bad artwork crop/alignment.
-
-## Factory Classic
-
-Factory Classic uses the supplied static map package under:
+into:
 
 ```text
-DynamicMaps-Extended/Maps/Factory_Classic/
+BepInEx/plugins/
 ```
 
-It no longer generates a map from NavMesh at runtime.
+To uninstall, delete the **DynamicMaps-Extended** folder.
 
-The MapDef is isolated behind the private `dmext_factory_classic` alias, so current Factory continues using DynamicMaps' normal definition. When FactoryClassic reports Classic selected/loaded, DynamicMaps filtering is redirected to the packaged Classic definition.
+## Build from source
 
-DynamicMaps 1.2.1 requires `TesselationIndex` on every `MapLayerDef`; v0.7.0 includes `"TesselationIndex": 0` on all four Classic layers so Factory Classic loads in the Character -> Maps dropdown and in raids.
-
-The supplied Factory Classic PNG layers are treated as **Abstract**. If Satellite is selected, Factory Classic remains on its supplied Abstract artwork because no separate Satellite set is provided.
-
-## Building
-
-Run `build.ps1`.
-
-The builder asks for your SPT root, prepares missing Tarkov.dev map assets, builds `DynamicMaps.Extended.dll`, and creates:
+Run:
 
 ```text
-release\DynamicMaps-Extended-0.7.0-SPT4.1.zip
+build.ps1
 ```
 
-The builder does not install anything into SPT.
+The builder will ask for your SPT folder and create the release ZIP.
 
-## One-time migration from old test builds
-
-If you used the old `DynamicMaps-BackportCompat` builds, clean them once:
-
-1. delete `BepInEx/plugins/DynamicMaps-BackportCompat/`
-2. delete `BepInEx/plugins/mpstark-dynamicmaps/Maps/BackportCompat/`
-3. install `BepInEx/plugins/DynamicMaps-Extended/`
-
-After that, update/uninstall is one-folder only.
-
-See `THIRD-PARTY.md` for credits and licenses.
+See **THIRD-PARTY.md** for map artwork credits and licenses.
