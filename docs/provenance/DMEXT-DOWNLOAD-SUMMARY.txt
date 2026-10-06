@@ -1,0 +1,19 @@
+DynamicMaps Extended raw asset download summary
+================================================
+Created UTC: 2026-10-04T02:09:05.7020887Z
+Downloader version: 1.0.6
+Tarkov.dev commit: ef62766bbd7ffb294c7184f9b8bfe8ed0f18320e
+SVG maps commit: 5a8b6115d1c0cf56f2ebaac1a96fa5ae3074d178
+Mode: maximum source zoom only
+Valid raster tiles: 93604
+Raster size: 1.63 GiB
+Failed/empty layer-zoom checks: 0
+
+Send back to ChatGPT:
+- DMEXT-RAW-ASSET-MANIFEST.json
+- DMEXT-DOWNLOAD-REPORT.csv
+- SVG/ (or ZIP it)
+- RawTiles/ (preferably ZIP by map/layer if the folder is large)
+
+If you used -CreateLayerZips, the ready-to-upload archives are in:
+C:\Users\BLACK HAWK\Desktop\dynamic map E\DMExt-TarkovDev-RawAssets\UploadZips

@@ -1,0 +1,95 @@
+{
+  "DisplayName": "Reserve (Satellite - DynamicMaps Extended)",
+  "Author": "Shebuka via Tarkov.dev",
+  "AuthorLink": "https://github.com/the-hideout/tarkov-dev-svg-maps/",
+  "MapInternalNames": [ "dmext_reserve_satellite" ],
+  "CoordinateRotation": 180,
+  "Bounds": {
+    "Min": { "x": -303, "y": -293 },
+    "Max": { "x": 289, "y": 244 }
+  },
+  "DefaultLevel": 0,
+  "Layers": {
+    "Bunkers": {
+      "Level": -1,
+      "ImagePath": "Maps/Reserve_Satellite/Layers/Reserve-Bunkers.png",
+      "TesselationIndex": 0,
+      "ImageBounds": { "Min": { "x": -303, "y": -293 }, "Max": { "x": 289, "y": 244 } },
+      "GameBounds": [
+        { "Min": { "x": 18, "y": -208, "z": -10000 }, "Max": { "x": 128, "y": -33, "z": -7.27 } },
+        { "Min": { "x": -176, "y": -42, "z": -10000 }, "Max": { "x": -46, "y": 127, "z": -7.27 } },
+        { "Min": { "x": -124, "y": 124, "z": -10000 }, "Max": { "x": -40, "y": 189, "z": -12 } },
+        { "Min": { "x": -65, "y": 173, "z": -10000 }, "Max": { "x": 23, "y": 189, "z": 18 } },
+        { "Min": { "x": 19, "y": -196, "z": -7.27 }, "Max": { "x": 74, "y": -149, "z": -3.2 } },
+        { "Min": { "x": -274, "y": -79, "z": -11 }, "Max": { "x": -246, "y": -53, "z": -4.6 } },
+        { "Min": { "x": 126, "y": -26, "z": -11 }, "Max": { "x": 238, "y": 45, "z": -4.6 } }
+      ]
+    },
+    "Ground Level": {
+      "Level": 0,
+      "ImagePath": "Maps/Reserve_Satellite/Layers/Reserve-Ground.png",
+      "TesselationIndex": 0,
+      "ImageBounds": { "Min": { "x": -303, "y": -293 }, "Max": { "x": 289, "y": 244 } },
+      "GameBounds": [ { "Min": { "x": -303, "y": -293, "z": -7 }, "Max": { "x": 289, "y": 244, "z": 10000 } } ]
+    },
+    "2nd Floor": {
+      "Level": 1,
+      "ImagePath": "Maps/Reserve_Satellite/Layers/Reserve-Second.png",
+      "TesselationIndex": 0,
+      "ImageBounds": { "Min": { "x": -303, "y": -293 }, "Max": { "x": 289, "y": 244 } },
+      "GameBounds": [
+        { "Min": { "x": -17, "y": 164, "z": 22.1 }, "Max": { "x": 1, "y": 199, "z": 25.7 } },
+        { "Min": { "x": -177, "y": 26, "z": -3.5 }, "Max": { "x": -77, "y": 106, "z": -0.64 } },
+        { "Min": { "x": 51, "y": 59, "z": -3.5 }, "Max": { "x": 62, "y": 108, "z": -0.64 } },
+        { "Min": { "x": -177, "y": -37, "z": -3.5 }, "Max": { "x": -104, "y": 5, "z": -0.64 } },
+        { "Min": { "x": -85, "y": -47, "z": -3.9 }, "Max": { "x": -47, "y": -18, "z": -0.6 } },
+        { "Min": { "x": -78, "y": -13, "z": -4.3 }, "Max": { "x": -19.91, "y": 39, "z": -2.2 } },
+        { "Min": { "x": -2, "y": -50, "z": -3.8 }, "Max": { "x": 99, "y": 7, "z": -1.1 } },
+        { "Min": { "x": 137, "y": -175, "z": -1.9 }, "Max": { "x": 191, "y": -120, "z": 11.3 } },
+        { "Min": { "x": -119, "y": -156, "z": 1 }, "Max": { "x": -109, "y": -147, "z": 8 } },
+        { "Min": { "x": 289, "y": -92, "z": 1 }, "Max": { "x": 299, "y": -82, "z": 8 } },
+        { "Min": { "x": -7, "y": -210, "z": 1 }, "Max": { "x": 3, "y": -200, "z": 8 } },
+        { "Min": { "x": 185, "y": -260, "z": 1 }, "Max": { "x": 195, "y": -250, "z": 8 } },
+        { "Min": { "x": 266, "y": 17, "z": 1 }, "Max": { "x": 276, "y": 27, "z": 8 } },
+        { "Min": { "x": -146, "y": -139, "z": -4.1 }, "Max": { "x": -128, "y": -120, "z": -1.2 } }
+      ]
+    },
+    "3rd Floor": {
+      "Level": 2,
+      "ImagePath": "Maps/Reserve_Satellite/Layers/Reserve-Third.png",
+      "TesselationIndex": 0,
+      "ImageBounds": { "Min": { "x": -303, "y": -293 }, "Max": { "x": 289, "y": 244 } },
+      "GameBounds": [
+        { "Min": { "x": -17, "y": 164, "z": 25.7 }, "Max": { "x": 1, "y": 199, "z": 29.3 } },
+        { "Min": { "x": -177, "y": 26, "z": -0.64 }, "Max": { "x": -77, "y": 106, "z": 2.23 } },
+        { "Min": { "x": -177, "y": -37, "z": -0.64 }, "Max": { "x": -104, "y": 5, "z": 2.23 } },
+        { "Min": { "x": -85, "y": -47, "z": -0.6 }, "Max": { "x": -47, "y": -18, "z": 10 } },
+        { "Min": { "x": -78, "y": -13, "z": -2.2 }, "Max": { "x": -19.91, "y": 39, "z": 2.14 } },
+        { "Min": { "x": -2, "y": -50, "z": -1.1 }, "Max": { "x": 99, "y": 7, "z": 1.6 } }
+      ]
+    },
+    "4th Floor": {
+      "Level": 3,
+      "ImagePath": "Maps/Reserve_Satellite/Layers/Reserve-Fourth.png",
+      "TesselationIndex": 0,
+      "ImageBounds": { "Min": { "x": -303, "y": -293 }, "Max": { "x": 289, "y": 244 } },
+      "GameBounds": [
+        { "Min": { "x": -17, "y": 164, "z": 29.3 }, "Max": { "x": 1, "y": 199, "z": 36 } },
+        { "Min": { "x": -177, "y": 26, "z": 2.23 }, "Max": { "x": -77, "y": 106, "z": 5 } },
+        { "Min": { "x": -78, "y": -13, "z": 2.15 }, "Max": { "x": -19.91, "y": 39, "z": 6.6 } },
+        { "Min": { "x": -2, "y": -50, "z": 1.6 }, "Max": { "x": 99, "y": 7, "z": 4.7 } }
+      ]
+    },
+    "5th Floor": {
+      "Level": 4,
+      "ImagePath": "Maps/Reserve_Satellite/Layers/Reserve-Fifth.png",
+      "TesselationIndex": 0,
+      "ImageBounds": { "Min": { "x": -303, "y": -293 }, "Max": { "x": 289, "y": 244 } },
+      "GameBounds": [
+        { "Min": { "x": -177, "y": 26, "z": 5 }, "Max": { "x": -77, "y": 106, "z": 9.5 } }
+      ]
+    }
+  },
+  "Labels": [],
+  "StaticMarkers": []
+}

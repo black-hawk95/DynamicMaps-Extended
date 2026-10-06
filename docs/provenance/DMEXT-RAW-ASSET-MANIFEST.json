@@ -1,0 +1,1387 @@
+{
+    "Format":  "DynamicMapsExtended.RawArtworkPack.v1",
+    "DownloaderVersion":  "1.0.6",
+    "CreatedUtc":  "2026-10-04T02:09:05.6523319Z",
+    "TarkovDevCommit":  "ef62766bbd7ffb294c7184f9b8bfe8ed0f18320e",
+    "TarkovDevSvgMapsCommit":  "5a8b6115d1c0cf56f2ebaac1a96fa5ae3074d178",
+    "DownloadMode":  "max-source-zoom-only",
+    "Purpose":  "One-time raw source capture for offline DynamicMaps Extended asset preparation/bundling",
+    "TargetRasterMaps":  [
+                             "ground-zero",
+                             "customs",
+                             "factory",
+                             "interchange",
+                             "the-lab",
+                             "icebreaker",
+                             "woods",
+                             "reserve",
+                             "shoreline",
+                             "the-labyrinth"
+                         ],
+    "SvgFiles":  [
+                     "Customs.svg",
+                     "Factory.svg",
+                     "GroundZero.svg",
+                     "Interchange.svg",
+                     "Labs.svg",
+                     "Lighthouse.svg",
+                     "Reserve.svg",
+                     "Shoreline.svg",
+                     "StreetsOfTarkov.svg",
+                     "Terminal.svg",
+                     "Woods.svg",
+                     "LICENSE.md"
+                 ],
+    "Notes":  [
+                  "Original SVG files are preserved unsplit.",
+                  "Labs.svg is reference-only; current Labs v4 is tile/raster based.",
+                  "Lighthouse.svg must be geometry-verified before use with Manimal Lighthouse.",
+                  "Factory Classic user-supplied artwork is already in the DynamicMaps Extended source and is not downloaded here.",
+                  "Max-zoom raw tiles are intended to be converted into the final local multiresolution pyramid offline."
+              ],
+    "Assets":  [
+                   {
+                       "Map":  "ground-zero",
+                       "MapKey":  "ground-zero",
+                       "Layer":  "Ground",
+                       "CdnPrefix":  "groundzero/main_summer",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/groundzero/main_summer/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.524,
+                                         167.3,
+                                         0.524,
+                                         65.1
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          249,
+                                          -124
+                                      ],
+                                      [
+                                          -99,
+                                          364
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "ground-zero",
+                       "MapKey":  "ground-zero",
+                       "Layer":  "2nd Floor",
+                       "CdnPrefix":  "groundzero/2nd",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/groundzero/2nd/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.524,
+                                         167.3,
+                                         0.524,
+                                         65.1
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          249,
+                                          -124
+                                      ],
+                                      [
+                                          -99,
+                                          364
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "ground-zero",
+                       "MapKey":  "ground-zero",
+                       "Layer":  "3rd Floor",
+                       "CdnPrefix":  "groundzero/3rd",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/groundzero/3rd/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.524,
+                                         167.3,
+                                         0.524,
+                                         65.1
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          249,
+                                          -124
+                                      ],
+                                      [
+                                          -99,
+                                          364
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "ground-zero",
+                       "MapKey":  "ground-zero",
+                       "Layer":  "Garage",
+                       "CdnPrefix":  "groundzero/garage",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/groundzero/garage/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.524,
+                                         167.3,
+                                         0.524,
+                                         65.1
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          249,
+                                          -124
+                                      ],
+                                      [
+                                          -99,
+                                          364
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "customs",
+                       "MapKey":  "customs",
+                       "Layer":  "Ground",
+                       "CdnPrefix":  "customs_0.16/main",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/customs_0.16/main/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.239,
+                                         168.65,
+                                         0.239,
+                                         136.35
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          698,
+                                          -307
+                                      ],
+                                      [
+                                          -372,
+                                          237
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "customs",
+                       "MapKey":  "customs",
+                       "Layer":  "2nd Floor",
+                       "CdnPrefix":  "customs_0.16/2nd",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/customs_0.16/2nd/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.239,
+                                         168.65,
+                                         0.239,
+                                         136.35
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          698,
+                                          -307
+                                      ],
+                                      [
+                                          -372,
+                                          237
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "customs",
+                       "MapKey":  "customs",
+                       "Layer":  "3rd Floor",
+                       "CdnPrefix":  "customs_0.16/3rd",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/customs_0.16/3rd/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.239,
+                                         168.65,
+                                         0.239,
+                                         136.35
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          698,
+                                          -307
+                                      ],
+                                      [
+                                          -372,
+                                          237
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "customs",
+                       "MapKey":  "customs",
+                       "Layer":  "4th Floor",
+                       "CdnPrefix":  "customs_0.16/4th",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/customs_0.16/4th/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.239,
+                                         168.65,
+                                         0.239,
+                                         136.35
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          698,
+                                          -307
+                                      ],
+                                      [
+                                          -372,
+                                          237
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "customs",
+                       "MapKey":  "customs",
+                       "Layer":  "Underground",
+                       "CdnPrefix":  "customs_0.16/underground",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/customs_0.16/underground/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.239,
+                                         168.65,
+                                         0.239,
+                                         136.35
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          698,
+                                          -307
+                                      ],
+                                      [
+                                          -372,
+                                          237
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "factory",
+                       "MapKey":  "factory",
+                       "Layer":  "Ground",
+                       "CdnPrefix":  "factory/main",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/factory/main/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         1.629,
+                                         119.9,
+                                         1.629,
+                                         139.3
+                                     ],
+                       "CoordinateRotation":  90,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "factory",
+                       "MapKey":  "factory",
+                       "Layer":  "2nd Floor",
+                       "CdnPrefix":  "factory/2nd",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/factory/2nd/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         1.629,
+                                         119.9,
+                                         1.629,
+                                         139.3
+                                     ],
+                       "CoordinateRotation":  90,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "factory",
+                       "MapKey":  "factory",
+                       "Layer":  "3rd Floor",
+                       "CdnPrefix":  "factory/3rd",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/factory/3rd/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         1.629,
+                                         119.9,
+                                         1.629,
+                                         139.3
+                                     ],
+                       "CoordinateRotation":  90,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "factory",
+                       "MapKey":  "factory",
+                       "Layer":  "Tunnels",
+                       "CdnPrefix":  "factory/tunnels",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/factory/tunnels/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         1.629,
+                                         119.9,
+                                         1.629,
+                                         139.3
+                                     ],
+                       "CoordinateRotation":  90,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "interchange",
+                       "MapKey":  "interchange",
+                       "Layer":  "Ground",
+                       "CdnPrefix":  "interchange/main",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/interchange/main/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.265,
+                                         150.6,
+                                         0.265,
+                                         134.6
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          598,
+                                          -442
+                                      ],
+                                      [
+                                          -433,
+                                          426
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "the-lab",
+                       "MapKey":  "the-lab",
+                       "Layer":  "First Level",
+                       "CdnPrefix":  "labs_v4/1st",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/labs_v4/1st/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  175,
+                       "Transform":  [
+                                         0.575,
+                                         281.2,
+                                         0.575,
+                                         193.7
+                                     ],
+                       "CoordinateRotation":  270,
+                       "Bounds":  [
+                                      [
+                                          -80,
+                                          -477
+                                      ],
+                                      [
+                                          -287,
+                                          -193
+                                      ]
+                                  ],
+                       "Author":  "Tarkov.dev",
+                       "AuthorLink":  "https://tarkov.dev"
+                   },
+                   {
+                       "Map":  "the-lab",
+                       "MapKey":  "the-lab",
+                       "Layer":  "Second Level",
+                       "CdnPrefix":  "labs_v4/2nd",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/labs_v4/2nd/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  175,
+                       "Transform":  [
+                                         0.575,
+                                         281.2,
+                                         0.575,
+                                         193.7
+                                     ],
+                       "CoordinateRotation":  270,
+                       "Bounds":  [
+                                      [
+                                          -80,
+                                          -477
+                                      ],
+                                      [
+                                          -287,
+                                          -193
+                                      ]
+                                  ],
+                       "Author":  "Tarkov.dev",
+                       "AuthorLink":  "https://tarkov.dev"
+                   },
+                   {
+                       "Map":  "the-lab",
+                       "MapKey":  "the-lab",
+                       "Layer":  "Technical",
+                       "CdnPrefix":  "labs_v4/technical",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/labs_v4/technical/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  175,
+                       "Transform":  [
+                                         0.575,
+                                         281.2,
+                                         0.575,
+                                         193.7
+                                     ],
+                       "CoordinateRotation":  270,
+                       "Bounds":  [
+                                      [
+                                          -80,
+                                          -477
+                                      ],
+                                      [
+                                          -287,
+                                          -193
+                                      ]
+                                  ],
+                       "Author":  "Tarkov.dev",
+                       "AuthorLink":  "https://tarkov.dev"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Infirmary",
+                       "CdnPrefix":  "icebreaker/06_infirmary",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/06_infirmary/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Helipad",
+                       "CdnPrefix":  "icebreaker/07_helipad",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/07_helipad/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Gym/Canteen",
+                       "CdnPrefix":  "icebreaker/08_gym-canteen",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/08_gym-canteen/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Accommodation (lower)",
+                       "CdnPrefix":  "icebreaker/09_accommodation_lower",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/09_accommodation_lower/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Accommodation (mid)",
+                       "CdnPrefix":  "icebreaker/10_accommodation_mid",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/10_accommodation_mid/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Accommodation (upper)",
+                       "CdnPrefix":  "icebreaker/11_accommodation_upper",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/11_accommodation_upper/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Officers\u0027 Deck",
+                       "CdnPrefix":  "icebreaker/12_officers_deck",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/12_officers_deck/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Stairs (blocked)",
+                       "CdnPrefix":  "icebreaker/13_stairs_blocked",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/13_stairs_blocked/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Bridge",
+                       "CdnPrefix":  "icebreaker/14_bridge",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/14_bridge/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Bridge Roof",
+                       "CdnPrefix":  "icebreaker/15_bridge_roof",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/15_bridge_roof/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Control Room",
+                       "CdnPrefix":  "icebreaker/00_control_room",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/00_control_room/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Engine Room",
+                       "CdnPrefix":  "icebreaker/01_engine_room",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/01_engine_room/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Engine Room (upper)",
+                       "CdnPrefix":  "icebreaker/02_engine_room_upper",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/02_engine_room_upper/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Fuel Pumps (lower)",
+                       "CdnPrefix":  "icebreaker/03_fuel_pumps_lower",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/03_fuel_pumps_lower/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Fuel Pumps",
+                       "CdnPrefix":  "icebreaker/04_fuel_pumps",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/04_fuel_pumps/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "icebreaker",
+                       "MapKey":  "icebreaker",
+                       "Layer":  "Storage/Security",
+                       "CdnPrefix":  "icebreaker/05_storage_ecurity",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/icebreaker/05_storage_ecurity/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  5,
+                       "DownloadedZooms":  [
+                                               5
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.0,
+                                         125.0,
+                                         3.5,
+                                         91.0
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          77,
+                                          -64.5
+                                      ],
+                                      [
+                                          -65.5,
+                                          67.4
+                                      ]
+                                  ],
+                       "Author":  "TarkovBOT.eu",
+                       "AuthorLink":  "https://tarkovbot.eu/"
+                   },
+                   {
+                       "Map":  "woods",
+                       "MapKey":  "woods",
+                       "Layer":  "Ground",
+                       "CdnPrefix":  "woods/main_0.16",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/woods/main_0.16/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.1855,
+                                         112.95,
+                                         0.1855,
+                                         167.85
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          646,
+                                          -914
+                                      ],
+                                      [
+                                          -761,
+                                          442
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "reserve",
+                       "MapKey":  "reserve",
+                       "Layer":  "Ground",
+                       "CdnPrefix":  "reserve/main",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/reserve/main/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.395,
+                                         122.0,
+                                         0.395,
+                                         137.65
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          289,
+                                          -293
+                                      ],
+                                      [
+                                          -303,
+                                          244
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "reserve",
+                       "MapKey":  "reserve",
+                       "Layer":  "2nd Floor",
+                       "CdnPrefix":  "reserve/2nd",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/reserve/2nd/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.395,
+                                         122.0,
+                                         0.395,
+                                         137.65
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          289,
+                                          -293
+                                      ],
+                                      [
+                                          -303,
+                                          244
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "reserve",
+                       "MapKey":  "reserve",
+                       "Layer":  "3rd Floor",
+                       "CdnPrefix":  "reserve/3rd",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/reserve/3rd/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.395,
+                                         122.0,
+                                         0.395,
+                                         137.65
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          289,
+                                          -293
+                                      ],
+                                      [
+                                          -303,
+                                          244
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "reserve",
+                       "MapKey":  "reserve",
+                       "Layer":  "4th Floor",
+                       "CdnPrefix":  "reserve/4th",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/reserve/4th/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.395,
+                                         122.0,
+                                         0.395,
+                                         137.65
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          289,
+                                          -293
+                                      ],
+                                      [
+                                          -303,
+                                          244
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "reserve",
+                       "MapKey":  "reserve",
+                       "Layer":  "5th Floor",
+                       "CdnPrefix":  "reserve/5th",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/reserve/5th/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.395,
+                                         122.0,
+                                         0.395,
+                                         137.65
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          289,
+                                          -293
+                                      ],
+                                      [
+                                          -303,
+                                          244
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "reserve",
+                       "MapKey":  "reserve",
+                       "Layer":  "Bunkers",
+                       "CdnPrefix":  "reserve/bunkers",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/reserve/bunkers/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.395,
+                                         122.0,
+                                         0.395,
+                                         137.65
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          289,
+                                          -293
+                                      ],
+                                      [
+                                          -303,
+                                          244
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "shoreline",
+                       "MapKey":  "shoreline",
+                       "Layer":  "Ground",
+                       "CdnPrefix":  "shoreline/main_summer",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/shoreline/main_summer/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  2,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         0.16,
+                                         83.2,
+                                         0.16,
+                                         111.1
+                                     ],
+                       "CoordinateRotation":  180,
+                       "Bounds":  [
+                                      [
+                                          504,
+                                          -415
+                                      ],
+                                      [
+                                          -1056,
+                                          618
+                                      ]
+                                  ],
+                       "Author":  "Shebuka",
+                       "AuthorLink":  "https://github.com/the-hideout/tarkov-dev-svg-maps/"
+                   },
+                   {
+                       "Map":  "the-labyrinth",
+                       "MapKey":  "the-labyrinth",
+                       "Layer":  "Main",
+                       "CdnPrefix":  "labyrinth/main",
+                       "TilePathTemplate":  "https://assets.tarkov.dev/maps/labyrinth/main/{z}/{x}/{y}.png",
+                       "SourceMinZoom":  1,
+                       "SourceMaxZoom":  6,
+                       "DownloadedZooms":  [
+                                               6
+                                           ],
+                       "TileSize":  256,
+                       "Transform":  [
+                                         2.115,
+                                         85.5,
+                                         2.115,
+                                         128.0
+                                     ],
+                       "CoordinateRotation":  270,
+                       "Bounds":  [
+                                      [
+                                          -52,
+                                          -37
+                                      ],
+                                      [
+                                          53,
+                                          76
+                                      ]
+                                  ],
+                       "Author":  "Tarkov.dev",
+                       "AuthorLink":  "https://tarkov.dev"
+                   }
+               ]
+}

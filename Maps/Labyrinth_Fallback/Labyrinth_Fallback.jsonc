@@ -1,0 +1,20 @@
+{
+  "DisplayName": "Labyrinth (Satellite - DynamicMaps Extended)",
+  "Author": "Tarkov.dev",
+  "AuthorLink": "https://tarkov.dev",
+  "MapInternalNames": [ "Labyrinth" ],
+  "CoordinateRotation": 270,
+  "Bounds": { "Min": { "x": -52, "y": -37 }, "Max": { "x": 53, "y": 76 } },
+  "DefaultLevel": 0,
+  "Layers": {
+    "Main": {
+      "Level": 0,
+      "ImagePath": "Maps/StyleAssets/Labyrinth/Satellite/Labyrinth-Main.png",
+      "TesselationIndex": 0,
+      "ImageBounds": { "Min": { "x": -52, "y": -37 }, "Max": { "x": 53, "y": 76 } },
+      "GameBounds": [ { "Min": { "x": -52, "y": -37, "z": -10000 }, "Max": { "x": 53, "y": 76, "z": 10000 } } ]
+    }
+  },
+  "Labels": [],
+  "StaticMarkers": []
+}

@@ -1,11 +1,7 @@
-# Latest version
+# Latest release
 
-**DynamicMaps Extended v1.5.0** is the latest published source snapshot.
+**DynamicMaps Extended v2.0.0** for **SPT 4.1.x**.
 
-Source archive:
-`releases/v1.5.0/DynamicMaps-Extended-v1.5.0-source-only.zip`
+Install by extracting `DynamicMaps-Extended-2.0.0-SPT4.1.zip` into the SPT root and allowing overwrite.
 
-SHA-256:
-`2f226e221629d81689769c729c78a3093ade5e71af2b212fa3d4485710ed11fd`
-
-The public source snapshot excludes prepared raster/tile artwork whose redistribution rights have not been confirmed.
+See `README.md` and `CHANGELOG.md` for details.

@@ -1,10 +1,9 @@
+artifacts/
 bin/
 obj/
-release/
-tools/.asset-cache/
-Maps/StyleAssets/
-Maps/Icebreaker/Layers/*.png
-Maps/Labs_Backport/Layers/*.png
-Maps/Interchange_Backport/Layers/*.svg
-Maps/TARKOVDEV-SVG-LICENSE.md
-.style-assets-*.ready
+.vs/
+*.user
+*.suo
+*.csproj.user
+AssetCache/
+BepInEx/plugins/DynamicMaps-Extended/AssetCache/

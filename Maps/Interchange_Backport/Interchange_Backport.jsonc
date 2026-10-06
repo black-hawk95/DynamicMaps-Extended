@@ -1,40 +1,108 @@
 {
-  "DisplayName": "Interchange (Manimal backport / current Tarkov.dev)",
+  "DisplayName": "Interchange (Manimal)",
   "Author": "Tarkov.dev / Shebuka",
   "AuthorLink": "https://github.com/the-hideout/tarkov-dev-svg-maps",
-  "MapInternalNames": [ "dmext_interchange_backport" ],
+  "MapInternalNames": [
+    "dmext_interchange_backport"
+  ],
   "CoordinateRotation": 180,
   "Bounds": {
-    "Min": { "x": -433, "y": -442 },
-    "Max": { "x": 598, "y": 426 }
+    "Min": {
+      "x": -433,
+      "y": -442
+    },
+    "Max": {
+      "x": 598,
+      "y": 426
+    }
   },
   "DefaultLevel": 0,
   "Layers": {
     "Ground Floor": {
       "Level": 0,
-      "ImagePath": "Maps/Interchange_Backport/Layers/Interchange-Ground_Level.svg",
+      "ImagePath": "Maps/Interchange_Backport/Abstract/Interchange-Ground.svg",
       "TesselationIndex": 0,
-      "ImageBounds": { "Min": { "x": -433, "y": -442 }, "Max": { "x": 598, "y": 426 } },
+      "ImageBounds": {
+        "Min": {
+          "x": -433,
+          "y": -442
+        },
+        "Max": {
+          "x": 598,
+          "y": 426
+        }
+      },
       "GameBounds": [
-        { "Min": { "x": -433, "y": -442, "z": -1000 }, "Max": { "x": 598, "y": 426, "z": 1000 } }
+        {
+          "Min": {
+            "x": -433,
+            "y": -442,
+            "z": -1000
+          },
+          "Max": {
+            "x": 598,
+            "y": 426,
+            "z": 1000
+          }
+        }
       ]
     },
     "2nd Floor": {
       "Level": 1,
-      "ImagePath": "Maps/Interchange_Backport/Layers/Interchange-First_Floor.svg",
+      "ImagePath": "Maps/Interchange_Backport/Abstract/Interchange-First.svg",
       "TesselationIndex": 0,
-      "ImageBounds": { "Min": { "x": -433, "y": -442 }, "Max": { "x": 598, "y": 426 } },
+      "ImageBounds": {
+        "Min": {
+          "x": -433,
+          "y": -442
+        },
+        "Max": {
+          "x": 598,
+          "y": 426
+        }
+      },
       "GameBounds": [
-        { "Min": { "x": -222, "y": -327, "z": 25 }, "Max": { "x": 120, "y": 218, "z": 34 } }
+        {
+          "Min": {
+            "x": -222,
+            "y": -327,
+            "z": 25
+          },
+          "Max": {
+            "x": 120,
+            "y": 218,
+            "z": 34
+          }
+        }
       ]
     },
     "3rd Floor": {
       "Level": 2,
-      "ImagePath": "Maps/Interchange_Backport/Layers/Interchange-Second_Floor.svg",
+      "ImagePath": "Maps/Interchange_Backport/Abstract/Interchange-Second.svg",
       "TesselationIndex": 0,
-      "ImageBounds": { "Min": { "x": -433, "y": -442 }, "Max": { "x": 598, "y": 426 } },
+      "ImageBounds": {
+        "Min": {
+          "x": -433,
+          "y": -442
+        },
+        "Max": {
+          "x": 598,
+          "y": 426
+        }
+      },
       "GameBounds": [
-        { "Min": { "x": -222, "y": -327, "z": 34 }, "Max": { "x": 120, "y": 218, "z": 1000 } }
+        {
+          "Min": {
+            "x": -222,
+            "y": -327,
+            "z": 34
+          },
+          "Max": {
+            "x": 120,
+            "y": 218,
+            "z": 1000
+          }
+        }
       ]
     }
   },

@@ -1,0 +1,17 @@
+DynamicMaps Extended SVG notes
+=============================
+
+Pinned repository:
+https://github.com/the-hideout/tarkov-dev-svg-maps
+Commit: 5a8b6115d1c0cf56f2ebaac1a96fa5ae3074d178
+
+LICENSE.md in this folder is the upstream SVG repository license.
+Keep these assets/license separate from DynamicMaps Extended's MIT C# code.
+
+Important verification notes:
+- Interchange.svg is the real layered SVG containing Ground_Level, First_Floor,
+  and Second_Floor and should be used for Manimal Interchange Abstract artwork.
+- Labs.svg is retained only for reference. Current Tarkov.dev Labs v4 uses
+  raster/tile artwork and this older SVG must NOT be assumed to match it.
+- Lighthouse.svg is retained for comparison, but must be verified against the
+  Manimal Lighthouse geometry before being enabled for that variant.

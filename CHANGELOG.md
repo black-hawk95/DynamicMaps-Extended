@@ -1,15 +1,22 @@
 # Changelog
 
-## 1.5.0 — 2026-10-05
+## 2.0.0
 
-- Finalized the verified per-map artwork matrix and removed duplicate/meaningless choices.
-- Added/updated Factory Classic, Icebreaker, Manimal Interchange, Manimal Labs, Reserve Satellite and Labyrinth support.
-- Added separate calibration profiles where the same source artwork is used by different map variants.
-- Reworked Manimal Interchange Abstract to use an offline-rasterized runtime path instead of Unity SVG rendering.
-- Added asynchronous raster previews, local high-resolution tile packs and grouped progressive sharpening.
-- Added a delayed ~3K whole-floor warm atlas for the active/default floor.
-- Added cache reuse and slow-frame protection so minimap opening does not synchronously decode native-resolution maps.
-- Fixed Icebreaker level selector handling for all 16 valid levels (0–15).
-- Improved high-resolution refinement so sharpening begins earlier and reveals coherent regions.
-- Preserved Fika compatibility without custom network packets or synchronization hooks.
-- Public source snapshot excludes raster/tile artwork whose redistribution rights have not been verified.
+Major architecture and feature release for SPT 4.1.x.
+
+- Added built-in C# first-run raster preparation with in-game progress.
+- Added pinned Tarkov.dev structural verification and frozen exact valid tile coordinates.
+- Added local `NVTILES2` high-resolution raster packs, bounded asynchronous tile decoding, and warm-atlas loading.
+- Added one-folder persistent cache under `DynamicMaps-Extended/AssetCache/`.
+- Added automatic migration from the temporary sibling cache used by pre-release 1.5 test builds.
+- Added seam-free preview/warm-atlas compositing.
+- Fixed repeated asset-completion refreshes/cache clears.
+- Removed repeated invalid `MapDef.Name` reflection lookup warnings.
+- Added Fika Headless guard before patching/workers/asset preparation.
+- Added Icebreaker 16-floor slider normalization/safety.
+- Preserved meaningful per-map artwork choices and runtime map-variant integration.
+- Release archives no longer bundle Tarkov.dev raster downloads; they are prepared locally.
+
+## 1.0.0
+
+Initial public release.

@@ -1,0 +1,44 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: prov__DMEXT-DOWNLOAD-REPORT.csv>index,Map,MapKey,Layer,IsBase,CdnPrefix,TilePathTemplate,Zoom,MinZoom,MaxZoom,LogicalTileSize,X0,X1,Y0,Y1,CandidateTiles,ValidTiles,CandidateGaps,Bytes
+0,ground-zero,ground-zero,Ground,True,groundzero/main_summer,https://assets.tarkov.dev/maps/groundzero/main_summer/{z}/{x}/{y}.png,6,1,6,256,9,54,0,63,2944,2944,0,135778879
+1,ground-zero,ground-zero,2nd Floor,False,groundzero/2nd,https://assets.tarkov.dev/maps/groundzero/2nd/{z}/{x}/{y}.png,6,1,6,256,9,54,0,63,2944,2944,0,6964569
+2,ground-zero,ground-zero,3rd Floor,False,groundzero/3rd,https://assets.tarkov.dev/maps/groundzero/3rd/{z}/{x}/{y}.png,6,1,6,256,9,54,0,63,2944,2944,0,2011420
+3,ground-zero,ground-zero,Garage,False,groundzero/garage,https://assets.tarkov.dev/maps/groundzero/garage/{z}/{x}/{y}.png,6,1,6,256,9,54,0,63,2944,2944,0,13390832
+4,customs,customs,Ground,True,customs_0.16/main,https://assets.tarkov.dev/maps/customs_0.16/main/{z}/{x}/{y}.png,6,2,6,256,0,64,15,48,2210,2176,34,130537596
+5,customs,customs,2nd Floor,False,customs_0.16/2nd,https://assets.tarkov.dev/maps/customs_0.16/2nd/{z}/{x}/{y}.png,6,2,6,256,0,64,15,48,2210,2176,34,3668174
+6,customs,customs,3rd Floor,False,customs_0.16/3rd,https://assets.tarkov.dev/maps/customs_0.16/3rd/{z}/{x}/{y}.png,6,2,6,256,0,64,15,48,2210,2176,34,1594313
+7,customs,customs,4th Floor,False,customs_0.16/4th,https://assets.tarkov.dev/maps/customs_0.16/4th/{z}/{x}/{y}.png,6,2,6,256,0,64,15,48,2210,2176,34,1019556
+8,customs,customs,Underground,False,customs_0.16/underground,https://assets.tarkov.dev/maps/customs_0.16/underground/{z}/{x}/{y}.png,6,2,6,256,0,64,15,48,2210,2176,34,1245866
+9,factory,factory,Ground,True,factory/main,https://assets.tarkov.dev/maps/factory/main/{z}/{x}/{y}.png,6,1,6,256,2,56,3,61,3245,3245,0,188599758
+10,factory,factory,2nd Floor,False,factory/2nd,https://assets.tarkov.dev/maps/factory/2nd/{z}/{x}/{y}.png,6,1,6,256,2,56,3,61,3245,3245,0,26238984
+11,factory,factory,3rd Floor,False,factory/3rd,https://assets.tarkov.dev/maps/factory/3rd/{z}/{x}/{y}.png,6,1,6,256,2,56,3,61,3245,3245,0,61077741
+12,factory,factory,Tunnels,False,factory/tunnels,https://assets.tarkov.dev/maps/factory/tunnels/{z}/{x}/{y}.png,6,1,6,256,2,56,3,61,3245,3245,0,68632525
+13,interchange,interchange,Ground,True,interchange/main,https://assets.tarkov.dev/maps/interchange/main/{z}/{x}/{y}.png,6,1,6,256,-2,66,4,61,4002,3712,290,153037215
+14,the-lab,the-lab,First Level,True,labs_v4/1st,https://assets.tarkov.dev/maps/labs_v4/1st/{z}/{x}/{y}.png,6,2,6,175,2,62,10,54,2745,2745,0,96109424
+15,the-lab,the-lab,Second Level,False,labs_v4/2nd,https://assets.tarkov.dev/maps/labs_v4/2nd/{z}/{x}/{y}.png,6,2,6,175,2,62,10,54,2745,2745,0,52058409
+16,the-lab,the-lab,Technical,False,labs_v4/technical,https://assets.tarkov.dev/maps/labs_v4/technical/{z}/{x}/{y}.png,6,2,6,175,2,62,10,54,2745,2745,0,34932176
+17,icebreaker,icebreaker,Infirmary,False,icebreaker/06_infirmary,https://assets.tarkov.dev/maps/icebreaker/06_infirmary/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,3485800
+18,icebreaker,icebreaker,Helipad,False,icebreaker/07_helipad,https://assets.tarkov.dev/maps/icebreaker/07_helipad/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,1839312
+19,icebreaker,icebreaker,Gym/Canteen,False,icebreaker/08_gym-canteen,https://assets.tarkov.dev/maps/icebreaker/08_gym-canteen/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,2580387
+20,icebreaker,icebreaker,Accommodation (lower),False,icebreaker/09_accommodation_lower,https://assets.tarkov.dev/maps/icebreaker/09_accommodation_lower/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,2349290
+21,icebreaker,icebreaker,Accommodation (mid),False,icebreaker/10_accommodation_mid,https://assets.tarkov.dev/maps/icebreaker/10_accommodation_mid/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,1970989
+22,icebreaker,icebreaker,Accommodation (upper),False,icebreaker/11_accommodation_upper,https://assets.tarkov.dev/maps/icebreaker/11_accommodation_upper/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,1728274
+23,icebreaker,icebreaker,Officers' Deck,False,icebreaker/12_officers_deck,https://assets.tarkov.dev/maps/icebreaker/12_officers_deck/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,1917450
+24,icebreaker,icebreaker,Stairs (blocked),False,icebreaker/13_stairs_blocked,https://assets.tarkov.dev/maps/icebreaker/13_stairs_blocked/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,1041282
+25,icebreaker,icebreaker,Bridge,False,icebreaker/14_bridge,https://assets.tarkov.dev/maps/icebreaker/14_bridge/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,1422132
+26,icebreaker,icebreaker,Bridge Roof,False,icebreaker/15_bridge_roof,https://assets.tarkov.dev/maps/icebreaker/15_bridge_roof/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,1065033
+27,icebreaker,icebreaker,Control Room,False,icebreaker/00_control_room,https://assets.tarkov.dev/maps/icebreaker/00_control_room/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,1003362
+28,icebreaker,icebreaker,Engine Room,False,icebreaker/01_engine_room,https://assets.tarkov.dev/maps/icebreaker/01_engine_room/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,2394727
+29,icebreaker,icebreaker,Engine Room (upper),False,icebreaker/02_engine_room_upper,https://assets.tarkov.dev/maps/icebreaker/02_engine_room_upper/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,2014511
+30,icebreaker,icebreaker,Fuel Pumps (lower),False,icebreaker/03_fuel_pumps_lower,https://assets.tarkov.dev/maps/icebreaker/03_fuel_pumps_lower/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,2146475
+31,icebreaker,icebreaker,Fuel Pumps,False,icebreaker/04_fuel_pumps,https://assets.tarkov.dev/maps/icebreaker/04_fuel_pumps/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,1613797
+32,icebreaker,icebreaker,Storage/Security,False,icebreaker/05_storage_ecurity,https://assets.tarkov.dev/maps/icebreaker/05_storage_ecurity/{z}/{x}/{y}.png,5,1,5,256,-4,31,-17,40,2088,1024,1064,3327878
+33,woods,woods,Ground,True,woods/main_0.16,https://assets.tarkov.dev/maps/woods/main_0.16/{z}/{x}/{y}.png,6,2,6,256,-2,63,-1,62,4224,4032,192,257673106
+34,reserve,reserve,Ground,True,reserve/main,https://assets.tarkov.dev/maps/reserve/main/{z}/{x}/{y}.png,6,2,6,256,1,60,5,58,3240,3240,0,157574906
+35,reserve,reserve,2nd Floor,False,reserve/2nd,https://assets.tarkov.dev/maps/reserve/2nd/{z}/{x}/{y}.png,6,2,6,256,1,60,5,58,3240,3240,0,7423344
+36,reserve,reserve,3rd Floor,False,reserve/3rd,https://assets.tarkov.dev/maps/reserve/3rd/{z}/{x}/{y}.png,6,2,6,256,1,60,5,58,3240,3240,0,7676056
+37,reserve,reserve,4th Floor,False,reserve/4th,https://assets.tarkov.dev/maps/reserve/4th/{z}/{x}/{y}.png,6,2,6,256,1,60,5,58,3240,3240,0,4164433
+38,reserve,reserve,5th Floor,False,reserve/5th,https://assets.tarkov.dev/maps/reserve/5th/{z}/{x}/{y}.png,6,2,6,256,1,60,5,58,3240,3240,0,2614231
+39,reserve,reserve,Bunkers,False,reserve/bunkers,https://assets.tarkov.dev/maps/reserve/bunkers/{z}/{x}/{y}.png,6,2,6,256,1,60,5,58,3240,3240,0,17451728
+40,shoreline,shoreline,Ground,True,shoreline/main_summer,https://assets.tarkov.dev/maps/shoreline/main_summer/{z}/{x}/{y}.png,6,2,6,256,0,63,11,52,2688,2688,0,173659553
+41,the-labyrinth,the-labyrinth,Main,True,labyrinth/main,https://assets.tarkov.dev/maps/labyrinth/main/{z}/{x}/{y}.png,6,1,6,256,1,61,4,60,3477,3477,0,112135859

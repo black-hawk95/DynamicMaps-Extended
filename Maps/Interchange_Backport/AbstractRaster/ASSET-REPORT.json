@@ -1,0 +1,56 @@
+[
+  {
+    "stem": "Interchange-Ground",
+    "master": [
+      6144,
+      5160
+    ],
+    "preview": [
+      2048,
+      1720
+    ],
+    "grid": [
+      6,
+      6
+    ],
+    "tiles": 36,
+    "pngBytes": 745837,
+    "packBytes": 1307725
+  },
+  {
+    "stem": "Interchange-First",
+    "master": [
+      6144,
+      5160
+    ],
+    "preview": [
+      2048,
+      1720
+    ],
+    "grid": [
+      6,
+      6
+    ],
+    "tiles": 36,
+    "pngBytes": 97227,
+    "packBytes": 223274
+  },
+  {
+    "stem": "Interchange-Second",
+    "master": [
+      6144,
+      5160
+    ],
+    "preview": [
+      2048,
+      1720
+    ],
+    "grid": [
+      6,
+      6
+    ],
+    "tiles": 36,
+    "pngBytes": 58775,
+    "packBytes": 194600
+  }
+]

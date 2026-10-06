@@ -1,0 +1,2310 @@
+[
+  {
+    "map": "ground-zero",
+    "layer": "Ground",
+    "sourceZip": "ground-zero__Ground__groundzero_main_summer.zip",
+    "outputPreview": "Maps/StyleAssets/GroundZero/Satellite/GroundZero-Ground.png",
+    "outputPack": "Maps/StyleAssets/GroundZero/Satellite/GroundZero-Ground.tiles",
+    "rotation": 180,
+    "transform": [
+      0.524,
+      167.3,
+      0.524,
+      65.1
+    ],
+    "rawBounds": [
+      -99.0,
+      -124.0,
+      249.0,
+      364.0
+    ],
+    "rawTileMinX": 9,
+    "rawTileMaxX": 54,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 63,
+    "expectedGrid": [
+      9,
+      54,
+      0,
+      63
+    ],
+    "expectedOrigin": [
+      -52,
+      -7
+    ],
+    "expectedWidth": 11672,
+    "expectedHeight": 16367,
+    "currentBounds": [
+      -99.0,
+      -124.0,
+      249.0,
+      364.0
+    ],
+    "currentGrid": [
+      9,
+      54,
+      0,
+      63
+    ],
+    "currentOrigin": [
+      -52,
+      -7
+    ],
+    "currentWidth": 11672,
+    "currentHeight": 16367,
+    "needsRepack": false
+  },
+  {
+    "map": "ground-zero",
+    "layer": "2nd Floor",
+    "sourceZip": "ground-zero__2nd_Floor__groundzero_2nd.zip",
+    "outputPreview": "Maps/StyleAssets/GroundZero/Satellite/GroundZero-Second.png",
+    "outputPack": "Maps/StyleAssets/GroundZero/Satellite/GroundZero-Second.tiles",
+    "rotation": 180,
+    "transform": [
+      0.524,
+      167.3,
+      0.524,
+      65.1
+    ],
+    "rawBounds": [
+      -99.0,
+      -124.0,
+      249.0,
+      364.0
+    ],
+    "rawTileMinX": 9,
+    "rawTileMaxX": 54,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 63,
+    "expectedGrid": [
+      9,
+      54,
+      0,
+      63
+    ],
+    "expectedOrigin": [
+      -52,
+      -7
+    ],
+    "expectedWidth": 11672,
+    "expectedHeight": 16367,
+    "currentBounds": [
+      -99.0,
+      -124.0,
+      249.0,
+      364.0
+    ],
+    "currentGrid": [
+      9,
+      54,
+      0,
+      63
+    ],
+    "currentOrigin": [
+      -52,
+      -7
+    ],
+    "currentWidth": 11672,
+    "currentHeight": 16367,
+    "needsRepack": false
+  },
+  {
+    "map": "ground-zero",
+    "layer": "3rd Floor",
+    "sourceZip": "ground-zero__3rd_Floor__groundzero_3rd.zip",
+    "outputPreview": "Maps/StyleAssets/GroundZero/Satellite/GroundZero-Third.png",
+    "outputPack": "Maps/StyleAssets/GroundZero/Satellite/GroundZero-Third.tiles",
+    "rotation": 180,
+    "transform": [
+      0.524,
+      167.3,
+      0.524,
+      65.1
+    ],
+    "rawBounds": [
+      -99.0,
+      -124.0,
+      249.0,
+      364.0
+    ],
+    "rawTileMinX": 9,
+    "rawTileMaxX": 54,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 63,
+    "expectedGrid": [
+      9,
+      54,
+      0,
+      63
+    ],
+    "expectedOrigin": [
+      -52,
+      -7
+    ],
+    "expectedWidth": 11672,
+    "expectedHeight": 16367,
+    "currentBounds": [
+      -99.0,
+      -124.0,
+      249.0,
+      364.0
+    ],
+    "currentGrid": [
+      9,
+      54,
+      0,
+      63
+    ],
+    "currentOrigin": [
+      -52,
+      -7
+    ],
+    "currentWidth": 11672,
+    "currentHeight": 16367,
+    "needsRepack": false
+  },
+  {
+    "map": "ground-zero",
+    "layer": "Garage",
+    "sourceZip": "ground-zero__Garage__groundzero_garage.zip",
+    "outputPreview": "Maps/StyleAssets/GroundZero/Satellite/GroundZero-Garage.png",
+    "outputPack": "Maps/StyleAssets/GroundZero/Satellite/GroundZero-Garage.tiles",
+    "rotation": 180,
+    "transform": [
+      0.524,
+      167.3,
+      0.524,
+      65.1
+    ],
+    "rawBounds": [
+      -99.0,
+      -124.0,
+      249.0,
+      364.0
+    ],
+    "rawTileMinX": 9,
+    "rawTileMaxX": 54,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 63,
+    "expectedGrid": [
+      9,
+      54,
+      0,
+      63
+    ],
+    "expectedOrigin": [
+      -52,
+      -7
+    ],
+    "expectedWidth": 11672,
+    "expectedHeight": 16367,
+    "currentBounds": [
+      -99.0,
+      -124.0,
+      249.0,
+      364.0
+    ],
+    "currentGrid": [
+      9,
+      54,
+      0,
+      63
+    ],
+    "currentOrigin": [
+      -52,
+      -7
+    ],
+    "currentWidth": 11672,
+    "currentHeight": 16367,
+    "needsRepack": false
+  },
+  {
+    "map": "customs",
+    "layer": "Ground",
+    "sourceZip": "customs__Ground__customs_0.16_main.zip",
+    "outputPreview": "Maps/StyleAssets/Customs/Satellite/Customs-Ground.png",
+    "outputPack": "Maps/StyleAssets/Customs/Satellite/Customs-Ground.tiles",
+    "rotation": 180,
+    "transform": [
+      0.239,
+      168.65,
+      0.239,
+      136.35
+    ],
+    "rawBounds": [
+      -372.0,
+      -307.0,
+      698.0,
+      237.0
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 63,
+    "rawTileMinY": 15,
+    "rawTileMaxY": 48,
+    "expectedGrid": [
+      0,
+      64,
+      15,
+      48
+    ],
+    "expectedOrigin": [
+      -116,
+      -190
+    ],
+    "expectedWidth": 16368,
+    "expectedHeight": 8322,
+    "currentBounds": [
+      -372.0,
+      -306.0,
+      698.0,
+      235.0
+    ],
+    "currentGrid": [
+      0,
+      64,
+      15,
+      48
+    ],
+    "currentOrigin": [
+      -116,
+      -205
+    ],
+    "currentWidth": 16368,
+    "currentHeight": 8276,
+    "needsRepack": true
+  },
+  {
+    "map": "customs",
+    "layer": "2nd Floor",
+    "sourceZip": "customs__2nd_Floor__customs_0.16_2nd.zip",
+    "outputPreview": "Maps/StyleAssets/Customs/Satellite/Customs-Second.png",
+    "outputPack": "Maps/StyleAssets/Customs/Satellite/Customs-Second.tiles",
+    "rotation": 180,
+    "transform": [
+      0.239,
+      168.65,
+      0.239,
+      136.35
+    ],
+    "rawBounds": [
+      -372.0,
+      -307.0,
+      698.0,
+      237.0
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 63,
+    "rawTileMinY": 15,
+    "rawTileMaxY": 48,
+    "expectedGrid": [
+      0,
+      64,
+      15,
+      48
+    ],
+    "expectedOrigin": [
+      -116,
+      -190
+    ],
+    "expectedWidth": 16368,
+    "expectedHeight": 8322,
+    "currentBounds": [
+      -372.0,
+      -306.0,
+      698.0,
+      235.0
+    ],
+    "currentGrid": [
+      0,
+      64,
+      15,
+      48
+    ],
+    "currentOrigin": [
+      -116,
+      -205
+    ],
+    "currentWidth": 16368,
+    "currentHeight": 8276,
+    "needsRepack": true
+  },
+  {
+    "map": "customs",
+    "layer": "3rd Floor",
+    "sourceZip": "customs__3rd_Floor__customs_0.16_3rd.zip",
+    "outputPreview": "Maps/StyleAssets/Customs/Satellite/Customs-Third.png",
+    "outputPack": "Maps/StyleAssets/Customs/Satellite/Customs-Third.tiles",
+    "rotation": 180,
+    "transform": [
+      0.239,
+      168.65,
+      0.239,
+      136.35
+    ],
+    "rawBounds": [
+      -372.0,
+      -307.0,
+      698.0,
+      237.0
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 63,
+    "rawTileMinY": 15,
+    "rawTileMaxY": 48,
+    "expectedGrid": [
+      0,
+      64,
+      15,
+      48
+    ],
+    "expectedOrigin": [
+      -116,
+      -190
+    ],
+    "expectedWidth": 16368,
+    "expectedHeight": 8322,
+    "currentBounds": [
+      -372.0,
+      -306.0,
+      698.0,
+      235.0
+    ],
+    "currentGrid": [
+      0,
+      64,
+      15,
+      48
+    ],
+    "currentOrigin": [
+      -116,
+      -205
+    ],
+    "currentWidth": 16368,
+    "currentHeight": 8276,
+    "needsRepack": true
+  },
+  {
+    "map": "customs",
+    "layer": "4th Floor",
+    "sourceZip": "customs__4th_Floor__customs_0.16_4th.zip",
+    "outputPreview": "Maps/StyleAssets/Customs/Satellite/Customs-Fourth.png",
+    "outputPack": "Maps/StyleAssets/Customs/Satellite/Customs-Fourth.tiles",
+    "rotation": 180,
+    "transform": [
+      0.239,
+      168.65,
+      0.239,
+      136.35
+    ],
+    "rawBounds": [
+      -372.0,
+      -307.0,
+      698.0,
+      237.0
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 63,
+    "rawTileMinY": 15,
+    "rawTileMaxY": 48,
+    "expectedGrid": [
+      0,
+      64,
+      15,
+      48
+    ],
+    "expectedOrigin": [
+      -116,
+      -190
+    ],
+    "expectedWidth": 16368,
+    "expectedHeight": 8322,
+    "currentBounds": [
+      -372.0,
+      -306.0,
+      698.0,
+      235.0
+    ],
+    "currentGrid": [
+      0,
+      64,
+      15,
+      48
+    ],
+    "currentOrigin": [
+      -116,
+      -205
+    ],
+    "currentWidth": 16368,
+    "currentHeight": 8276,
+    "needsRepack": true
+  },
+  {
+    "map": "customs",
+    "layer": "Underground",
+    "sourceZip": "customs__Underground__customs_0.16_underground.zip",
+    "outputPreview": "Maps/StyleAssets/Customs/Satellite/Customs-Underground.png",
+    "outputPack": "Maps/StyleAssets/Customs/Satellite/Customs-Underground.tiles",
+    "rotation": 180,
+    "transform": [
+      0.239,
+      168.65,
+      0.239,
+      136.35
+    ],
+    "rawBounds": [
+      -372.0,
+      -307.0,
+      698.0,
+      237.0
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 63,
+    "rawTileMinY": 15,
+    "rawTileMaxY": 48,
+    "expectedGrid": [
+      0,
+      64,
+      15,
+      48
+    ],
+    "expectedOrigin": [
+      -116,
+      -190
+    ],
+    "expectedWidth": 16368,
+    "expectedHeight": 8322,
+    "currentBounds": [
+      -372.0,
+      -306.0,
+      698.0,
+      235.0
+    ],
+    "currentGrid": [
+      0,
+      64,
+      15,
+      48
+    ],
+    "currentOrigin": [
+      -116,
+      -205
+    ],
+    "currentWidth": 16368,
+    "currentHeight": 8276,
+    "needsRepack": true
+  },
+  {
+    "map": "factory",
+    "layer": "Ground",
+    "sourceZip": "factory__Ground__factory_main.zip",
+    "outputPreview": "Maps/StyleAssets/Factory/Satellite/Factory-Ground.png",
+    "outputPack": "Maps/StyleAssets/Factory/Satellite/Factory-Ground.tiles",
+    "rotation": 90,
+    "transform": [
+      1.629,
+      119.9,
+      1.629,
+      139.3
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 2,
+    "rawTileMaxX": 56,
+    "rawTileMinY": 3,
+    "rawTileMaxY": 61,
+    "expectedGrid": [
+      2,
+      56,
+      3,
+      61
+    ],
+    "expectedOrigin": [
+      -134,
+      -119
+    ],
+    "expectedWidth": 13753,
+    "expectedHeight": 14857,
+    "currentBounds": [
+      -65.0,
+      -64.5,
+      77.6,
+      67.2
+    ],
+    "currentGrid": [
+      2,
+      56,
+      3,
+      61
+    ],
+    "currentOrigin": [
+      -155,
+      -56
+    ],
+    "currentWidth": 13732,
+    "currentHeight": 14868,
+    "needsRepack": true
+  },
+  {
+    "map": "factory",
+    "layer": "2nd Floor",
+    "sourceZip": "factory__2nd_Floor__factory_2nd.zip",
+    "outputPreview": "Maps/StyleAssets/Factory/Satellite/Factory-Second.png",
+    "outputPack": "Maps/StyleAssets/Factory/Satellite/Factory-Second.tiles",
+    "rotation": 90,
+    "transform": [
+      1.629,
+      119.9,
+      1.629,
+      139.3
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 2,
+    "rawTileMaxX": 56,
+    "rawTileMinY": 3,
+    "rawTileMaxY": 61,
+    "expectedGrid": [
+      2,
+      56,
+      3,
+      61
+    ],
+    "expectedOrigin": [
+      -134,
+      -119
+    ],
+    "expectedWidth": 13753,
+    "expectedHeight": 14857,
+    "currentBounds": [
+      -65.0,
+      -64.5,
+      77.6,
+      67.2
+    ],
+    "currentGrid": [
+      2,
+      56,
+      3,
+      61
+    ],
+    "currentOrigin": [
+      -155,
+      -56
+    ],
+    "currentWidth": 13732,
+    "currentHeight": 14868,
+    "needsRepack": true
+  },
+  {
+    "map": "factory",
+    "layer": "3rd Floor",
+    "sourceZip": "factory__3rd_Floor__factory_3rd.zip",
+    "outputPreview": "Maps/StyleAssets/Factory/Satellite/Factory-Third.png",
+    "outputPack": "Maps/StyleAssets/Factory/Satellite/Factory-Third.tiles",
+    "rotation": 90,
+    "transform": [
+      1.629,
+      119.9,
+      1.629,
+      139.3
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 2,
+    "rawTileMaxX": 56,
+    "rawTileMinY": 3,
+    "rawTileMaxY": 61,
+    "expectedGrid": [
+      2,
+      56,
+      3,
+      61
+    ],
+    "expectedOrigin": [
+      -134,
+      -119
+    ],
+    "expectedWidth": 13753,
+    "expectedHeight": 14857,
+    "currentBounds": [
+      -65.0,
+      -64.5,
+      77.6,
+      67.2
+    ],
+    "currentGrid": [
+      2,
+      56,
+      3,
+      61
+    ],
+    "currentOrigin": [
+      -155,
+      -56
+    ],
+    "currentWidth": 13732,
+    "currentHeight": 14868,
+    "needsRepack": true
+  },
+  {
+    "map": "factory",
+    "layer": "Tunnels",
+    "sourceZip": "factory__Tunnels__factory_tunnels.zip",
+    "outputPreview": "Maps/StyleAssets/Factory/Satellite/Factory-Tunnels.png",
+    "outputPack": "Maps/StyleAssets/Factory/Satellite/Factory-Tunnels.tiles",
+    "rotation": 90,
+    "transform": [
+      1.629,
+      119.9,
+      1.629,
+      139.3
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 2,
+    "rawTileMaxX": 56,
+    "rawTileMinY": 3,
+    "rawTileMaxY": 61,
+    "expectedGrid": [
+      2,
+      56,
+      3,
+      61
+    ],
+    "expectedOrigin": [
+      -134,
+      -119
+    ],
+    "expectedWidth": 13753,
+    "expectedHeight": 14857,
+    "currentBounds": [
+      -65.0,
+      -64.5,
+      77.6,
+      67.2
+    ],
+    "currentGrid": [
+      2,
+      56,
+      3,
+      61
+    ],
+    "currentOrigin": [
+      -155,
+      -56
+    ],
+    "currentWidth": 13732,
+    "currentHeight": 14868,
+    "needsRepack": true
+  },
+  {
+    "map": "interchange",
+    "layer": "Ground",
+    "sourceZip": "interchange__Ground__interchange_main.zip",
+    "outputPreview": "Maps/StyleAssets/Interchange_Backport/Satellite/Interchange-Ground.png",
+    "outputPack": "Maps/StyleAssets/Interchange_Backport/Satellite/Interchange-Ground.tiles",
+    "rotation": 180,
+    "transform": [
+      0.265,
+      150.6,
+      0.265,
+      134.6
+    ],
+    "rawBounds": [
+      -433.0,
+      -442.0,
+      598.0,
+      426.0
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 63,
+    "rawTileMinY": 4,
+    "rawTileMaxY": 61,
+    "expectedGrid": [
+      -2,
+      66,
+      4,
+      61
+    ],
+    "expectedOrigin": [
+      -8,
+      -94
+    ],
+    "expectedWidth": 17487,
+    "expectedHeight": 14722,
+    "currentBounds": [
+      -433.0,
+      -442.0,
+      598.0,
+      426.0
+    ],
+    "currentGrid": [
+      -2,
+      66,
+      4,
+      61
+    ],
+    "currentOrigin": [
+      -8,
+      -94
+    ],
+    "currentWidth": 17487,
+    "currentHeight": 14722,
+    "needsRepack": false
+  },
+  {
+    "map": "the-lab",
+    "layer": "First Level",
+    "sourceZip": "the-lab__First_Level__labs_v4_1st.zip",
+    "outputPreview": "Maps/Labs_Backport/Layers/Labs-First.png",
+    "outputPack": "Maps/Labs_Backport/Layers/Labs-First.tiles",
+    "rotation": 270,
+    "transform": [
+      0.575,
+      281.2,
+      0.575,
+      193.7
+    ],
+    "rawBounds": [
+      -287.0,
+      -477.0,
+      -80.0,
+      -193.0
+    ],
+    "rawTileMinX": 2,
+    "rawTileMaxX": 62,
+    "rawTileMinY": 10,
+    "rawTileMaxY": 54,
+    "expectedGrid": [
+      2,
+      62,
+      10,
+      54
+    ],
+    "expectedOrigin": [
+      -136,
+      -124
+    ],
+    "expectedWidth": 15290,
+    "expectedHeight": 11145,
+    "currentBounds": [
+      -287.0,
+      -477.0,
+      -80.0,
+      -193.0
+    ],
+    "currentGrid": [
+      2,
+      62,
+      10,
+      54
+    ],
+    "currentOrigin": [
+      -136,
+      -124
+    ],
+    "currentWidth": 15290,
+    "currentHeight": 11145,
+    "needsRepack": false
+  },
+  {
+    "map": "the-lab",
+    "layer": "Second Level",
+    "sourceZip": "the-lab__Second_Level__labs_v4_2nd.zip",
+    "outputPreview": "Maps/Labs_Backport/Layers/Labs-Second.png",
+    "outputPack": "Maps/Labs_Backport/Layers/Labs-Second.tiles",
+    "rotation": 270,
+    "transform": [
+      0.575,
+      281.2,
+      0.575,
+      193.7
+    ],
+    "rawBounds": [
+      -287.0,
+      -477.0,
+      -80.0,
+      -193.0
+    ],
+    "rawTileMinX": 2,
+    "rawTileMaxX": 62,
+    "rawTileMinY": 10,
+    "rawTileMaxY": 54,
+    "expectedGrid": [
+      2,
+      62,
+      10,
+      54
+    ],
+    "expectedOrigin": [
+      -136,
+      -124
+    ],
+    "expectedWidth": 15290,
+    "expectedHeight": 11145,
+    "currentBounds": [
+      -287.0,
+      -477.0,
+      -80.0,
+      -193.0
+    ],
+    "currentGrid": [
+      2,
+      62,
+      10,
+      54
+    ],
+    "currentOrigin": [
+      -136,
+      -124
+    ],
+    "currentWidth": 15290,
+    "currentHeight": 11145,
+    "needsRepack": false
+  },
+  {
+    "map": "the-lab",
+    "layer": "Technical",
+    "sourceZip": "the-lab__Technical__labs_v4_technical.zip",
+    "outputPreview": "Maps/Labs_Backport/Layers/Labs-Technical.png",
+    "outputPack": "Maps/Labs_Backport/Layers/Labs-Technical.tiles",
+    "rotation": 270,
+    "transform": [
+      0.575,
+      281.2,
+      0.575,
+      193.7
+    ],
+    "rawBounds": [
+      -287.0,
+      -477.0,
+      -80.0,
+      -193.0
+    ],
+    "rawTileMinX": 2,
+    "rawTileMaxX": 62,
+    "rawTileMinY": 10,
+    "rawTileMaxY": 54,
+    "expectedGrid": [
+      2,
+      62,
+      10,
+      54
+    ],
+    "expectedOrigin": [
+      -136,
+      -124
+    ],
+    "expectedWidth": 15290,
+    "expectedHeight": 11145,
+    "currentBounds": [
+      -287.0,
+      -477.0,
+      -80.0,
+      -193.0
+    ],
+    "currentGrid": [
+      2,
+      62,
+      10,
+      54
+    ],
+    "currentOrigin": [
+      -136,
+      -124
+    ],
+    "currentWidth": 15290,
+    "currentHeight": 11145,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Infirmary",
+    "sourceZip": "icebreaker__Infirmary__icebreaker_06_infirmary.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/06-Infirmary.png",
+    "outputPack": "Maps/Icebreaker/Layers/06-Infirmary.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Helipad",
+    "sourceZip": "icebreaker__Helipad__icebreaker_07_helipad.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/07-Helipad.png",
+    "outputPack": "Maps/Icebreaker/Layers/07-Helipad.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Gym/Canteen",
+    "sourceZip": "icebreaker__Gym_Canteen__icebreaker_08_gym-canteen.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/08-Gym-Canteen.png",
+    "outputPack": "Maps/Icebreaker/Layers/08-Gym-Canteen.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Accommodation (lower)",
+    "sourceZip": "icebreaker__Accommodation_(lower)__icebreaker_09_accommodation_lower.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/09-Accommodation-Lower.png",
+    "outputPack": "Maps/Icebreaker/Layers/09-Accommodation-Lower.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Accommodation (mid)",
+    "sourceZip": "icebreaker__Accommodation_(mid)__icebreaker_10_accommodation_mid.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/10-Accommodation-Mid.png",
+    "outputPack": "Maps/Icebreaker/Layers/10-Accommodation-Mid.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Accommodation (upper)",
+    "sourceZip": "icebreaker__Accommodation_(upper)__icebreaker_11_accommodation_upper.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/11-Accommodation-Upper.png",
+    "outputPack": "Maps/Icebreaker/Layers/11-Accommodation-Upper.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Officers' Deck",
+    "sourceZip": "icebreaker__Officers'_Deck__icebreaker_12_officers_deck.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/12-Officers-Deck.png",
+    "outputPack": "Maps/Icebreaker/Layers/12-Officers-Deck.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Stairs (blocked)",
+    "sourceZip": "icebreaker__Stairs_(blocked)__icebreaker_13_stairs_blocked.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/13-Stairs-Blocked.png",
+    "outputPack": "Maps/Icebreaker/Layers/13-Stairs-Blocked.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Bridge",
+    "sourceZip": "icebreaker__Bridge__icebreaker_14_bridge.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/14-Bridge.png",
+    "outputPack": "Maps/Icebreaker/Layers/14-Bridge.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Bridge Roof",
+    "sourceZip": "icebreaker__Bridge_Roof__icebreaker_15_bridge_roof.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/15-Bridge-Roof.png",
+    "outputPack": "Maps/Icebreaker/Layers/15-Bridge-Roof.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Control Room",
+    "sourceZip": "icebreaker__Control_Room__icebreaker_00_control_room.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/00-Control-Room.png",
+    "outputPack": "Maps/Icebreaker/Layers/00-Control-Room.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Engine Room",
+    "sourceZip": "icebreaker__Engine_Room__icebreaker_01_engine_room.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/01-Engine-Room.png",
+    "outputPack": "Maps/Icebreaker/Layers/01-Engine-Room.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Engine Room (upper)",
+    "sourceZip": "icebreaker__Engine_Room_(upper)__icebreaker_02_engine_room_upper.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/02-Engine-Room-Upper.png",
+    "outputPack": "Maps/Icebreaker/Layers/02-Engine-Room-Upper.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Fuel Pumps (lower)",
+    "sourceZip": "icebreaker__Fuel_Pumps_(lower)__icebreaker_03_fuel_pumps_lower.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/03-Fuel-Pumps-Lower.png",
+    "outputPack": "Maps/Icebreaker/Layers/03-Fuel-Pumps-Lower.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Fuel Pumps",
+    "sourceZip": "icebreaker__Fuel_Pumps__icebreaker_04_fuel_pumps.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/04-Fuel-Pumps.png",
+    "outputPack": "Maps/Icebreaker/Layers/04-Fuel-Pumps.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "icebreaker",
+    "layer": "Storage/Security",
+    "sourceZip": "icebreaker__Storage_Security__icebreaker_05_storage_ecurity.zip",
+    "outputPreview": "Maps/Icebreaker/Layers/05-Storage-Security.png",
+    "outputPack": "Maps/Icebreaker/Layers/05-Storage-Security.tiles",
+    "rotation": 180,
+    "transform": [
+      2.0,
+      125.0,
+      3.5,
+      91.0
+    ],
+    "rawBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 31,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 31,
+    "expectedGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "expectedOrigin": [
+      -95,
+      -39
+    ],
+    "expectedWidth": 9121,
+    "expectedHeight": 14774,
+    "currentBounds": [
+      -65.5,
+      -64.5,
+      77.0,
+      67.4
+    ],
+    "currentGrid": [
+      -4,
+      31,
+      -17,
+      40
+    ],
+    "currentOrigin": [
+      -95,
+      -39
+    ],
+    "currentWidth": 9121,
+    "currentHeight": 14774,
+    "needsRepack": false
+  },
+  {
+    "map": "woods",
+    "layer": "Ground",
+    "sourceZip": "woods__Ground__woods_main_0.16.zip",
+    "outputPreview": "Maps/StyleAssets/Woods/Satellite/Woods-Ground.png",
+    "outputPack": "Maps/StyleAssets/Woods/Satellite/Woods-Ground.tiles",
+    "rotation": 180,
+    "transform": [
+      0.1855,
+      112.95,
+      0.1855,
+      167.85
+    ],
+    "rawBounds": [
+      -761.0,
+      -914.0,
+      646.0,
+      442.0
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 63,
+    "rawTileMinY": 0,
+    "rawTileMaxY": 62,
+    "expectedGrid": [
+      -2,
+      63,
+      -1,
+      62
+    ],
+    "expectedOrigin": [
+      -71,
+      -147
+    ],
+    "expectedWidth": 16705,
+    "expectedHeight": 16099,
+    "currentBounds": [
+      -756.0,
+      -915.0,
+      647.0,
+      443.0
+    ],
+    "currentGrid": [
+      -2,
+      63,
+      -1,
+      62
+    ],
+    "currentOrigin": [
+      -59,
+      -135
+    ],
+    "currentWidth": 16658,
+    "currentHeight": 16123,
+    "needsRepack": true
+  },
+  {
+    "map": "reserve",
+    "layer": "Ground",
+    "sourceZip": "reserve__Ground__reserve_main.zip",
+    "outputPreview": "Maps/Reserve_Satellite/Layers/Reserve-Ground.png",
+    "outputPack": "Maps/Reserve_Satellite/Layers/Reserve-Ground.tiles",
+    "rotation": 180,
+    "transform": [
+      0.395,
+      122.0,
+      0.395,
+      137.65
+    ],
+    "rawBounds": [
+      -303.0,
+      -293.0,
+      289.0,
+      244.0
+    ],
+    "rawTileMinX": 1,
+    "rawTileMaxX": 60,
+    "rawTileMinY": 5,
+    "rawTileMaxY": 58,
+    "expectedGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "expectedOrigin": [
+      -246,
+      -122
+    ],
+    "expectedWidth": 14966,
+    "expectedHeight": 13576,
+    "currentBounds": [
+      -303,
+      -293,
+      289,
+      244
+    ],
+    "currentGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "currentOrigin": [
+      -246,
+      -122
+    ],
+    "currentWidth": 14966,
+    "currentHeight": 13576,
+    "needsRepack": false
+  },
+  {
+    "map": "reserve",
+    "layer": "2nd Floor",
+    "sourceZip": "reserve__2nd_Floor__reserve_2nd.zip",
+    "outputPreview": "Maps/Reserve_Satellite/Layers/Reserve-Second.png",
+    "outputPack": "Maps/Reserve_Satellite/Layers/Reserve-Second.tiles",
+    "rotation": 180,
+    "transform": [
+      0.395,
+      122.0,
+      0.395,
+      137.65
+    ],
+    "rawBounds": [
+      -303.0,
+      -293.0,
+      289.0,
+      244.0
+    ],
+    "rawTileMinX": 1,
+    "rawTileMaxX": 60,
+    "rawTileMinY": 5,
+    "rawTileMaxY": 58,
+    "expectedGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "expectedOrigin": [
+      -246,
+      -122
+    ],
+    "expectedWidth": 14966,
+    "expectedHeight": 13576,
+    "currentBounds": [
+      -303,
+      -293,
+      289,
+      244
+    ],
+    "currentGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "currentOrigin": [
+      -246,
+      -122
+    ],
+    "currentWidth": 14966,
+    "currentHeight": 13576,
+    "needsRepack": false
+  },
+  {
+    "map": "reserve",
+    "layer": "3rd Floor",
+    "sourceZip": "reserve__3rd_Floor__reserve_3rd.zip",
+    "outputPreview": "Maps/Reserve_Satellite/Layers/Reserve-Third.png",
+    "outputPack": "Maps/Reserve_Satellite/Layers/Reserve-Third.tiles",
+    "rotation": 180,
+    "transform": [
+      0.395,
+      122.0,
+      0.395,
+      137.65
+    ],
+    "rawBounds": [
+      -303.0,
+      -293.0,
+      289.0,
+      244.0
+    ],    "rawTileMinX": 1,
+    "rawTileMaxX": 60,
+    "rawTileMinY": 5,
+    "rawTileMaxY": 58,
+    "expectedGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "expectedOrigin": [
+      -246,
+      -122
+    ],
+    "expectedWidth": 14966,
+    "expectedHeight": 13576,
+    "currentBounds": [
+      -303,
+      -293,
+      289,
+      244
+    ],
+    "currentGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "currentOrigin": [
+      -246,
+      -122
+    ],
+    "currentWidth": 14966,
+    "currentHeight": 13576,
+    "needsRepack": false
+  },
+  {
+    "map": "reserve",
+    "layer": "4th Floor",
+    "sourceZip": "reserve__4th_Floor__reserve_4th.zip",
+    "outputPreview": "Maps/Reserve_Satellite/Layers/Reserve-Fourth.png",
+    "outputPack": "Maps/Reserve_Satellite/Layers/Reserve-Fourth.tiles",
+    "rotation": 180,
+    "transform": [
+      0.395,
+      122.0,
+      0.395,
+      137.65
+    ],
+    "rawBounds": [
+      -303.0,
+      -293.0,
+      289.0,
+      244.0
+    ],
+    "rawTileMinX": 1,
+    "rawTileMaxX": 60,
+    "rawTileMinY": 5,
+    "rawTileMaxY": 58,
+    "expectedGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "expectedOrigin": [
+      -246,
+      -122
+    ],
+    "expectedWidth": 14966,
+    "expectedHeight": 13576,
+    "currentBounds": [
+      -303,
+      -293,
+      289,
+      244
+    ],
+    "currentGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "currentOrigin": [
+      -246,
+      -122
+    ],
+    "currentWidth": 14966,
+    "currentHeight": 13576,
+    "needsRepack": false
+  },
+  {
+    "map": "reserve",
+    "layer": "5th Floor",
+    "sourceZip": "reserve__5th_Floor__reserve_5th.zip",
+    "outputPreview": "Maps/Reserve_Satellite/Layers/Reserve-Fifth.png",
+    "outputPack": "Maps/Reserve_Satellite/Layers/Reserve-Fifth.tiles",
+    "rotation": 180,
+    "transform": [
+      0.395,
+      122.0,
+      0.395,
+      137.65
+    ],
+    "rawBounds": [
+      -303.0,
+      -293.0,
+      289.0,
+      244.0
+    ],
+    "rawTileMinX": 1,
+    "rawTileMaxX": 60,
+    "rawTileMinY": 5,
+    "rawTileMaxY": 58,
+    "expectedGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "expectedOrigin": [
+      -246,
+      -122
+    ],
+    "expectedWidth": 14966,
+    "expectedHeight": 13576,
+    "currentBounds": [
+      -303,
+      -293,
+      289,
+      244
+    ],
+    "currentGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "currentOrigin": [
+      -246,
+      -122
+    ],
+    "currentWidth": 14966,
+    "currentHeight": 13576,
+    "needsRepack": false
+  },
+  {
+    "map": "reserve",
+    "layer": "Bunkers",
+    "sourceZip": "reserve__Bunkers__reserve_bunkers.zip",
+    "outputPreview": "Maps/Reserve_Satellite/Layers/Reserve-Bunkers.png",
+    "outputPack": "Maps/Reserve_Satellite/Layers/Reserve-Bunkers.tiles",
+    "rotation": 180,
+    "transform": [
+      0.395,
+      122.0,
+      0.395,
+      137.65
+    ],
+    "rawBounds": [
+      -303.0,
+      -293.0,
+      289.0,
+      244.0
+    ],
+    "rawTileMinX": 1,
+    "rawTileMaxX": 60,
+    "rawTileMinY": 5,
+    "rawTileMaxY": 58,
+    "expectedGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "expectedOrigin": [
+      -246,
+      -122
+    ],
+    "expectedWidth": 14966,
+    "expectedHeight": 13576,
+    "currentBounds": [
+      -303,
+      -293,
+      289,
+      244
+    ],
+    "currentGrid": [
+      1,
+      60,
+      5,
+      58
+    ],
+    "currentOrigin": [
+      -246,
+      -122
+    ],
+    "currentWidth": 14966,
+    "currentHeight": 13576,
+    "needsRepack": false
+  },
+  {
+    "map": "shoreline",
+    "layer": "Ground",
+    "sourceZip": "shoreline__Ground__shoreline_main_summer.zip",
+    "outputPreview": "Maps/StyleAssets/Shoreline/Satellite/Shoreline-Ground.png",
+    "outputPack": "Maps/StyleAssets/Shoreline/Satellite/Shoreline-Ground.tiles",
+    "rotation": 180,
+    "transform": [
+      0.16,
+      83.2,
+      0.16,
+      111.1
+    ],
+    "rawBounds": [
+      -1056.0,
+      -415.0,
+      504.0,
+      618.0
+    ],
+    "rawTileMinX": 0,
+    "rawTileMaxX": 63,
+    "rawTileMinY": 11,
+    "rawTileMaxY": 52,
+    "expectedGrid": [
+      0,
+      63,
+      11,
+      52
+    ],
+    "expectedOrigin": [
+      -163,
+      -44
+    ],
+    "expectedWidth": 15976,
+    "expectedHeight": 10579,
+    "currentBounds": [
+      -1060.0,
+      -415.0,
+      508.0,
+      622.0
+    ],
+    "currentGrid": [
+      0,
+      63,
+      11,
+      52
+    ],
+    "currentOrigin": [
+      -122,
+      -44
+    ],
+    "currentWidth": 16058,
+    "currentHeight": 10620,
+    "needsRepack": true
+  },
+  {
+    "map": "the-labyrinth",
+    "layer": "Main",
+    "sourceZip": "the-labyrinth__Main__labyrinth_main.zip",
+    "outputPreview": "Maps/StyleAssets/Labyrinth/Satellite/Labyrinth-Main.png",
+    "outputPack": "Maps/StyleAssets/Labyrinth/Satellite/Labyrinth-Main.tiles",
+    "rotation": 270,
+    "transform": [
+      2.115,
+      85.5,
+      2.115,
+      128.0
+    ],
+    "rawBounds": [
+      -52.0,
+      -37.0,
+      53.0,
+      76.0
+    ],
+    "rawTileMinX": 1,
+    "rawTileMaxX": 61,
+    "rawTileMinY": 4,
+    "rawTileMaxY": 60,
+    "expectedGrid": [
+      1,
+      61,
+      4,
+      60
+    ],
+    "expectedOrigin": [
+      -207,
+      -129
+    ],
+    "expectedWidth": 15297,
+    "expectedHeight": 14214,
+    "currentBounds": [
+      -52.0,
+      -37.0,
+      53.0,
+      76.0
+    ],
+    "currentGrid": [
+      1,
+      61,
+      4,
+      60
+    ],
+    "currentOrigin": [
+      -207,
+      -129
+    ],
+    "currentWidth": 15297,
+    "currentHeight": 14214,
+    "needsRepack": false
+  }
+]
