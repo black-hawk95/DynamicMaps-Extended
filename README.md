@@ -1,68 +1,29 @@
-# DynamicMaps Extended v2.0.0
+# DynamicMaps Extended 2.1.0
 
-DynamicMaps Extended is an extension for **DynamicMaps 1.2.1** on **SPT 4.1.x**. It adds verified alternate map artwork, high-resolution local raster refinement, map-variant support, and compatibility fixes while leaving DynamicMaps in control of player tracking, quest/extract markers, minimap behavior, floor selection, and marker providers.
+Artwork and map-variant addon for SPT 4.1.x. Requires **DynamicMaps** and **MapVariants**. Install the appropriate map mods separately to use their corresponding variants.
 
-## Highlights
+## Installation
 
-- **Built-in C# first-run asset preparation** — no PowerShell, curl, helper executable, or child process at runtime.
-- **One-folder cache** under `BepInEx/plugins/DynamicMaps-Extended/AssetCache/`.
-- Normal updates are simply **extract → overwrite → launch**; the cache is preserved because release ZIPs do not contain `AssetCache/`.
-- Clean uninstall: delete `BepInEx/plugins/DynamicMaps-Extended/`.
-- **42 verified raster layers** using a pinned Tarkov.dev structural lock and frozen known-valid tile coordinates.
-- Local `NVTILES2` high-resolution tile packs with asynchronous, bounded decoding and cache limits.
-- Seam-free preview/warm-atlas compositor.
-- F12 artwork selection with only meaningful options.
-- Icebreaker 16-floor slider safety and map-level normalization.
-- Fika compatible; **Fika Headless is detected and the client/UI plugin disables itself before workers or Harmony patches start**.
-- Migration support for the temporary pre-2.0 sibling cache folder `DynamicMaps-Extended-AssetCache`.
+1. Exit the game.
+2. Extract `DynamicMaps-Extended-2.1.0-SPT4.1.zip` into your SPT root, allowing overwrite.
+3. Keep the included `Maps`, `Assets` and `AssetCache` folders together with the DLL under `BepInEx/plugins/DynamicMaps-Extended/`.
 
-## Install
+The complete ZIP includes all 42 prepared raster layers. No runtime downloads, map generation, download progress UI or F12 asset-download options remain. Re-extract the complete ZIP if artwork files are missing. Original DynamicMaps and MapVariants are separate dependencies and are not included.
 
-Requirements:
+## Artwork settings
 
-- SPT 4.1.x
-- DynamicMaps 1.2.1
-- MapVariants 1.0.1
+Use F12 → DynamicMaps Extended to select the global artwork mode or a per-map override. Recommended prefers available Satellite artwork; DynamicMaps Vanilla uses the original artwork. Abstract is offered where distinct verified artwork is available. See [the artwork matrix](docs/ARTWORK-MATRIX.md).
 
-Extract `DynamicMaps-Extended-2.0.0-SPT4.1.zip` into your SPT root and allow overwrite.
+Woods, Factory and Streets Abstract use cached SVG artwork through DynamicMaps' renderer for sharp detail at different zoom levels. Manimal Interchange Abstract uses prepared raster previews and high-resolution tiles. Satellite retains its prepared high-resolution tile content, with visible tiles decoded asynchronously and bounded caches.
 
-On first launch, if no valid cache exists, DynamicMaps Extended verifies the current official Tarkov.dev map structure against the pinned metadata lock, downloads only the frozen valid raster tile coordinates, and builds local previews, warm atlases, and high-resolution tile packs. Later launches use the local cache.
+Switching artwork updates the current view in place, preserving live markers, tracking and the viewed coordinate. DynamicMaps continues to own marker providers, quests, player trails, floors and minimap behavior. Extended does not patch Fika networking; client/UI functionality is disabled on Fika Headless.
 
-## Updating
+## Diagnostics and limits
 
-Extract the new release ZIP into the SPT root and allow overwrite. Do **not** delete `DynamicMaps-Extended/AssetCache/` unless you intentionally want the raster cache rebuilt/redownloaded.
+Enable `Debug / EnableDebugLogging` in F12 when diagnosing a problem. Frame timing and committed viewport state are written to `BepInEx/LogOutput.log`. Disable it for normal play. First use of uncached artwork can still cause a brief loading or style-switch hitch; steady frame times do not guarantee every texture upload is stutter-free.
 
-## Uninstall
+## Building
 
-Delete:
+Install a .NET SDK that supports this project, then run `build.ps1 -SptRoot "C:/SPT" -NoPause`. The build creates a **base package**, which omits the large prepared raster cache. Produce the complete installation ZIP using `tools/bundle-maps.py` as described in [bundling instructions](docs/BUNDLED-MAPS.md). Neither step publishes to GitHub or changes the game installation.
 
-```text
-BepInEx/plugins/DynamicMaps-Extended/
-```
-
-This removes both the mod and its locally prepared cache.
-
-## Cache and diagnostics
-
-```text
-BepInEx/plugins/DynamicMaps-Extended/AssetCache/
-├── Packs/
-├── State/
-└── Staging/
-```
-
-Preparation log:
-
-```text
-BepInEx/plugins/DynamicMaps-Extended/AssetCache/State/asset-preparation.log
-```
-
-## Build from source
-
-Run `build.cmd`, select your SPT 4.1.x root, and use the ZIP created under `artifacts/release/`.
-
-The source build itself is offline. Runtime first-use asset preparation requires access to the official Tarkov.dev metadata and tile hosts.
-
-## Licensing and third-party content
-
-See [THIRD-PARTY.md](THIRD-PARTY.md) for attribution and third-party licensing notes. Tarkov.dev raster artwork is **not bundled in the release ZIP**; it is prepared locally on the player's PC after structural verification.
+Project code is MIT licensed. Third-party artwork retains its original terms and attribution; see [THIRD-PARTY.md](THIRD-PARTY.md), [LICENSING-STATUS.md](LICENSING-STATUS.md) and the included artwork license.

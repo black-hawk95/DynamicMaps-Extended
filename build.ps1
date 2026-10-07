@@ -11,11 +11,11 @@ function Rel([string]$Path) { return $Path.Replace('/', [IO.Path]::DirectorySepa
 
 try {
     Write-Host '============================================================='
-    Write-Host ' DynamicMaps Extended 2.0.0 - SPT 4.1.x'
+    Write-Host ' DynamicMaps Extended 2.1.0'
     Write-Host '============================================================='
     Write-Host ''
     Write-Host 'Build is OFFLINE. It does not download map artwork.'
-    Write-Host 'The installed DLL performs the one-time raster download on first game launch. Official Tarkov.dev map structure is verified before artwork is accepted. No PowerShell/curl/helper process is used.'
+    Write-Host 'Complete release ZIPs must include prepared map artwork. The DLL never downloads or generates maps.'
     Write-Host ''
 
     if ([string]::IsNullOrWhiteSpace($SptRoot)) { $SptRoot = Read-Host 'Enter your SPT 4.1.x root folder' }
@@ -32,17 +32,7 @@ try {
     Write-Host "DynamicMaps: $($dynamicMapsDll.FullName)"
     Write-Host "MapVariants: $($mapVariantsDll.FullName)"
 
-    # The first-run progress overlay uses Unity IMGUI. DynamicMaps 1.2.1 itself
-    # references both of these modules on SPT 4.1.x, so validate them explicitly
-    # before compiling instead of failing later with forwarded-type errors.
     $managedDir = Join-Path $SptRoot 'EscapeFromTarkov_Data\Managed'
-    foreach ($assembly in @('UnityEngine.IMGUIModule.dll','UnityEngine.TextRenderingModule.dll')) {
-        $assemblyPath = Join-Path $managedDir $assembly
-        if (-not (Test-Path -LiteralPath $assemblyPath -PathType Leaf)) {
-            throw "Required Unity module is missing: $assemblyPath"
-        }
-    }
-    Write-Host 'Validated Unity IMGUI/TextRendering modules for the first-run progress overlay.' -ForegroundColor Green
     $newtonsoft = Join-Path $managedDir 'Newtonsoft.Json.dll'
     if (-not (Test-Path -LiteralPath $newtonsoft -PathType Leaf)) { throw "Required JSON assembly is missing: $newtonsoft" }
     Write-Host 'Validated Newtonsoft.Json for the built-in asset manifest reader.' -ForegroundColor Green
@@ -98,7 +88,7 @@ try {
     }
     Write-Host 'Validated upstream structural lock: 10 maps and all 42 runtime tile paths (zoom/transform/bounds/rotation/layers).' -ForegroundColor Green
 
-    # Validate map definitions. Runtime-managed PNGs are intentionally absent from this source;
+    # Validate map definitions. Prepared cache PNGs are intentionally absent from this source;
     # all other extension-owned artwork must still be present at build time.
     $mapDefFiles = Get-ChildItem -LiteralPath $mapsRoot -Filter '*.jsonc' -File -Recurse
     foreach ($mapDefFile in $mapDefFiles) {
@@ -156,7 +146,7 @@ try {
     Write-Host "Building plugin against: $SptRoot"
     $project = Join-Path $SourceRoot 'DynamicMaps.Extended.csproj'
     $artifactsRoot = Join-Path $SourceRoot 'artifacts'
-    if (Test-Path -LiteralPath $artifactsRoot) { Remove-Item -LiteralPath $artifactsRoot -Recurse -Force }
+    if (-not $artifactsRoot.StartsWith($SourceRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Unsafe artifact directory.' }
     $buildOut = Join-Path $artifactsRoot 'bin'
     $objOut = Join-Path $artifactsRoot 'obj'
     New-Item -ItemType Directory -Force -Path $buildOut,$objOut | Out-Null
@@ -173,6 +163,7 @@ try {
 
     $releaseRoot=Join-Path $artifactsRoot 'release'
     $stageRoot=Join-Path $releaseRoot 'DynamicMaps-Extended'
+    if (-not $stageRoot.StartsWith($artifactsRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Unsafe stage directory.' }
     if (Test-Path -LiteralPath $stageRoot) { Remove-Item -LiteralPath $stageRoot -Recurse -Force }
     $pluginOut=Join-Path $stageRoot 'BepInEx\plugins\DynamicMaps-Extended'
     $mapsOut=Join-Path $pluginOut 'Maps'
@@ -191,10 +182,14 @@ try {
 
     Copy-Item -LiteralPath (Join-Path $SourceRoot 'README.md') -Destination $pluginOut
     Copy-Item -LiteralPath (Join-Path $SourceRoot 'LICENSE') -Destination $pluginOut
-    Copy-Item -LiteralPath (Join-Path $SourceRoot 'THIRD-PARTY.md') -Destination $pluginOut
+    foreach ($notice in @('THIRD-PARTY.md','LICENSING-STATUS.md','CHANGELOG.md')) { Copy-Item -LiteralPath (Join-Path $SourceRoot $notice) -Destination $pluginOut }
+    Copy-Item -LiteralPath (Join-Path $SourceRoot 'third-party/tarkov-dev-svg-maps/LICENSE.md') -Destination (Join-Path $pluginOut 'ARTWORK-LICENSE.md')
+    $docsOut = Join-Path $pluginOut 'docs'
+    New-Item -ItemType Directory -Force -Path $docsOut | Out-Null
+    foreach ($doc in @('ARTWORK-MATRIX.md','BUNDLED-MAPS.md','TEST-STATUS.md')) { Copy-Item -LiteralPath (Join-Path $SourceRoot ('docs/' + $doc)) -Destination $docsOut }
 
     if (-not (Test-Path -LiteralPath $releaseRoot)) { New-Item -ItemType Directory -Force -Path $releaseRoot | Out-Null }
-    $zip=Join-Path $releaseRoot 'DynamicMaps-Extended-2.0.0-SPT4.1.zip'
+    $zip=Join-Path $releaseRoot 'DynamicMaps-Extended-2.1.0-base.zip'
     if (Test-Path -LiteralPath $zip) { Remove-Item -LiteralPath $zip -Force }
     Compress-Archive -Path (Join-Path $stageRoot '*') -DestinationPath $zip -Force
 
@@ -202,9 +197,8 @@ try {
     Write-Host 'BUILD COMPLETE' -ForegroundColor Green
     Write-Host "Release ZIP: $zip"
     Write-Host "All generated build files are contained under: $artifactsRoot"
-    Write-Host 'Install by extracting the ZIP into the SPT root and allowing overwrite.'
-    Write-Host 'On the first game launch, DynamicMaps Extended verifies official Tarkov.dev map structure, then shows one-time map download/build progress from inside the DLL.'
-    Write-Host 'Later launches use DynamicMaps-Extended\AssetCache and do not download again. Normal overwrite updates preserve that folder.'
+    Write-Host 'This is a developer base ZIP, not a complete installation.'
+    Write-Host 'Run tools/bundle-maps.py with a verified prepared plugin folder to produce the complete release ZIP.'
 }
 catch {
     $ExitCode=1

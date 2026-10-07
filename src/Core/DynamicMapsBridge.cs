@@ -30,8 +30,6 @@ namespace DynamicMapsExtended
             }
         }
 
-        internal static string ExtensionMapsRoot => Plugin.MapsRoot;
-
         internal static string GetCurrentLocationOrNull()
         {
             try

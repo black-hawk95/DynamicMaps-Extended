@@ -1,7 +1,8 @@
-# Latest release
+# Latest prepared release
 
-**DynamicMaps Extended v2.0.0** for **SPT 4.1.x**.
+DynamicMaps Extended **2.1.0**, for **SPT 4.1.x**.
 
-Install by extracting `DynamicMaps-Extended-2.0.0-SPT4.1.zip` into the SPT root and allowing overwrite.
+Complete installation: `DynamicMaps-Extended-2.1.0-SPT4.1.zip`.
+Release tag: `v2.1.0`. See `releases/v2.1.0/RELEASE-NOTES.md`.
 
-See `README.md` and `CHANGELOG.md` for details.
+This source snapshot and its assets are prepared locally; preparation does not publish a GitHub release.

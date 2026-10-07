@@ -64,7 +64,7 @@ namespace DynamicMapsExtended
         // stays bounded even if the entire map is visible.
         private const int MaxDesiredTiles = 160;
         // Start centre-first refinement before softness becomes obvious. Work is still capped at
-        // 96 desired tiles, bounded by a tiny concurrent pixel budget, and deferred on slow frames.
+        // a size-dependent tile budget, bounded by a concurrent pixel budget and deferred on slow frames.
         private const float HighResThreshold = 0.75f;
         // A 3K warm atlas is the normal-zoom baseline, not a reason to postpone
         // max-resolution refinement until extreme zoom. Start refinement once the map is roughly
@@ -101,14 +101,18 @@ namespace DynamicMapsExtended
         {
             internal readonly WeakReference Layer;
             internal string PreviewPath;
+            internal bool Abstract;
+            internal Component MapView;
             internal PackInfo Pack;
             internal GameObject Root;
             internal readonly Dictionary<int, GameObject> Views = new Dictionary<int, GameObject>();
             internal readonly List<int> Desired = new List<int>();
+            internal readonly HashSet<int> DesiredSet = new HashSet<int>();
             internal readonly List<int> RevealRequired = new List<int>();
             internal readonly List<int> PendingReveal = new List<int>();
             internal readonly List<int> ScratchRemove = new List<int>();
             internal readonly Vector3[] WorldCorners = new Vector3[4];
+            internal readonly Vector3[] ViewportCorners = new Vector3[4];
             internal int LastScanFrame = -1;
             internal int PendingRevealSinceFrame = -1;
             internal bool InitialRevealComplete;
@@ -120,6 +124,9 @@ namespace DynamicMapsExtended
                 Layer = new WeakReference(layer);
                 PreviewPath = previewPath;
                 Pack = pack;
+                Abstract = IsAbstractPreview(previewPath);
+                if (Abstract && layer is Component component && _mapViewType != null)
+                    MapView = component.GetComponentInParent(_mapViewType) as Component;
                 EarliestDecodeFrame = Time.frameCount + InitialDecodeQuietFrames;
             }
         }
@@ -134,6 +141,8 @@ namespace DynamicMapsExtended
         private static readonly List<LayerState> Layers = new List<LayerState>();
         private static readonly Dictionary<string, PackInfo> Packs = new Dictionary<string, PackInfo>(StringComparer.OrdinalIgnoreCase);
         private static readonly Dictionary<string, CachedTile> TileCache = new Dictionary<string, CachedTile>(StringComparer.OrdinalIgnoreCase);
+        private static readonly HashSet<string> ActiveCacheKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        private static readonly List<KeyValuePair<string, CachedTile>> EvictionCandidates = new List<KeyValuePair<string, CachedTile>>();
 
         private static Coroutine _worker;
         private static Coroutine _prewarmWorker;
@@ -146,6 +155,10 @@ namespace DynamicMapsExtended
         private static readonly HashSet<string> InFlightTiles = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         private static int _nextDecodeStartFrame;
         private static Type _rawImageType;
+        private static Type _mapViewType;
+        private static PropertyInfo _isMiniMapActiveProperty;
+        private static Type _rectMaskType;
+        private static Type _maskType;
         private static PropertyInfo _rawTextureProperty;
         private static PropertyInfo _rawColorProperty;
         private static PropertyInfo _rawRaycastProperty;
@@ -155,6 +168,10 @@ namespace DynamicMapsExtended
 
         internal static void Initialize()
         {
+            _mapViewType = AccessTools.TypeByName("DynamicMaps.UI.Components.MapView");
+            _isMiniMapActiveProperty = _mapViewType == null ? null : AccessTools.Property(_mapViewType, "IsMiniMapActive");
+            _rectMaskType = AccessTools.TypeByName("UnityEngine.UI.RectMask2D");
+            _maskType = AccessTools.TypeByName("UnityEngine.UI.Mask");
             _rawImageType = AccessTools.TypeByName("UnityEngine.UI.RawImage");
             if (_rawImageType == null)
             {
@@ -255,6 +272,8 @@ namespace DynamicMapsExtended
         {
             if (Plugin.Instance == null || string.IsNullOrWhiteSpace(previewPath) || requestedTiles <= 0)
                 return;
+
+
 
             try
             {
@@ -856,7 +875,7 @@ namespace DynamicMapsExtended
             // Drop targets that moved outside the current visible/prefetch region.
             for (var i = state.RevealRequired.Count - 1; i >= 0; i--)
             {
-                if (!state.Desired.Contains(state.RevealRequired[i]))
+                if (!state.DesiredSet.Contains(state.RevealRequired[i]))
                     state.RevealRequired.RemoveAt(i);
             }
 
@@ -1097,6 +1116,10 @@ namespace DynamicMapsExtended
             };
             _cacheBytes += estimatedBytes;
             TrimTileCache();
+            // Active views cannot be evicted. If multiple views pin the entire budget,
+            // reject this new, not-yet-displayed tile and retain the preview underneath.
+            if (_cacheBytes > MaxCacheBytes || TileCache.Count > MaxCachedTiles)
+                RemoveCachedTile(key);
         }
 
         private static void RemoveCachedTile(string key)
@@ -1110,9 +1133,18 @@ namespace DynamicMapsExtended
                 UnityEngine.Object.Destroy(entry.Texture);
         }
 
+        private static bool IsAbstractPreview(string path)
+        {
+            var normalized = (path ?? string.Empty).Replace('\\', '/');
+            return normalized.IndexOf("/Abstract/", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                   normalized.IndexOf("/AbstractRaster/", StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
         private static bool NeedsHighResolution(LayerState state)
         {
             if (!(state.Layer.Target is Component component))
+                return false;
+            if (!component.gameObject.activeInHierarchy)
                 return false;
 
             var rect = component.transform as RectTransform;
@@ -1147,6 +1179,11 @@ namespace DynamicMapsExtended
             // A ~3K warm atlas is the uniform baseline. Start max-resolution refinement on the
             // first meaningful zoom rather than waiting for extreme zoom; the reveal path below
             // switches a coherent centre block, not individual checkerboard tiles.
+            // Bundled 4K Abstract packs fit the bounded cache even at full-map fit zoom.
+            if (state.Abstract && state.MapView != null &&
+                _isMiniMapActiveProperty?.GetValue(state.MapView) is bool mini && !mini &&
+                state.Pack.Width <= 4096 && state.Pack.Height <= 4096) return true;
+
             var threshold = longEdge >= WarmPreviewLongEdge
                 ? WarmPreviewHighResThreshold
                 : HighResThreshold;
@@ -1157,6 +1194,7 @@ namespace DynamicMapsExtended
         private static void FillVisibleTileIndices(LayerState state, float marginPixels, List<int> result)
         {
             result.Clear();
+            state.DesiredSet.Clear();
             if (!(state.Layer.Target is Component component))
                 return;
 
@@ -1168,15 +1206,33 @@ namespace DynamicMapsExtended
 
             // Convert only the four viewport corners into local coordinates. Reuse the destination
             // list so the visibility scan does not allocate on every third frame.
+            // Use the actual clipping viewport: the always-visible minimap occupies only a small
+            // part of the screen. Scanning the whole display streamed off-screen tiles and could
+            // fill the 160-tile budget before reaching the player's visible area.
+            var viewportMin = Vector2.zero;
+            var viewportMax = new Vector2(Screen.width, Screen.height);
+            var maskRect = FindViewportMask(rect);
+            if (maskRect != null)
+            {
+                maskRect.GetWorldCorners(state.ViewportCorners);
+                viewportMin = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
+                viewportMax = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
+                for (var i = 0; i < 4; i++)
+                {
+                    var point = RectTransformUtility.WorldToScreenPoint(camera, state.ViewportCorners[i]);
+                    viewportMin = Vector2.Min(viewportMin, point);
+                    viewportMax = Vector2.Max(viewportMax, point);
+                }
+            }
             var localMinX = float.PositiveInfinity;
             var localMaxX = float.NegativeInfinity;
             var localMinY = float.PositiveInfinity;
             var localMaxY = float.NegativeInfinity;
 
-            AccumulateLocalPoint(rect, camera, new Vector2(-marginPixels, -marginPixels), ref localMinX, ref localMaxX, ref localMinY, ref localMaxY);
-            AccumulateLocalPoint(rect, camera, new Vector2(Screen.width + marginPixels, -marginPixels), ref localMinX, ref localMaxX, ref localMinY, ref localMaxY);
-            AccumulateLocalPoint(rect, camera, new Vector2(-marginPixels, Screen.height + marginPixels), ref localMinX, ref localMaxX, ref localMinY, ref localMaxY);
-            AccumulateLocalPoint(rect, camera, new Vector2(Screen.width + marginPixels, Screen.height + marginPixels), ref localMinX, ref localMaxX, ref localMinY, ref localMaxY);
+            AccumulateLocalPoint(rect, camera, new Vector2(viewportMin.x - marginPixels, viewportMin.y - marginPixels), ref localMinX, ref localMaxX, ref localMinY, ref localMaxY);
+            AccumulateLocalPoint(rect, camera, new Vector2(viewportMax.x + marginPixels, viewportMin.y - marginPixels), ref localMinX, ref localMaxX, ref localMinY, ref localMaxY);
+            AccumulateLocalPoint(rect, camera, new Vector2(viewportMin.x - marginPixels, viewportMax.y + marginPixels), ref localMinX, ref localMaxX, ref localMinY, ref localMaxY);
+            AccumulateLocalPoint(rect, camera, new Vector2(viewportMax.x + marginPixels, viewportMax.y + marginPixels), ref localMinX, ref localMaxX, ref localMinY, ref localMaxY);
 
             if (float.IsInfinity(localMinX) || float.IsInfinity(localMaxX) ||
                 float.IsInfinity(localMinY) || float.IsInfinity(localMaxY))
@@ -1203,6 +1259,7 @@ namespace DynamicMapsExtended
 
             // Emit centre-first in square rings. The worker can now take the first eligible item
             // instead of calculating screen distance for every visible tile every frame.
+            var tileLimit = DesiredTileLimit(state.Pack.TileSize);
             var centerCol = (colMin + colMax) / 2;
             var centerRow = (rowMin + rowMax) / 2;
             var maxRadius = Math.Max(
@@ -1211,7 +1268,7 @@ namespace DynamicMapsExtended
 
             for (var radius = 0; radius <= maxRadius; radius++)
             {
-                if (result.Count >= MaxDesiredTiles)
+                if (result.Count >= tileLimit)
                     return;
 
                 var ringColMin = Math.Max(colMin, centerCol - radius);
@@ -1235,15 +1292,36 @@ namespace DynamicMapsExtended
             }
         }
 
+        internal static int DesiredTileLimit(int tileSize)
+            => Math.Min(MaxDesiredTiles, (int)(MaxCacheBytes / Math.Max(1L, (long)tileSize * tileSize * 4L)));
+
         private static void AddVisibleTile(LayerState state, int col, int row, List<int> result)
         {
-            if (result.Count >= MaxDesiredTiles ||
+            if (result.Count >= DesiredTileLimit(state.Pack.TileSize) ||
                 col < 0 || col >= state.Pack.Columns || row < 0 || row >= state.Pack.Rows)
                 return;
 
             var index = row * state.Pack.Columns + col;
-            if (state.Pack.Tiles[index].Length > 0)
+            // Clipped square rings can revisit an edge tile. Duplicates consume the working-set
+            // budget and reveal slots without adding detail.
+            if (state.Pack.Tiles[index].Length > 0 && state.DesiredSet.Add(index))
                 result.Add(index);
+        }
+
+        private static RectTransform FindViewportMask(RectTransform rect)
+        {
+            // DynamicMaps 1.2.1 uses a stencil Mask. Also support RectMask2D, choosing
+            // the nearest enabled ancestor so nested UI layouts use the tighter viewport.
+            for (var parent = rect.parent; parent != null; parent = parent.parent)
+            {
+                if (!(parent is RectTransform candidate)) continue;
+                var stencil = _maskType == null ? null : parent.GetComponent(_maskType) as Behaviour;
+                var rectangle = _rectMaskType == null ? null : parent.GetComponent(_rectMaskType) as Behaviour;
+                if ((stencil != null && stencil.isActiveAndEnabled) ||
+                    (rectangle != null && rectangle.isActiveAndEnabled))
+                    return candidate;
+            }
+            return null;
         }
 
         private static void AccumulateLocalPoint(
@@ -1387,7 +1465,7 @@ namespace DynamicMapsExtended
             state.ScratchRemove.Clear();
             foreach (var index in state.Views.Keys)
             {
-                if (!desired.Contains(index))
+                if (!state.DesiredSet.Contains(index))
                     state.ScratchRemove.Add(index);
             }
 
@@ -1413,6 +1491,7 @@ namespace DynamicMapsExtended
             }
             state.Views.Clear();
             state.Desired.Clear();
+            state.DesiredSet.Clear();
             state.RevealRequired.Clear();
             state.PendingReveal.Clear();
             state.PendingRevealSinceFrame = -1;
@@ -1426,23 +1505,27 @@ namespace DynamicMapsExtended
             if (TileCache.Count <= MaxCachedTiles && _cacheBytes <= MaxCacheBytes)
                 return;
 
-            var active = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            ActiveCacheKeys.Clear();
             foreach (var state in Layers)
             {
                 foreach (var index in state.Views.Keys)
-                    active.Add(CacheKey(state.Pack.Path, index));
+                    ActiveCacheKeys.Add(CacheKey(state.Pack.Path, index));
             }
 
-            foreach (var pair in TileCache
-                         .Where(p => !active.Contains(p.Key))
-                         .OrderBy(p => p.Value.Stamp)
-                         .ToList())
+            EvictionCandidates.Clear();
+            foreach (var pair in TileCache)
+                if (!ActiveCacheKeys.Contains(pair.Key))
+                    EvictionCandidates.Add(pair);
+            EvictionCandidates.Sort((a, b) => a.Value.Stamp.CompareTo(b.Value.Stamp));
+            foreach (var pair in EvictionCandidates)
             {
                 if (TileCache.Count <= MaxCachedTiles && _cacheBytes <= MaxCacheBytes)
                     break;
 
                 RemoveCachedTile(pair.Key);
             }
+            EvictionCandidates.Clear();
+            ActiveCacheKeys.Clear();
         }
 
         private static void RemoveLayer(object mapLayer, bool destroyCachedTiles)

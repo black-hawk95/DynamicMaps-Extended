@@ -48,11 +48,6 @@ namespace DynamicMapsExtended
         private static int _generation;
         private static string _selectionSignature;
 
-        internal static void Initialize()
-        {
-            // No startup/map-wide raster preload. Whole-floor warm atlases remain strictly selected-floor/on-demand.
-        }
-
         internal static void Shutdown()
         {
             _selectionSignature = null;

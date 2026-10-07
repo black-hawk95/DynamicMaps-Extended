@@ -1,16 +1,16 @@
 # Source layout
 
-- `src/Core/` — plugin startup, dependency/headless guard, bridge helpers
-- `src/Assets/` — built-in downloader, structural verification, raster cache, tile renderer
-- `src/Maps/` — artwork selection/calibration/map-definition refresh
-- `src/Patches/` — DynamicMaps integration patches
-- `src/Integration/` — MapVariants / Factory Classic integration
-- `src/UI/` — style refresh behavior
-- `Assets/` — frozen runtime asset manifest + upstream structure lock
-- `Maps/` — shipped static artwork/map definitions only
+- `src/Core/`: startup, dependency/headless guard, diagnostics and bridge helpers.
+- `src/Assets/`: read-only installation check, calibrated sprite cache, tile renderer and artwork workers.
+- `src/Maps/`: artwork selection and in-place map-definition/viewport refresh.
+- `src/Patches/`: DynamicMaps integration hooks.
+- `src/Integration/`: MapVariants and Factory Classic integration.
+- `src/UI/`: live-layer artwork refresh.
+- `Assets/`: frozen asset manifest and provenance metadata; v2.0.0 filenames identify the unchanged asset set, not the plugin version.
+- `Maps/`: static artwork and map definitions.
+- `tools/`: offline bundling, regression checks and SVG geometry inspection.
+- `docs/provenance/` and `third-party/`: original capture records and upstream SVG source/license.
 
-At runtime, generated preview/warm PNGs stay at their expected paths under the installed `Maps/` tree. Large downloaded `NVTILES2` packs, ready state, and resumable staging live under the **same mod folder** at:
+Complete installation ZIPs add 42 preview images, 10 warm atlases and 42 tile packs. Packs are stored under `AssetCache/Packs/` inside the plugin folder. Static Manimal Abstract packs live beside their previews. No runtime download, generation or cache migration is performed.
 
-`BepInEx/plugins/DynamicMaps-Extended/AssetCache/`
-
-The release ZIP does not contain `AssetCache/`, so normal drag-and-drop overwrite updates preserve it. Deleting the entire `DynamicMaps-Extended` folder intentionally performs a complete uninstall including downloaded assets.
+Build outputs stay under ignored `artifacts/`; they are excluded from source archives. Historical experiments and generated raster siblings are not distributed.

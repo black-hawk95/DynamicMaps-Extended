@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace DynamicMapsExtended
 {
-    [BepInPlugin("com.blackhawk.dynamicmapsextended", "DynamicMaps Extended", "2.0.0")]
+    [BepInPlugin("com.blackhawk.dynamicmapsextended", "DynamicMaps Extended", "2.1.0")]
     [BepInDependency("com.mpstark.dynamicmaps", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.lennoxp90.mapvariants", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.lennoxp90.factoryclassic", BepInDependency.DependencyFlags.SoftDependency)]
@@ -16,13 +16,13 @@ namespace DynamicMapsExtended
     [BepInDependency("com.manimal.icebreaker", BepInDependency.DependencyFlags.SoftDependency)]
     // Soft dependency is intentional: when Fika Headless is installed, BepInEx loads it
     // before this plugin so the guard at the very start of Awake() can disable all
-    // DynamicMaps Extended client/UI work before patches or asset preparation begin.
+    // DynamicMaps Extended client/UI work before patches or artwork workers begin.
     [BepInDependency("com.fika.headless", BepInDependency.DependencyFlags.SoftDependency)]
     public sealed class Plugin : BaseUnityPlugin
     {
         public const string Guid = "com.blackhawk.dynamicmapsextended";
         public const string Name = "DynamicMaps Extended";
-        public const string Version = "2.0.0";
+        public const string Version = "2.1.0";
         public const string BuildLabel = "RELEASE";
 
         public const string DynamicMapsGuid = "com.mpstark.dynamicmaps";
@@ -53,13 +53,13 @@ namespace DynamicMapsExtended
             ExtensionRoot = System.IO.Path.GetDirectoryName(typeof(Plugin).Assembly.Location);
 
             // Fika Headless is a non-visual raid host. DynamicMaps Extended is a client/UI
-            // extension and must not patch UI, start raster workers, or download/build map
+            // extension and must not patch UI, start raster workers, or load map
             // artwork there. The soft dependency above guarantees Headless is already in
             // Chainloader.PluginInfos when both plugins are installed.
             if (PluginDetection.Loaded(FikaHeadlessGuid))
             {
                 _disabledForHeadless = true;
-                Logger.LogInfo($"{Name} {Version}: Fika Headless detected ({FikaHeadlessGuid}) - client/UI functionality disabled. No Harmony patches, map workers, or asset downloading/preparation were started.");
+                Logger.LogInfo($"{Name} {Version}: Fika Headless detected ({FikaHeadlessGuid}) - client/UI functionality disabled. No Harmony patches or artwork workers were started.");
                 enabled = false;
                 return;
             }
@@ -88,9 +88,8 @@ namespace DynamicMapsExtended
             _harmony = new Harmony(Guid);
             _harmony.PatchAll();
 
-            RasterWarmupManager.Initialize();
             TilePackManager.Initialize();
-            AssetPreparationManager.Initialize();
+            BundledAssetAvailability.Initialize();
 
             Logger.LogInfo($"{Name} {Version} {BuildLabel} loaded");
             Logger.LogInfo($"Extension root: {ExtensionRoot}");
@@ -104,14 +103,7 @@ namespace DynamicMapsExtended
 
         private void Update()
         {
-            if (_disabledForHeadless) return;
-            AssetPreparationManager.Update();
-        }
-
-        private void OnGUI()
-        {
-            if (_disabledForHeadless) return;
-            AssetPreparationManager.OnGUI();
+            if (!_disabledForHeadless) FrameDiagnostics.Update();
         }
 
         private void OnDestroy()
@@ -122,9 +114,8 @@ namespace DynamicMapsExtended
                 return;
             }
 
-            AssetPreparationManager.Shutdown();
+            
             RaidWarmCacheManager.Shutdown();
-            MapDefinitionRefreshManager.Shutdown();
             TilePackManager.Shutdown();
             RasterWarmupManager.Shutdown();
             RasterSpritePatch.ReleaseAll("plugin shutdown");
@@ -157,7 +148,7 @@ namespace DynamicMapsExtended
             Debug($"Tracked DynamicMaps layers: {StyleRefreshManager.TrackedLayerCount}");
             Debug($"Factory Classic packaged map: {FactoryClassicAssets.Describe()}");
             Debug($"Extension asset readiness: {ExtensionAssetAvailability.Describe()}");
-            Debug($"Asset preparation: {AssetPreparationManager.Describe()}");
+            Debug($"Bundled artwork: {BundledAssetAvailability.Describe()}");
         }
     }
 }

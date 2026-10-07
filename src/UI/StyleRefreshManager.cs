@@ -107,14 +107,10 @@ namespace DynamicMapsExtended
                         continue;
                     }
 
-                    // Non-raster artwork can be either DynamicMaps Vanilla or a bundled current
-                    // Tarkov.dev Abstract SVG. Refresh the selected floor when entering Abstract,
-                    // or when leaving any DMExt-owned raster/Abstract sprite.
-                    if (priority < 2)
-                        continue;
-
-                    var wantsBundledAbstract = RasterSpritePatch.IsExtensionOwnedSvg(resolution.ResolvedPath);
-                    if (!wantsBundledAbstract && !RasterSpritePatch.NeedsNativeRefresh(layer))
+                    // A setting change is an explicit source change. Refresh every visible SVG
+                    // floor, including underneath floors, without relying on the previous sprite's
+                    // name. Warm atlases and native SVG overrides may both be on screen here.
+                    if (priority <= 0)
                         continue;
 
                     if (RasterSpritePatch.RefreshLayerSprite(layer, reason))

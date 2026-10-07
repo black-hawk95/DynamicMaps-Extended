@@ -132,8 +132,11 @@ namespace DynamicMapsExtended
             var changed = (rect.sizeDelta - rotated).sqrMagnitude > 0.0001f ||
                           (rect.anchoredPosition - desired.Midpoint).sqrMagnitude > 0.0001f;
 
-            rect.sizeDelta = rotated;
-            rect.anchoredPosition = desired.Midpoint;
+            if (changed)
+            {
+                rect.sizeDelta = rotated;
+                rect.anchoredPosition = desired.Midpoint;
+            }
 
             if (changed && Plugin.DebugEnabled)
             {

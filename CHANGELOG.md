@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.0
+
+- Bundle all 42 prepared raster layers in the complete installation ZIP.
+- Remove runtime downloading, asset generation, download progress UI and F12 download settings.
+- Restore sharp Woods, Factory and Streets Abstract SVG rendering while reusing cached sprites instead of repeatedly refreshing them.
+- Preserve full-map/minimap zoom, viewed coordinate and live markers when changing artwork, including during an interrupted zoom animation.
+- Restore native artwork when switching away from Extended styles, including Interchange variants.
+- Bound tile selection and decoded texture caches; reuse tile rendering objects and skip unchanged calibration writes.
+- Retain high-resolution Satellite content and original artwork alignment.
+- Add optional frame/viewport diagnostics and clean obsolete code, experimental artwork copies and release documentation.
+
 ## 2.0.0
 
 Major architecture and feature release for SPT 4.1.x.

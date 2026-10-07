@@ -3,33 +3,13 @@ using System.IO;
 
 namespace DynamicMapsExtended
 {
-    // Runtime-downloaded NVTILES2 packs, readiness state, and resumable staging all live
-    // under the single DynamicMaps-Extended plugin folder. Release ZIPs intentionally do
-    // not contain AssetCache, so normal drag-and-drop/overwrite updates keep the cache.
-    // A deliberate full uninstall (deleting DynamicMaps-Extended) removes the cache too.
+    // Prepared tile packs ship inside the plugin folder.
     internal static class PersistentAssetCache
     {
         private const string CacheFolderName = "AssetCache";
-        private const string LegacySiblingFolderName = "DynamicMaps-Extended-AssetCache";
 
         internal static string Root => Path.GetFullPath(Path.Combine(Plugin.ExtensionRoot, CacheFolderName));
         internal static string PacksRoot => Path.Combine(Root, "Packs");
-        internal static string StateRoot => Path.Combine(Root, "State");
-        internal static string StagingRoot => Path.Combine(Root, "Staging");
-
-        // Temporary v1.5 test builds used a sibling cache next to the plugin folder.
-        // Keep this path only so the final one-folder layout can migrate that data locally
-        // once, then remove the obsolete sibling folder when it is empty.
-        internal static string LegacySiblingRoot
-        {
-            get
-            {
-                var pluginParent = Path.GetDirectoryName(Plugin.ExtensionRoot);
-                if (string.IsNullOrWhiteSpace(pluginParent)) pluginParent = Plugin.ExtensionRoot;
-                return Path.GetFullPath(Path.Combine(pluginParent, LegacySiblingFolderName));
-            }
-        }
-
         internal static string GetPackPath(string logicalOutputPath)
         {
             if (string.IsNullOrWhiteSpace(logicalOutputPath)) return string.Empty;
@@ -67,8 +47,8 @@ namespace DynamicMapsExtended
             if (!string.IsNullOrWhiteSpace(cached) && File.Exists(cached))
                 return cached;
 
-            // Compatibility fallback for older pre-cache test builds that stored the pack
-            // immediately beside the generated preview.
+            // Static raster artwork (including Manimal Abstract) ships its pack
+            // beside the preview instead of in AssetCache/Packs.
             try
             {
                 var local = Path.GetFullPath(Path.ChangeExtension(absolutePreviewPath, ".tiles"));
@@ -81,11 +61,5 @@ namespace DynamicMapsExtended
             }
         }
 
-        internal static void EnsureDirectories()
-        {
-            Directory.CreateDirectory(PacksRoot);
-            Directory.CreateDirectory(StateRoot);
-            Directory.CreateDirectory(StagingRoot);
-        }
     }
 }

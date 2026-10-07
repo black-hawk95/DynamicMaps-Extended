@@ -295,11 +295,9 @@ namespace DynamicMapsExtended
 
         private static bool HasBundledSatelliteChoice(MapStyleKey key)
         {
-            // v2.0.0: first-run raster assets are prepared after the plugin loads. F12 must
-            // still expose the final supported artwork matrix before those files exist locally.
-            // Resolve() continues to require the actual file before selecting it, so a player
-            // who opens a map while preparation is still running safely falls back to Vanilla/Abstract.
-            if (AssetPreparationManager.KnownSatelliteChoice(key))
+            // Keep supported choices visible even for an incomplete installation.
+            // Resolve() requires the actual artwork file and falls back when it is missing.
+            if (BundledAssetAvailability.KnownSatelliteChoice(key))
                 return true;
 
             return false;
@@ -333,20 +331,7 @@ namespace DynamicMapsExtended
             RaidWarmCacheManager.OnStyleChanged();
             StyleRefreshManager.RefreshTrackedLayers("artwork setting changed: " + reason);
             MapDefinitionRefreshManager.OnArtworkSettingChanged();
-        }
-
-        internal static void OnAssetsPrepared()
-        {
-            LoggedDecisions.Clear();
-            ResolutionCache.Clear();
-
-            Plugin.Debug("Raster asset preparation reached a terminal state; refreshing artwork availability once.");
-            RasterWarmupManager.OnStyleChanged("one-time raster assets prepared");
-            TilePackManager.OnStyleChanged();
-            RaidWarmCacheManager.OnStyleChanged();
-            StyleRefreshManager.RefreshTrackedLayers("one-time raster assets prepared");
-            MapDefinitionRefreshManager.OnArtworkSettingChanged();
-            ExtensionMapLoaderPatch.RefreshAfterAssetsPrepared();
+            FrameDiagnostics.Reset("artwork changed");
         }
 
         internal static StyleResolution Resolve(string imagePath)
@@ -460,6 +445,8 @@ namespace DynamicMapsExtended
                     continue;
 
                 var absolute = ExtensionPath(pair.Value);
+                // Use DynamicMaps' cached vector renderer for SVG artwork. Raster-only
+                // artwork (including Manimal Interchange) keeps the tile pipeline.
                 if (File.Exists(absolute))
                     return absolute;
 

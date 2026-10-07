@@ -137,10 +137,10 @@ namespace DynamicMapsExtended
                         {
                             RasterSpritePatch.EnsureLayerSprite(__instance, reason, background: isUnderneath && !isOnTop);
                         }
-                        else if (isOnTop && RasterSpritePatch.NeedsNativeRefresh(__instance))
+                        else if ((isOnTop || isUnderneath) && RasterSpritePatch.NeedsNativeRefresh(__instance))
                         {
                             // Needed after switching away from a DMExt raster/placeholder. Native
-                            // artwork refresh is never forced for underneath/hidden floors.
+                            // Visible underneath floors also need restoration after a style change.
                             RasterSpritePatch.RefreshLayerSprite(__instance, reason);
                         }
                     }
@@ -170,10 +170,15 @@ namespace DynamicMapsExtended
                 ?? throw new MissingMethodException(type.FullName, "LoadMap");
         }
 
-        private static void Prefix(object __0)
+        private static void Prefix(object __instance, object __0)
         {
             try
             {
+                // DynamicMaps returns immediately for the already loaded definition. Mirror
+                // that guard before resetting queues/tracking or releasing any live texture.
+                var current = AccessTools.Property(__instance.GetType(), "CurrentMapDef")?.GetValue(__instance);
+                if (__0 == null || ReferenceEquals(current, __0))
+                    return;
                 // Resolve map/layer geometry before DynamicMaps computes root size, minimum zoom and
                 // clamp ranges. This prevents a correctly calibrated Satellite layer from being
                 // squeezed or clipped by stale SVG map bounds.

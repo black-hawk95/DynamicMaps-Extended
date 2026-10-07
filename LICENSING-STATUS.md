@@ -1,33 +1,9 @@
-# Licensing status for DynamicMaps Extended v2.0.0
+# Licensing status for DynamicMaps Extended 2.1.0
 
-DynamicMaps Extended v2.0.0 separates the distributable mod from the large mutable Tarkov.dev raster cache.
+Project code is covered by the repository MIT license. Dependencies are installed separately; their DLLs are not redistributed.
 
-## Project code
+The complete release package includes prepared map artwork. SVG-derived content retains the upstream license and conditions recorded in `third-party/tarkov-dev-svg-maps/LICENSE.md` and `THIRD-PARTY.md`. Raster/tile content and Factory Classic artwork retain their original source attribution; bundling does not relicense them under MIT. Icebreaker metadata credits TarkovBOT.eu.
 
-DynamicMaps Extended C# source is released under this repository's MIT license.
+The frozen asset manifest, structural metadata and capture reports are retained for provenance. Their versioned filenames identify the original capture rather than the plugin release version.
 
-## DynamicMaps
-
-DynamicMaps is a dependency and its DLL is not redistributed by this project. The upstream DynamicMaps repository is MIT licensed. See `THIRD-PARTY.md` for attribution.
-
-## Tarkov.dev SVG artwork
-
-Source: `the-hideout/tarkov-dev-svg-maps`
-
-The SVG-map repository is distributed under CC BY-NC-SA 4.0 and includes additional project-specific usage conditions. SVG-derived artwork bundled by DynamicMaps Extended remains third-party content and is not relicensed under this project's MIT license.
-
-## Tarkov.dev raster/tile artwork
-
-The v2.0.0 release ZIP does **not** bundle the downloaded Tarkov.dev raster cache.
-
-At runtime, if a usable local cache is absent, the installed DLL verifies the current official map structure against the pinned metadata lock and then downloads only the frozen known-valid tile coordinates from the official Tarkov.dev asset host. The resulting previews, warm atlases and `NVTILES2` packs are created locally under `DynamicMaps-Extended/AssetCache/`.
-
-This design avoids redistributing the mutable CDN raster bytes as GitHub release assets. It does not claim ownership of those upstream images or change their original licensing/attribution.
-
-## Icebreaker
-
-Current Tarkov.dev metadata credits the Icebreaker interactive map to TarkovBOT.eu. DynamicMaps Extended does not bundle the downloaded Icebreaker raster cache in its release ZIP.
-
-## Factory Classic
-
-Factory Classic files used by this project came from an older DynamicMaps version. The DynamicMaps code repository is MIT licensed; artwork/source attribution is retained in `THIRD-PARTY.md` and is not relicensed by DynamicMaps Extended.
+This cleanup corrects outdated statements that artwork is downloaded at runtime. It does not establish additional redistribution permission for third-party raster artwork. No publication or new legal clearance is implied by the locally prepared package.

@@ -27,7 +27,6 @@ namespace DynamicMapsExtended
         private static Type _mapDefType;
         private static readonly HashSet<string> WarnedUnavailableDefinitions =
             new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        private static WeakReference _lastDropdown;
         private static readonly Regex ImagePathRegex =
             new Regex(@"""ImagePath""\s*:\s*""(?<path>[^""]+)""", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -44,7 +43,6 @@ namespace DynamicMapsExtended
         {
             if (__instance == null) return;
 
-            _lastDropdown = new WeakReference(__instance);
             try
             {
                 LoadExtensionDefinitions(__instance);
@@ -52,20 +50,6 @@ namespace DynamicMapsExtended
             catch (Exception e)
             {
                 Plugin.Log?.LogError($"Could not load DynamicMaps Extended definitions: {e}");
-            }
-        }
-
-        internal static void RefreshAfterAssetsPrepared()
-        {
-            try
-            {
-                var dropdown = _lastDropdown?.Target;
-                if (dropdown == null) return;
-                LoadExtensionDefinitions(dropdown);
-            }
-            catch (Exception e)
-            {
-                Plugin.Debug("Extension MapDef refresh after asset preparation skipped: " + e.Message);
             }
         }
 
@@ -244,14 +228,6 @@ namespace DynamicMapsExtended
 
                     if (File.Exists(absolute) && new FileInfo(absolute).Length > 0)
                         continue;
-
-                    // Runtime-managed raster files are intentionally absent on a fresh install and
-                    // appear only after the built-in first-run preparation finishes. Skip those
-                    // definitions silently while preparation is pending; the dropdown is refreshed
-                    // once from MapStyleManager.OnAssetsPrepared(). Static/bundled missing files
-                    // still produce a warning because those indicate a real packaging problem.
-                    if (AssetPreparationManager.IsRuntimeManagedOutput(absolute) && !AssetPreparationManager.Ready)
-                        return false;
 
                     if (WarnedUnavailableDefinitions.Add(definitionPath))
                     {

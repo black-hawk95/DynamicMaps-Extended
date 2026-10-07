@@ -17,6 +17,7 @@ namespace DynamicMapsExtended
         private static PropertyInfo _imagePathProperty;
         private static PropertyInfo _tesselationIndexProperty;
         private static MethodInfo _loadSvgFromPathMethod;
+        private static MethodInfo _getOrLoadCachedSpriteMethod;
         private static FieldInfo _mapLayerDefField;
         private static PropertyInfo _mapLayerImageProperty;
         private static PropertyInfo _layerDefImagePathProperty;
@@ -44,7 +45,7 @@ namespace DynamicMapsExtended
         {
             var type = AccessTools.TypeByName("DynamicMaps.Utils.SvgUtils")
                 ?? throw new MissingMemberException("DynamicMaps.Utils.SvgUtils not found");
-            return AccessTools.Method(type, "GetOrLoadCachedSprite")
+            return _getOrLoadCachedSpriteMethod = AccessTools.Method(type, "GetOrLoadCachedSprite")
                 ?? throw new MissingMethodException(type.FullName, "GetOrLoadCachedSprite");
         }
 
@@ -155,10 +156,7 @@ namespace DynamicMapsExtended
                 if (mapLayerDef == null || string.IsNullOrEmpty(absolutePath) || !File.Exists(absolutePath))
                     return null;
 
-                var svgUtilsType = AccessTools.TypeByName("DynamicMaps.Utils.SvgUtils");
-                _loadSvgFromPathMethod ??= svgUtilsType == null
-                    ? null
-                    : AccessTools.Method(svgUtilsType, "LoadSvgFromPath");
+                _loadSvgFromPathMethod ??= AccessTools.Method(_getOrLoadCachedSpriteMethod.DeclaringType, "LoadSvgFromPath");
 
                 if (_loadSvgFromPathMethod == null)
                 {
@@ -175,6 +173,8 @@ namespace DynamicMapsExtended
 
                 if (sw.ElapsedMilliseconds >= 5)
                     Plugin.Debug($"SVG override loaded in {sw.ElapsedMilliseconds} ms: {Path.GetFileName(absolutePath)}");
+                if (sprite != null && Plugin.DebugEnabled)
+                    Plugin.Debug($"SVG mesh ready: {Path.GetFileName(absolutePath)}, vertices={sprite.vertices.Length}, triangles={sprite.triangles.Length / 3}, bounds={sprite.bounds}");
 
                 return sprite;
             }
@@ -346,8 +346,18 @@ namespace DynamicMapsExtended
             if (current == null)
                 return true;
 
+            var source = GetLayerImagePath(mapLayer);
+            var resolved = MapStyleManager.Resolve(source).ResolvedPath;
+            if (ShouldLoadSvgOverride(source, resolved))
+            {
+                var key = SvgOverrideCacheKey(GetLayerDef(mapLayer), resolved);
+                return !SvgOverrideCache.TryGetValue(key, out var expected) ||
+                       !ReferenceEquals(current, expected);
+            }
+
             var name = current.name ?? string.Empty;
             return name.StartsWith("DMExt:", StringComparison.OrdinalIgnoreCase) ||
+                   name.StartsWith("DMExtWarm:", StringComparison.OrdinalIgnoreCase) ||
                    name.StartsWith("DMExtSvgOverride:", StringComparison.OrdinalIgnoreCase);
         }
 
@@ -427,8 +437,8 @@ namespace DynamicMapsExtended
         {
             if (mapLayerDef == null) return null;
 
-            var svgUtilsType = AccessTools.TypeByName("DynamicMaps.Utils.SvgUtils");
-            var method = svgUtilsType == null ? null : AccessTools.Method(svgUtilsType, "GetOrLoadCachedSprite");
+            FrameDiagnostics.RecordNativeRefresh();
+            var method = _getOrLoadCachedSpriteMethod;
             if (method == null)
                 return null;
 

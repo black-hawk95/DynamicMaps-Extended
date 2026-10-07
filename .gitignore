@@ -6,4 +6,4 @@ obj/
 *.suo
 *.csproj.user
 AssetCache/
-BepInEx/plugins/DynamicMaps-Extended/AssetCache/
+BepInEx/plugins/DynamicMaps-Extended/AssetCache/work/

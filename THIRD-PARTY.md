@@ -20,9 +20,9 @@ The pinned source snapshot and its upstream license are kept under `third-party/
 
 Metadata/source capture revision: `the-hideout/tarkov-dev` commit `ef62766bbd7ffb294c7184f9b8bfe8ed0f18320e`.
 
-The v2.0.0 release does **not** bundle the downloaded CDN raster cache. Before downloading missing artwork, the installed DLL verifies the current official Tarkov.dev map structure against the pinned v2.0.0 metadata lock (paths, zoom metadata, transform, bounds, rotation and raster layer paths). It requests only the frozen valid tile coordinates from `assets.tarkov.dev` and builds the local preview/warm/`NVTILES2` cache on the player's PC. Historical pixel hashes remain diagnostic because the upstream raster CDN can update artwork in place. No PowerShell, curl, helper executable, or child process is used at runtime.
+The 2.1.0 complete ZIP includes prepared raster previews, warm atlases and NVTILES2 tile packs from the captured artwork set. The DLL loads local files only. Frozen metadata and historical fingerprints are retained for provenance; no live metadata request, downloader or runtime map generation remains.
 
-This delivery method avoids redistributing the mutable CDN raster bytes in the release ZIP; it is not a claim that every upstream artwork source has the same license. Some artwork is credited to third parties, including TarkovBOT.eu for Icebreaker.
+Artwork retains its original source attribution and applicable terms. Some content is credited to third parties, including TarkovBOT.eu for Icebreaker. Prepared packaging does not establish additional redistribution permissions.
 
 ## Factory Classic
 
@@ -32,6 +32,10 @@ The Factory Classic map files in this project were sourced from an older Dynamic
 
 The PNG previews and `.tiles` packs under `Maps/Interchange_Backport/AbstractRaster/` are offline rasterizations of the pinned Tarkov.dev Interchange SVG noted above. They exist to avoid Unity.VectorGraphics rendering incompatibilities; no replacement artwork was invented.
 
-## Provenance
+## Woods, Factory and Streets Abstract
+
+These maps use the original bundled SVGs through DynamicMaps' vector loader and retain the upstream terms above. Earlier experimental PNG/tile siblings are not included in 2.1.0. Original viewBoxes, margins and calibration are preserved.
+
+## Provenance records
 
 Development capture/calibration reports are kept under `docs/provenance/` and are not copied into the runtime package.
