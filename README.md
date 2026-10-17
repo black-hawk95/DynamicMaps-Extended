@@ -1,33 +1,110 @@
-# DynamicMaps Extended 2.5.0
+# DynamicMaps Extended
 
-Artwork and map-variant addon for SPT 4.1.x. Requires **DynamicMaps** and **MapVariants**. Install the appropriate map mods separately to use their corresponding variants.
+An addon for **DynamicMaps on SPT 4.1.x** that adds alternate map artwork, support for backported maps, and custom faction marker colours.
 
-## Installation
+[Download the latest release](https://github.com/black-hawk95/DynamicMaps-Extended/releases/latest) · [Release history](https://github.com/black-hawk95/DynamicMaps-Extended/releases)
 
-1. Exit the game.
-2. Extract `DynamicMaps-Extended-2.5.0-SPT4.1.zip` into your SPT root, allowing overwrite.
-3. Keep the included `Maps`, `Assets` and `AssetCache` folders together with the DLL under `BepInEx/plugins/DynamicMaps-Extended/`.
+## Features
 
-The complete ZIP includes all 42 prepared raster layers. No runtime downloads, map generation, download progress UI or F12 asset-download options remain. Re-extract the complete ZIP if artwork files are missing. Original DynamicMaps and MapVariants are separate dependencies and are not included.
+### Map artwork and styles
 
-## Artwork settings
+- Choose **Recommended**, **DynamicMaps Vanilla**, **Satellite**, or **Abstract**, where available.
+- Set a global preference or choose a different style for each map in **F12 → DynamicMaps Extended**.
+- Change artwork during a raid or in the Character → Map screen.
+- Style switching preserves the current floor, zoom, position, markers and player trail.
+- Floors without the selected artwork fall back to an available style.
+- High-resolution Satellite artwork uses local detail tiles for close-up viewing.
+- Woods, Factory and Streets Abstract artwork uses SVG rendering for sharp lines when zooming.
+- All prepared artwork is bundled in the release ZIP. No first-launch artwork downloads or separate map downloads are required.
 
-Use F12 → DynamicMaps Extended to select the global artwork mode or a per-map override. Recommended prefers available Satellite artwork; DynamicMaps Vanilla uses the original artwork. Abstract is offered where distinct verified artwork is available. See [the artwork matrix](docs/ARTWORK-MATRIX.md).
+### Map and floor support
 
-Woods, Factory and Streets Abstract use cached SVG artwork through DynamicMaps' renderer for sharp detail at different zoom levels. Manimal Interchange Abstract uses prepared raster previews and high-resolution tiles. Satellite retains its prepared high-resolution tile content, with visible tiles decoded asynchronously and bounded caches.
+- **Factory Classic:** separate artwork for the classic layout.
+- **Manimal Interchange:** support for the backported layout and its floors.
+- **Manimal Labs / LabsBoiler:** support for the expanded layout, with prepared detail levels to improve clarity while moving and zooming the map.
+- **Icebreaker:** Original Satellite and RE3MR artwork options, aligned deck layers, and a 16-floor selector.
+- **MapVariants integration:** selects the appropriate supported map definition for the active variant.
+- Additional artwork for supported standard maps, including Customs, Ground Zero, Factory, Woods, Interchange, The Lab, Reserve, Shoreline, Streets and Labyrinth. Style availability differs by map and floor.
+- Lighthouse uses the available DynamicMaps Vanilla artwork.
 
-Switching artwork updates the current view in place, preserving live markers, tracking and the viewed coordinate. DynamicMaps continues to own marker providers, quests, player trails, floors and minimap behavior. Extended does not patch Fika networking; client/UI functionality is disabled on Fika Headless.
+The relevant map mods must be installed separately. Extended supplies map-display support; it does not install playable locations.
 
-## Diagnostics and limits
+### Faction marker colours
 
-Enable `Debug / EnableDebugLogging` in F12 when diagnosing a problem. Frame timing and committed viewport state are written to `BepInEx/LogOutput.log`. Disable it for normal play. First use of uncached artwork can still cause a brief loading or style-switch hitch; steady frame times do not guarantee every texture upload is stutter-free.
+Recognised addon bots share a faction colour across soldiers, leaders and followers. Change the colours in **F12 → DynamicMaps Extended → Faction Colours**.
 
-## Building
+| Faction | Default colour |
+|---|---|
+| Black Division | Grey — `#555555` |
+| UNTAR | Cyan-blue — `#00BFFF` |
+| RUAF | Olive green — `#899B45` |
+| Remnant role from RUAF Come Home | Olive green — `#899B45` |
 
-Install a .NET SDK that supports this project, then run `build.ps1 -SptRoot "C:/SPT" -NoPause`. The build creates a **base package**, which omits the large prepared raster cache. Produce the complete installation ZIP using `tools/bundle-maps.py` as described in [bundling instructions](docs/BUNDLED-MAPS.md). Neither step publishes to GitHub or changes the game installation.
+- Black Division markers have an adjustable light outline for visibility on dark artwork.
+- UNTAR leaders and officers use DynamicMaps' boss-star icons and native boss visibility handling. UNTAR followers keep arrows.
+- Other factions retain their native marker classification and shapes.
+- Colour changes apply to existing faction markers. Disabling faction colours restores native colours.
+- Existing custom colours are preserved during updates. Unchanged older defaults migrate to the new palette once.
+- Unsupported roles retain their native colours. Faction mods are optional and are not bundled.
 
-Project code is MIT licensed. Third-party artwork retains its original terms and attribution; see [THIRD-PARTY.md](THIRD-PARTY.md), [LICENSING-STATUS.md](LICENSING-STATUS.md) and the included artwork license.
+### DynamicMaps integration
 
-## Faction markers
+DynamicMaps continues to handle live player and bot tracking, friendly-player markers, quest markers, extracts, transits, player trails, automatic floor selection and minimap behaviour. Its visibility settings still apply.
 
-Black Division defaults to #555555 with a light outline, UNTAR to #00BFFF, and RUAF/Remnant to #899B45. F12 allows custom colours. Existing custom values are preserved; old unchanged defaults migrate once. UNTAR leaders/officers use native boss classification, icons and visibility; followers retain arrows. Other factions retain native classification.
+Extended adds its files in a separate plugin folder and does not replace the original DynamicMaps installation. It does not patch Fika networking or replace player synchronisation. The client/UI addon disables itself on Fika Headless.
+
+### Performance and diagnostics
+
+- Prepared local artwork, asynchronous raster loading and bounded detail-tile caches.
+- Reuse of loaded artwork to reduce temporary blur when quickly peeking at the map.
+- Map and corner-minimap refresh handling when switching artwork.
+- Optional debug logging for artwork loading, map selection, frame timing, faction recognition and errors.
+
+Initial artwork loading or switching can still cause a brief hitch; performance depends on the map, hardware and other installed mods.
+
+## Requirements
+
+- **SPT 4.1.x**
+- [DynamicMaps](https://github.com/acidphantasm/SPT-DynamicMaps)
+- [MapVariants](https://github.com/LennoxP90/SPT-MapVariants)
+
+Install Factory Classic, Manimal map mods and faction mods separately if you want their corresponding features.
+
+## Installation and updates
+
+**A clean install is preferred.**
+
+1. Close the game.
+2. If updating, remove the old `BepInEx/plugins/DynamicMaps-Extended` folder. Keep your dependency mods installed.
+3. Download the full `DynamicMaps-Extended-2.5.0-SPT4.1.zip` from Releases, rather than GitHub's automatically generated source-code ZIP.
+4. Extract its `BepInEx` folder into your SPT game folder.
+5. Keep the included `Maps`, `Assets` and `AssetCache` folders alongside `DynamicMaps.Extended.dll`.
+6. Launch the game and configure artwork and faction colours in F12.
+
+Your F12 configuration is stored separately in `BepInEx/config/com.blackhawk.dynamicmapsextended.cfg`. Removing only the plugin folder preserves those settings.
+
+To uninstall, delete `BepInEx/plugins/DynamicMaps-Extended`. The original DynamicMaps installation remains separate.
+
+## Reporting problems
+
+Enable **Debug → EnableDebugLogging** in DynamicMaps Extended before reproducing the problem. Include:
+
+- Mod version, map, floor and selected artwork style.
+- What happened and the steps to reproduce it.
+- A screenshot where useful.
+- `BepInEx/LogOutput.log` from that session.
+
+Disable detailed logging again after testing. Report issues through [GitHub Issues](https://github.com/black-hawk95/DynamicMaps-Extended/issues).
+
+## Building from source
+
+Install a .NET SDK that supports the project and run `build.ps1 -SptRoot "C:/SPT" -NoPause`.
+
+The source build creates a base package; the large prepared artwork cache is supplied in the full release ZIP. See [bundling instructions](docs/BUNDLED-MAPS.md). Building does not install the mod or publish a release.
+
+## Credits and licences
+
+Project code is MIT licensed. Third-party artwork retains its original licences and attribution. See [THIRD-PARTY.md](THIRD-PARTY.md), [LICENSING-STATUS.md](LICENSING-STATUS.md), and the attribution/licence files included with Icebreaker artwork.
+
+For version-specific changes, see the [release notes](https://github.com/black-hawk95/DynamicMaps-Extended/releases).
+
