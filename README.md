@@ -108,3 +108,20 @@ Project code is MIT licensed. Third-party artwork retains its original licences 
 
 For version-specific changes, see the [release notes](https://github.com/black-hawk95/DynamicMaps-Extended/releases).
 
+
+---
+
+### Support / Donations
+
+If you'd like to support my work, you can [buy me a coffee](https://ko-fi.com/its_blackhawk) ☕
+
+**Solana (SOL)**  
+`RtkZyhpCD7rAmcsocf3RWPizCCzEdGNuUAX7sBcD1pF`
+
+**Bitcoin (BTC)**  
+`bc1qj983ved6kp4uz6r6t285j0r5tyf5h6jph9eajl`
+
+**Ethereum (ETH)**  
+`0xEaA910a5A779C85Fb9F07CA22bd2d2847a5969A5`
+
+Please double-check the address and network before sending.
