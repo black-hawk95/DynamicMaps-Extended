@@ -41,7 +41,6 @@ namespace DynamicMapsExtended
                 case MapStyleKey.InterchangeManimal:
                 case MapStyleKey.Labs:
                 case MapStyleKey.LabsManimal:
-                case MapStyleKey.Icebreaker:
                 case MapStyleKey.Reserve:
                 case MapStyleKey.Shoreline:
                 case MapStyleKey.Labyrinth:

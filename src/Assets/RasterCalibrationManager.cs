@@ -47,22 +47,22 @@ namespace DynamicMapsExtended
                 ["maps/labs_backport/layers/labs-first.png"] = new Bounds2D(-287.0f, -477.0f, -80.0f, -193.0f),
                 ["maps/labs_backport/layers/labs-second.png"] = new Bounds2D(-287.0f, -477.0f, -80.0f, -193.0f),
                 ["maps/labs_backport/layers/labs-technical.png"] = new Bounds2D(-287.0f, -477.0f, -80.0f, -193.0f),
-                ["maps/icebreaker/layers/06-infirmary.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/07-helipad.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/08-gym-canteen.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/09-accommodation-lower.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/10-accommodation-mid.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/11-accommodation-upper.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/12-officers-deck.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/13-stairs-blocked.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/14-bridge.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/15-bridge-roof.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/00-control-room.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/01-engine-room.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/02-engine-room-upper.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/03-fuel-pumps-lower.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/04-fuel-pumps.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
-                ["maps/icebreaker/layers/05-storage-security.png"] = new Bounds2D(-65.5f, -64.5f, 77.0f, 67.4f),
+                ["maps/icebreaker/layers/06-infirmary.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/07-helipad.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/08-gym-canteen.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/09-accommodation-lower.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/10-accommodation-mid.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/11-accommodation-upper.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/12-officers-deck.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/13-stairs-blocked.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/14-bridge.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/15-bridge-roof.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/00-control-room.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/01-engine-room.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/02-engine-room-upper.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/03-fuel-pumps-lower.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/04-fuel-pumps.png"] = IcebreakerArtwork.RasterBounds,
+                ["maps/icebreaker/layers/05-storage-security.png"] = IcebreakerArtwork.RasterBounds,
                 ["maps/styleassets/woods/satellite/woods-ground.png"] = new Bounds2D(-761.0f, -914.0f, 646.0f, 442.0f),
                 ["maps/reserve_satellite/layers/reserve-ground.png"] = new Bounds2D(-303.0f, -293.0f, 289.0f, 244.0f),
                 ["maps/reserve_satellite/layers/reserve-second.png"] = new Bounds2D(-303.0f, -293.0f, 289.0f, 244.0f),
@@ -90,6 +90,13 @@ namespace DynamicMapsExtended
 
         internal static bool TryGetArtworkBounds(string originalImagePath, StyleResolution resolution, object layerDef, out Bounds2D bounds)
         {
+            if (resolution.Map == MapStyleKey.Icebreaker)
+            {
+                bounds = resolution.ResolvedPath.EndsWith(".svg", StringComparison.OrdinalIgnoreCase)
+                    ? IcebreakerArtwork.VectorBounds : IcebreakerArtwork.RasterBounds;
+                return true;
+            }
+
             // Shared Manimal Interchange has three deliberately different artwork profiles.
             if (resolution.Map == MapStyleKey.InterchangeManimal)
             {
@@ -163,6 +170,7 @@ namespace DynamicMapsExtended
                     return;
 
                 var have = false;
+                var icebreaker = false;
                 var min = new Vector2(float.PositiveInfinity, float.PositiveInfinity);
                 var max = new Vector2(float.NegativeInfinity, float.NegativeInfinity);
 
@@ -176,6 +184,7 @@ namespace DynamicMapsExtended
                     if (string.IsNullOrEmpty(imagePath)) continue;
 
                     var resolution = MapStyleManager.Resolve(imagePath);
+                    icebreaker |= resolution.Map == MapStyleKey.Icebreaker;
                     if (!TryGetArtworkBounds(imagePath, resolution, layerDef, out var b))
                         continue;
 
@@ -189,7 +198,7 @@ namespace DynamicMapsExtended
                 if (!have) return;
                 var mapBounds = _mapBoundsProperty?.GetValue(mapDef);
                 if (mapBounds == null) return;
-                SetBoundsObject(mapBounds, new Bounds2D(min.x, min.y, max.x, max.y));
+                SetBoundsObject(mapBounds, icebreaker ? IcebreakerArtwork.ViewBounds : new Bounds2D(min.x, min.y, max.x, max.y));
             }
             catch (Exception e)
             {

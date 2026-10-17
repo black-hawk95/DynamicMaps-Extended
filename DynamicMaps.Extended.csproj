@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>DynamicMaps.Extended</AssemblyName>
     <RootNamespace>DynamicMapsExtended</RootNamespace>
-    <Version>2.1.0</Version>
+    <Version>2.5.0</Version>
     <LangVersion>12.0</LangVersion>
     <Nullable>disable</Nullable>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
@@ -14,6 +14,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(ManagedDir)\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(ManagedDir)\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Compile Include="src/**/*.cs" />
     <Reference Include="BepInEx">
       <HintPath>$(BepInExCore)\BepInEx.dll</HintPath>

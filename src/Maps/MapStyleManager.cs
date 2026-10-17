@@ -220,6 +220,16 @@ namespace DynamicMapsExtended
             BindOverrideIfUseful(config, MapStyleKey.Lighthouse, "Lighthouse");
             BindOverrideIfUseful(config, MapStyleKey.Labyrinth, "Labyrinth");
 
+            if (PluginDetection.Loaded(Plugin.ManimalIcebreakerGuid) && ExtensionAssetAvailability.IcebreakerReady)
+            {
+                var entry = config.Bind("Map Artwork Overrides", "Icebreaker", "Original Satellite",
+                    new ConfigDescription("Icebreaker artwork. Both styles use the same live markers and floor selection.",
+                        new AcceptableValueList<string>("Original Satellite", "RE3MR / QuestCodex")));
+                if (entry.Value != "Original Satellite" && entry.Value != "RE3MR / QuestCodex")
+                    entry.Value = "Original Satellite";
+                Overrides[MapStyleKey.Icebreaker] = entry;
+            }
+
             ArtworkMode.SettingChanged += (_, __) => OnStyleSettingChanged("global artwork mode");
             foreach (var pair in Overrides)
                 pair.Value.SettingChanged += (_, __) => OnStyleSettingChanged($"override {pair.Key}");
@@ -346,6 +356,12 @@ namespace DynamicMapsExtended
 
             if (ResolutionCache.TryGetValue(cacheKey, out var cached))
                 return cached;
+
+            if (map == MapStyleKey.Icebreaker && IcebreakerArtwork.TryResolve(imagePath, requested, out var icebreaker))
+            {
+                ResolutionCache[cacheKey] = icebreaker;
+                return icebreaker;
+            }
 
             var sourceIsBundledRaster = RasterSpritePatch.IsExtensionOwnedRaster(imagePath);
             var vanillaReplacement = FindExistingVanillaReplacement(normalized);
@@ -486,6 +502,8 @@ namespace DynamicMapsExtended
         {
             if (Overrides.TryGetValue(map, out var entry))
             {
+                if (map == MapStyleKey.Icebreaker)
+                    return entry.Value == "RE3MR / QuestCodex" ? MapArtMode.Original : MapArtMode.Satellite;
                 if (string.Equals(entry.Value, OverrideOriginal, StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(entry.Value, OverrideOriginalOnly, StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(entry.Value, OverrideFactoryClassicOnly, StringComparison.OrdinalIgnoreCase) ||

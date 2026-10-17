@@ -293,6 +293,7 @@ namespace DynamicMapsExtended
                     AccessTools.Property(viewType, "ZoomMax").SetValue(candidate, minimum * maxScaler);
                 }
                 RestoreViewport(candidate, viewport);
+                ArtworkDisplayRefresh.Request(candidate);
                 refreshed++;
             }
 

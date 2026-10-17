@@ -1,0 +1,24 @@
+{
+  "repository": "https://github.com/Viper-9/QuestCodex",
+  "commit": "e156312fe2ce76b470917e55a6e5ff6bc8628498",
+  "artworkAuthor": "RE3MR",
+  "adaptation": "QuestCodex traced deck SVGs, unchanged",
+  "license": "CC BY-NC-SA 4.0",
+  "conversion": "QuestCodex X/Z horizontal, Y height -> DynamicMaps X/Y horizontal, Z height; levels shifted +3; all bounds and rotation retained",
+  "sha256": {
+    "Icebreaker-Deck_m3.svg": "f155cf2adbc2c71bef7b27583dd1901626e15817e2948e4dcd6842bbebc8b242",
+    "Icebreaker-Deck_m2.svg": "a96d8acc68ecaf86cf2c2672f4c89c3b93758f626abbc10844da9763f2028777",
+    "Icebreaker-Deck_m1.svg": "2bcf83d121f840dcbbc9192fe04314305aa7bcb28e56726fe6fd4236283d2c52",
+    "Icebreaker-Deck_0.svg": "51a6892f840e4f1f0580798a4bf8f6dd61c1721e194f2de9526deff96ae08228",
+    "Icebreaker-Deck_1.svg": "6b076635c0fb9e6e5f740f1eccf10d77bbbe392566381c09ed0e5bac6c7b99d0",
+    "Icebreaker-Deck_2.svg": "5f1162c17bdf510b93b4af4423246fbfb6b0658e547c973f241a95985ac5e008",
+    "Icebreaker-Deck_3.svg": "7c95f331924ec2dd979d381e0be7e11d427c15fb29892e3cc1f78b108ac7919a",
+    "Icebreaker-Deck_4.svg": "bcff702e6d89846eea0803f3e029356a979f5b06761ebe2719e7ff0131e16ab9",
+    "Icebreaker-Deck_5.svg": "aabb558e10ee5019d802b691cfb365e57be197cc7aee8882e2b4f62d5ef60699",
+    "Icebreaker-Deck_6.svg": "6a88c56eb474f2e4d36601cdc1680aa766c59aa6be979b44816b2570db3ec506",
+    "Icebreaker-Deck_7.svg": "113c9385c47c8cbd645e1c9fab83bbc0f64223533f812e476f4ccb0a7d21e35a",
+    "Icebreaker-Deck_8.svg": "bd22571f9b805400a65e0c159dffcd2123d2d88592250dedc787ade201c1905c",
+    "Icebreaker-Deck_9.svg": "bfc4ba7beebf882b00e22c591c51a20461fe905dfae73e5d794810acf7d535cf",
+    "Icebreaker-Deck_10.svg": "c4d93330e676c1034fed32fd2e7579b9f69d9d7223bf17833fcf5f1b19acf4c4"
+  }
+}

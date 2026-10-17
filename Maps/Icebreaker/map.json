@@ -1,0 +1,492 @@
+{
+  "displayName": "Icebreaker",
+  "internalNames": [
+    "icebreaker"
+  ],
+  "coordinateRotation": 180,
+  "defaultLevel": 1,
+  "floorNames": "deck",
+  "bounds": {
+    "min": {
+      "x": -17.5,
+      "z": -87
+    },
+    "max": {
+      "x": 17.37,
+      "z": 61.3
+    }
+  },
+  "layers": [
+    {
+      "name": "Lower Automation",
+      "level": -3,
+      "svg": "Icebreaker-Deck_m3.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": -1000,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 3.5,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Engine Room",
+      "level": -2,
+      "svg": "Icebreaker-Deck_m2.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 3.5,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 9.5,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Fuel Pumps",
+      "level": -1,
+      "svg": "Icebreaker-Deck_m1.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 9.5,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 15,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Storage & Security",
+      "level": 0,
+      "svg": "Icebreaker-Deck_0.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 15,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 17.9,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Infirmary",
+      "level": 1,
+      "svg": "Icebreaker-Deck_1.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 17.9,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 20.9,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Helipad",
+      "level": 2,
+      "svg": "Icebreaker-Deck_2.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 20.9,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 23,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Gym & Canteen",
+      "level": 3,
+      "svg": "Icebreaker-Deck_3.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 23,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 25.8,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accommodation (Lower)",
+      "level": 4,
+      "svg": "Icebreaker-Deck_4.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 25.8,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 28.6,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accommodation (Mid)",
+      "level": 5,
+      "svg": "Icebreaker-Deck_5.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 28.6,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 31.4,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accommodation (Upper)",
+      "level": 6,
+      "svg": "Icebreaker-Deck_6.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 31.4,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 34,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Officers' Deck",
+      "level": 7,
+      "svg": "Icebreaker-Deck_7.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 34,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 36.6,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Stairs (Blocked)",
+      "level": 8,
+      "svg": "Icebreaker-Deck_8.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 36.6,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 39,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bridge",
+      "level": 9,
+      "svg": "Icebreaker-Deck_9.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 39,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 41.9,
+            "z": 61.3
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bridge Roof",
+      "level": 10,
+      "svg": "Icebreaker-Deck_10.svg",
+      "viewBox": {
+        "width": 522,
+        "height": 2220
+      },
+      "imageBounds": {
+        "min": {
+          "x": -17.5,
+          "z": -87
+        },
+        "max": {
+          "x": 17.37,
+          "z": 61.3
+        }
+      },
+      "gameBounds": [
+        {
+          "min": {
+            "x": -17.5,
+            "y": 41.9,
+            "z": -87
+          },
+          "max": {
+            "x": 17.37,
+            "y": 1000,
+            "z": 61.3
+          }
+        }
+      ]
+    }
+  ],
+  "attribution": {
+    "author": "re3mr",
+    "authorLink": "https://reemr.se/",
+    "modifiedBy": "Viper-9",
+    "license": "CC BY-NC-SA 4.0",
+    "licenseFile": "re3mr-LICENSE.md",
+    "calibration": null
+  },
+  "source": "re3mr Icebreaker 2D map v0.8 (tarkov.dev/maps/icebreaker-2d.jpg, sha256 33a8c92d082a), decks traced by QuestCodex"
+}

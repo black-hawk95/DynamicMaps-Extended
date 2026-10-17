@@ -1,0 +1,7 @@
+Icebreaker artwork: RE3MR (https://reemr.se/icebreaker/), original 2D poster v0.8.
+SVG tracing, deck cropping and calibration: Viper-9 / QuestCodex.
+Source: https://github.com/Viper-9/QuestCodex/tree/e156312fe2ce76b470917e55a6e5ff6bc8628498/web/public/maps/icebreaker
+Licence: CC BY-NC-SA 4.0; full legal text in re3mr-LICENSE.md.
+QuestCodex removed icons, labels and room names and traced the deck panels.
+DynamicMaps Extended keeps the supplied SVG geometry and converts the map-definition coordinate schema and deck indices.
+This adaptation is not endorsed by RE3MR or QuestCodex.

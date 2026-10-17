@@ -1,11 +1,11 @@
-# DynamicMaps Extended 2.1.0
+# DynamicMaps Extended 2.5.0
 
 Artwork and map-variant addon for SPT 4.1.x. Requires **DynamicMaps** and **MapVariants**. Install the appropriate map mods separately to use their corresponding variants.
 
 ## Installation
 
 1. Exit the game.
-2. Extract `DynamicMaps-Extended-2.1.0-SPT4.1.zip` into your SPT root, allowing overwrite.
+2. Extract `DynamicMaps-Extended-2.5.0-SPT4.1.zip` into your SPT root, allowing overwrite.
 3. Keep the included `Maps`, `Assets` and `AssetCache` folders together with the DLL under `BepInEx/plugins/DynamicMaps-Extended/`.
 
 The complete ZIP includes all 42 prepared raster layers. No runtime downloads, map generation, download progress UI or F12 asset-download options remain. Re-extract the complete ZIP if artwork files are missing. Original DynamicMaps and MapVariants are separate dependencies and are not included.
@@ -27,3 +27,7 @@ Enable `Debug / EnableDebugLogging` in F12 when diagnosing a problem. Frame timi
 Install a .NET SDK that supports this project, then run `build.ps1 -SptRoot "C:/SPT" -NoPause`. The build creates a **base package**, which omits the large prepared raster cache. Produce the complete installation ZIP using `tools/bundle-maps.py` as described in [bundling instructions](docs/BUNDLED-MAPS.md). Neither step publishes to GitHub or changes the game installation.
 
 Project code is MIT licensed. Third-party artwork retains its original terms and attribution; see [THIRD-PARTY.md](THIRD-PARTY.md), [LICENSING-STATUS.md](LICENSING-STATUS.md) and the included artwork license.
+
+## Faction markers
+
+Black Division defaults to #555555 with a light outline, UNTAR to #00BFFF, and RUAF/Remnant to #899B45. F12 allows custom colours. Existing custom values are preserved; old unchanged defaults migrate once. UNTAR leaders/officers use native boss classification, icons and visibility; followers retain arrows. Other factions retain native classification.

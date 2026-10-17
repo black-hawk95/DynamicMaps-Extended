@@ -74,6 +74,7 @@ namespace DynamicMapsExtended
 
                     var resolution = MapStyleManager.Resolve(imagePath);
                     var priority = VisibilityPriority(layer);
+                    ArtworkDisplayRefresh.Request(layer);
 
                     // Artwork source and world calibration are separate. Satellite/current-map
                     // artwork can have different authoritative bounds from the SVG it replaces.
@@ -157,6 +158,7 @@ namespace DynamicMapsExtended
                     {
                         applied++;
                         TilePackManager.ReconcileLayer(layer);
+                        ArtworkDisplayRefresh.Request(layer);
                     }
                 }
                 catch

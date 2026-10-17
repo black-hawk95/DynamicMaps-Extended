@@ -55,16 +55,15 @@ namespace DynamicMapsExtended
         {
             get
             {
-                for (var i = 0; i < 16; i++)
+                foreach (var file in IcebreakerArtwork.RasterFiles)
+                    if (!ExistsExtension("Maps/Icebreaker/Layers/" + file) ||
+                        !ExistsPackForPreview("Maps/Icebreaker/Layers/" + file))
+                        return false;
+                for (var deck = -3; deck <= 10; deck++)
                 {
-                    var prefix = i.ToString("00") + "-";
-                    var dir = Path.Combine(Plugin.ExtensionRoot, "Maps", "Icebreaker", "Layers");
-                    try
-                    {
-                        if (!Directory.Exists(dir) || Directory.GetFiles(dir, prefix + "*.png").Length == 0)
-                            return false;
-                    }
-                    catch { return false; }
+                    var suffix = deck < 0 ? "m" + (-deck) : deck.ToString();
+                    if (!ExistsExtension("Maps/Icebreaker/Layers/Icebreaker-Deck_" + suffix + ".svg"))
+                        return false;
                 }
                 return true;
             }

@@ -87,6 +87,8 @@ namespace DynamicMapsExtended
         private sealed class PackInfo
         {
             internal string Path;
+            internal List<PackInfo> DetailLevels;
+            internal int Downsample = 1;
             internal int Width;
             internal int Height;
             internal int TileSize;
@@ -104,6 +106,7 @@ namespace DynamicMapsExtended
             internal bool Abstract;
             internal Component MapView;
             internal PackInfo Pack;
+            internal PackInfo FullPack;
             internal GameObject Root;
             internal readonly Dictionary<int, GameObject> Views = new Dictionary<int, GameObject>();
             internal readonly List<int> Desired = new List<int>();
@@ -124,8 +127,9 @@ namespace DynamicMapsExtended
                 Layer = new WeakReference(layer);
                 PreviewPath = previewPath;
                 Pack = pack;
+                FullPack = pack;
                 Abstract = IsAbstractPreview(previewPath);
-                if (Abstract && layer is Component component && _mapViewType != null)
+                if (layer is Component component && _mapViewType != null)
                     MapView = component.GetComponentInParent(_mapViewType) as Component;
                 EarliestDecodeFrame = Time.frameCount + InitialDecodeQuietFrames;
             }
@@ -364,6 +368,8 @@ namespace DynamicMapsExtended
                     return;
 
                 var existing = FindState(mapLayer);
+                var fullPack = pack;
+                pack = SelectDetailPack(fullPack, mapLayer, existing?.Pack);
                 if (existing != null)
                 {
                     if (string.Equals(existing.PreviewPath, previewPath, StringComparison.OrdinalIgnoreCase) &&
@@ -378,6 +384,7 @@ namespace DynamicMapsExtended
                 }
 
                 var state = new LayerState(mapLayer, previewPath, pack);
+                state.FullPack = fullPack;
                 Layers.Add(state);
                 EnsureRoot(state);
                 SyncLayerTint(state);
@@ -743,10 +750,25 @@ namespace DynamicMapsExtended
                     if (state.Layer.Target == null)
                         continue;
 
+                    // A closed map is a suspended view, not a lower-resolution selection.
+                    // Leave the already-revealed tile objects attached to their hidden parent so
+                    // another quick peek starts sharp. No scans or new decodes run while hidden.
+                    // Floor/style changes and live zoom-out still take the normal cleanup path.
+                    if (state.MapView != null && !state.MapView.gameObject.activeInHierarchy)
+                        continue;
+
                     var shouldRescan = Time.frameCount - state.LastScanFrame >= VisibilityScanIntervalFrames;
                     if (shouldRescan)
                     {
                         state.LastScanFrame = Time.frameCount;
+                        if (!ReferenceEquals(SelectDetailPack(state.FullPack, state.Layer.Target, state.Pack), state.Pack))
+                        {
+                            // Reconcile replaces the state, rather than mutating a pack used by
+                            // an in-flight decode. The baseline remains visible during the swap.
+                            ReconcileLayer(state.Layer.Target);
+                            continue;
+                        }
+
 
                         if (!StyleRefreshManager.IsSelectedFloor(state.Layer.Target) || !NeedsHighResolution(state))
                         {
@@ -754,7 +776,7 @@ namespace DynamicMapsExtended
                             continue;
                         }
 
-                        FillVisibleTileIndices(state, PrefetchMarginPixels, state.Desired);
+                        FillVisibleTileIndices(state, state.FullPack.DetailLevels?.Count > 1 ? 0f : PrefetchMarginPixels, state.Desired);
                         RemoveUndesiredViews(state, state.Desired);
 
                         if (!state.HighResActivationLogged && state.Desired.Count > 0)
@@ -1166,6 +1188,12 @@ namespace DynamicMapsExtended
             var previewWidth = preview.texture.width;
             var previewHeight = preview.texture.height;
 
+            // A coarse detail level must never paint over a sharper whole-floor baseline.
+            // Keep that uniform baseline until zoom calls for a genuinely finer pack.
+            if (state.FullPack.DetailLevels?.Count > 1 &&
+                state.Pack.Width <= previewWidth && state.Pack.Height <= previewHeight)
+                return false;
+
             var longEdge = Math.Max(previewWidth, previewHeight);
             // If a whole-floor warm atlas exists but the small preview is still on screen, do not
             // reveal a sharp tile island while that atlas is loading. The selected floor is upgraded
@@ -1260,6 +1288,17 @@ namespace DynamicMapsExtended
             // Emit centre-first in square rings. The worker can now take the first eligible item
             // instead of calculating screen distance for every visible tile every frame.
             var tileLimit = DesiredTileLimit(state.Pack.TileSize);
+            // Retain already displayed detail that still intersects this viewport before adding
+            // centre-first candidates. Panning must not discard a sharp visible tile solely
+            // because its distance from the centre changed. The same tile/memory cap still applies.
+            foreach (var index in state.Views.Keys)
+            {
+                var col = index % state.Pack.Columns;
+                var row = index / state.Pack.Columns;
+                if (col >= colMin && col <= colMax && row >= rowMin && row <= rowMax)
+                    AddVisibleTile(state, col, row, result);
+            }
+
             var centerCol = (colMin + colMax) / 2;
             var centerRow = (rowMin + rowMax) / 2;
             var maxRadius = Math.Max(
@@ -1290,6 +1329,37 @@ namespace DynamicMapsExtended
                         AddVisibleTile(state, ringColMax, row, result);
                 }
             }
+        }
+
+        private static PackInfo SelectDetailPack(PackInfo full, object layer, PackInfo current)
+        {
+            if (full == null) return full;
+            if (full.DetailLevels == null)
+            {
+                full.DetailLevels = new List<PackInfo> { full };
+                foreach (var factor in new[] { 2, 4, 8 })
+                {
+                    var path = Path.ChangeExtension(full.Path, ".lod" + factor + ".tiles");
+                    if (!File.Exists(path)) continue;
+                    var pack = GetOrOpenPack(path);
+                    if (pack == null) continue;
+                    pack.Downsample = factor;
+                    full.DetailLevels.Add(pack);
+                }
+            }
+            if (full.DetailLevels.Count == 1 || !(layer is Component component) ||
+                !(component.transform is RectTransform rect)) return full;
+            var camera = GetCanvasCamera(rect);
+            // Local corners avoid allocating arrays; includes map rotation and canvas scaling.
+            var a = RectTransformUtility.WorldToScreenPoint(camera, rect.TransformPoint(new Vector3(rect.rect.xMin, rect.rect.yMin, 0)));
+            var b = RectTransformUtility.WorldToScreenPoint(camera, rect.TransformPoint(new Vector3(rect.rect.xMax, rect.rect.yMin, 0)));
+            var c = RectTransformUtility.WorldToScreenPoint(camera, rect.TransformPoint(new Vector3(rect.rect.xMin, rect.rect.yMax, 0)));
+            var scale = Math.Max(Vector2.Distance(a, b) / full.Width, Vector2.Distance(a, c) / full.Height);
+            var desired = TileDetailPolicy.ChooseFactor(scale, current?.Downsample ?? 0);
+            var selected = full;
+            foreach (var pack in full.DetailLevels)
+                if (pack.Downsample <= desired && pack.Downsample > selected.Downsample) selected = pack;
+            return selected;
         }
 
         internal static int DesiredTileLimit(int tileSize)
