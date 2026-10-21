@@ -1,6 +1,3 @@
-# Latest prepared release
+# DynamicMaps Extended 2.5.1
 
-DynamicMaps Extended **2.5.0**, for **SPT 4.1.x**.
-
-Complete installation: `DynamicMaps-Extended-2.5.0-SPT4.1.zip`.
-Release tag: `v2.5.0`. Prepared locally; not published.
+See [release notes](releases/v2.5.1/RELEASE-NOTES.md). Download the full artwork package from GitHub Releases.

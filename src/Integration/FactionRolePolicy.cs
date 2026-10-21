@@ -13,6 +13,14 @@ namespace DynamicMapsExtended
         {
             switch ((role ?? "").ToLowerInvariant())
             {
+                case "isbteamleader": case "isbsecondleader": case "isbscout":
+                case "isbheavy": case "isbassassin": case "isbmarksman":
+                case "isbspecialforces": case "isbbosscommander": case "isbfollowercommander":
+                    return "ISB";
+                case "isbbossfirefly": case "isbfollowervipper": case "isbfollowerloghan":
+                case "isbfollowerspearthrower": case "isbfollowerzofia":
+                case "isbfollowerevernight": case "isbfollowernemesis":
+                    return "White Tusks";
                 case "blackdivlead": case "blackdivassault": case "blackdivbreacher":
                 case "blackdivsupport": case "blackdivib": case "bosswedge":
                     return "Black Division";
@@ -26,6 +34,10 @@ namespace DynamicMapsExtended
             }
             switch ((faction ?? "").Trim().ToLowerInvariant())
             {
+                case "isbwhitetusk": return "White Tusks";
+                case "isb": case "isbboss": case "isbguard": case "isbscout":
+                case "isbheavy": case "isbassassin": case "isbsniper":
+                case "isbcommander": case "isbbossfollower": return "ISB";
                 case "blackdiv": case "black division": return "Black Division";
                 case "untar": return "UNTAR";
                 case "ruaf": return "RUAF";

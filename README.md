@@ -4,6 +4,22 @@ An addon for **DynamicMaps on SPT 4.1.x** that adds alternate map artwork, suppo
 
 [Download the latest release](https://github.com/black-hawk95/DynamicMaps-Extended/releases/latest) · [Release history](https://github.com/black-hawk95/DynamicMaps-Extended/releases)
 
+## New in 2.5.1
+
+These updates supersede the older Black Division colour and outline information below.
+
+- **Brighter Black Division markers:** default grey is now `#777777`. The extra outline and its F12 control have been removed; the original DynamicMaps border remains. Previous defaults upgrade once, while other custom colours are preserved.
+- **Fika faction colours:** recognises remote AI bots for faction colours and existing UNTAR leader/officer boss stars.
+- **ISB and White Tusks:** separate colour groups, defaulting to teal (`#1ABC9C`) and off-white (`#E8E8F0`).
+- **Automatic discovery:** custom roles registered through MoreBotsAPI receive colour controls at startup. Known roles are grouped automatically; unfamiliar roles get their own colour entry.
+- **Optional grouping:** leave **Group with** on **Automatic** for normal use. Select another group to share its colour, or **DynamicMaps default** to use native colours. This changes colours only—not teams, hostility, spawning or boss icons.
+- **Tidier F12 settings:** Enable faction colours comes first and Debug is last.
+- Faction mods must be installed separately. Restart after adding new mods. Automatic discovery cannot distinguish mods that reuse vanilla bot identities without separate registered roles.
+
+For this release, download **DynamicMaps-Extended-2.5.1-SPT4.1.zip**. A clean install is preferred when using the full ZIP. The small Update ZIP requires an existing complete installation; keep its artwork folders.
+
+If F12 displays an older version after updating, close the game and remove `BepInEx/cache/chainloader_typeloader.dat`, then restart to rebuild BepInEx's plugin cache.
+
 ## Features
 
 ### Map artwork and styles

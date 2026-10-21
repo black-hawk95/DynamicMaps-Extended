@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Linq;
+using System.Text;
 using BepInEx.Configuration;
 using HarmonyLib;
 using UnityEngine;
@@ -9,12 +11,20 @@ using UnityEngine.UI;
 
 namespace DynamicMapsExtended
 {
+    internal sealed class ConfigurationManagerAttributes
+    {
+        public int Order;
+    }
+
     internal static class FactionColours
     {
         internal static ConfigEntry<bool> Enabled;
-        internal static ConfigEntry<Color> OutlineColour;
         internal static readonly Dictionary<string, ConfigEntry<Color>> Colours = new();
         private static readonly Dictionary<int, string> Roles = new();
+        private static readonly Dictionary<int, ConfigEntry<string>> GroupOverrides = new();
+        private static ConfigFile _config;
+        internal const string AutomaticGroup = "Automatic";
+        internal const string NativeGroup = "DynamicMaps default";
         private static readonly HashSet<int> UntarBossRoles = new();
         private static readonly Dictionary<string, MemberInfo> Members = new();
         private static readonly HashSet<string> Warnings = new();
@@ -26,14 +36,17 @@ namespace DynamicMapsExtended
 
         internal static void Initialize(ConfigFile config, Harmony harmony)
         {
+            _config = config;
             Enabled = config.Bind("Faction Colours", "Enable faction colours", true,
-                "Colour recognised addon factions. Vanilla colours, marker shapes, visibility and tracking remain controlled by DynamicMaps.");
-            Bind(config, "Black Division", new Color32(85, 85, 85, 255));
-            Bind(config, "UNTAR", new Color32(0, 191, 255, 255));
-            Bind(config, "RUAF", new Color32(137, 155, 69, 255));
-            Bind(config, "Remnant", new Color32(137, 155, 69, 255));
+                new ConfigDescription("Colour recognised addon factions. Native tracking and visibility remain controlled by DynamicMaps.", null, new ConfigurationManagerAttributes { Order = 100 }));
+            Bind(config, "Black Division", new Color32(119, 119, 119, 255), 90);
+            Bind(config, "UNTAR", new Color32(0, 191, 255, 255), 70);
+            Bind(config, "RUAF", new Color32(137, 155, 69, 255), 60);
+            Bind(config, "Remnant", new Color32(137, 155, 69, 255), 50);
+            Bind(config, "ISB", new Color32(26, 188, 156, 255), 40);
+            Bind(config, "White Tusks", new Color32(232, 232, 240, 255), 30);
             var migrated = config.Bind("Faction Colours", "Palette version", 0,
-                "Internal palette migration version. Existing custom colours are preserved.");
+                new ConfigDescription("Internal palette migration version. Existing custom colours are preserved.", null, new System.ComponentModel.BrowsableAttribute(false)));
             if (migrated.Value < 1)
             {
                 MigrateColour("Black Division", new Color32(24, 24, 24, 255), new Color32(85, 85, 85, 255));
@@ -41,10 +54,16 @@ namespace DynamicMapsExtended
                 MigrateColour("Remnant", new Color32(224, 68, 68, 255), new Color32(137, 155, 69, 255));
                 migrated.Value = 1;
             }
-            OutlineColour = config.Bind("Faction Colours", "Black Division outline", (Color)new Color32(224, 224, 224, 255),
-                "Light outline for Black Division arrows and existing boss stars on dark artwork. Follows the marker's floor visibility.");
+            if (migrated.Value < 2)
+            {
+                MigrateColour("Black Division", new Color32(24, 24, 24, 255), new Color32(119, 119, 119, 255));
+                MigrateColour("Black Division", new Color32(85, 85, 85, 255), new Color32(119, 119, 119, 255));
+                migrated.Value = 2;
+            }
             Enabled.SettingChanged += SettingsChanged;
-            OutlineColour.SettingChanged += SettingsChanged;
+            // MoreBotsAPI registrations are prepatch metadata, already available before
+            // plugin Awake. Create all F12 groups before Plugin binds the Debug section.
+            ReadRegistry();
             try
             {
                 var view = AccessTools.TypeByName("DynamicMaps.UI.Components.MapView");
@@ -73,12 +92,23 @@ namespace DynamicMapsExtended
             if (Colours[faction].Value == previous) Colours[faction].Value = current;
         }
 
+        private static bool IsBot(object player)
+        {
+            if (Read(player, "IsAI") is bool local && local) return true;
+            // Fika remote bots have no local AI controller. The inherited public
+            // IsObservedAI field carries their host-provided bot identity.
+            bool observed = Read(player, "IsObservedAI") is bool remote && remote;
+            Trace("identity:" + player.GetType().FullName + ":" + observed,
+                $"Marker identity type={player.GetType().FullName}, localAI=False, observedAI={observed}.");
+            return observed;
+        }
+
         private static void TrackedBoss(object __0, ref bool __result)
         {
             if (__result || __0 == null) return;
             try
             {
-                if (!(Read(__0, "IsAI") is bool ai) || !ai) return;
+                if (!IsBot(__0)) return;
                 var profile = Read(__0, "Profile");
                 if (Convert.ToInt32(Read(profile, "Side")) != 4) return;
                 ReadRegistry();
@@ -93,10 +123,10 @@ namespace DynamicMapsExtended
             catch (Exception ex) { Warn("boss-classification", ex); }
         }
 
-        private static void Bind(ConfigFile config, string name, Color colour)
+        private static void Bind(ConfigFile config, string name, Color colour, int order)
         {
             var entry = config.Bind("Faction Colours", name, colour,
-                "One colour for this faction's soldiers, bosses and followers. Applies when that faction is installed. RGB is used; DynamicMaps controls opacity by floor.");
+                new ConfigDescription("One colour for this faction's soldiers, bosses and followers. RGB is used; DynamicMaps controls opacity by floor.", null, new ConfigurationManagerAttributes { Order = order }));
             Colours.Add(name, entry);
             entry.SettingChanged += SettingsChanged;
         }
@@ -140,20 +170,74 @@ namespace DynamicMapsExtended
                 if (getter == null) throw new MissingMethodException(manager.FullName, "GetCustomWildSpawnTypes");
                 if (!(getter.Invoke(null, null) is IEnumerable entries))
                     throw new InvalidOperationException("MoreBotsAPI registry did not return a collection");
+                var discovered = new List<(int id, string role, string metadata)>();
                 foreach (var entry in entries)
                 {
-                    var role = Read(entry, "WildSpawnTypeName") as string;
-                    var group = Read(entry, "ScavRole") as string;
-                    var id = Convert.ToInt32(Read(entry, "WildSpawnTypeValue"));
-                    var faction = FactionRolePolicy.Resolve(role, group);
-                    _registryCount++;
-                    if (faction != null) Roles[id] = faction;
-                    if (FactionRolePolicy.IsUntarBoss(role)) UntarBossRoles.Add(id);
-                    Trace("registry:" + id, $"Registered role={role}, id={id}, metadata={group}, colour faction={faction ?? "native fallback"}.");
+                    try
+                    {
+                        var role = Read(entry, "WildSpawnTypeName") as string;
+                        if (string.IsNullOrWhiteSpace(role)) continue;
+                        var id = Convert.ToInt32(Read(entry, "WildSpawnTypeValue"));
+                        var group = Read(entry, "ScavRole") as string;
+                        discovered.Add((id, role, group));
+                    }
+                    catch (Exception ex) { Warn("registry-entry", ex); }
                 }
-                Plugin.Log?.LogInfo($"[DMExt:Factions] Read {_registryCount} custom roles; {Roles.Count} matched the four supported factions.");
+                foreach (var bot in discovered.OrderBy(x => x.role, StringComparer.Ordinal))
+                {
+                    if (Roles.ContainsKey(bot.id)) continue;
+                    var faction = FactionRolePolicy.Resolve(bot.role, bot.metadata);
+                    // Unknown custom roles receive their own stable colour group. Generic
+                    // metadata such as Boss/Scav must never merge unrelated mods.
+                    if (faction == null) faction = "Detected - " + ConfigName(bot.role);
+                    if (!Colours.ContainsKey(faction)) Bind(_config, faction, GeneratedColour(bot.role), 0);
+                    Roles[bot.id] = faction;
+                    if (FactionRolePolicy.IsUntarBoss(bot.role)) UntarBossRoles.Add(bot.id);
+                    Trace("registry:" + bot.id, $"Registered role={bot.role}, id={bot.id}, metadata={bot.metadata}, colour group={faction}.");
+                }
+                var choices = new[] { AutomaticGroup, NativeGroup }
+                    .Concat(Colours.Keys.OrderBy(x => x, StringComparer.Ordinal)).ToArray();
+                foreach (var bot in discovered.OrderBy(x => x.role, StringComparer.Ordinal))
+                {
+                    if (GroupOverrides.ContainsKey(bot.id)) continue;
+                    var entry = _config.Bind("Faction Grouping (Optional)", "Group with - " + ConfigName(bot.role), AutomaticGroup,
+                        new ConfigDescription($"Automatic uses {Roles[bot.id]}. Select another colour group to share its colour, or DynamicMaps default to leave this role unchanged. Colour only: does not change teams, AI or boss icons.",
+                            new AcceptableValueList<string>(choices)));
+                    GroupOverrides[bot.id] = entry;
+                    entry.SettingChanged += SettingsChanged;
+                }
+                _registryCount = discovered.Count;
+                Plugin.Log?.LogInfo($"[DMExt:Factions] Discovered {_registryCount} custom roles in {Colours.Count} colour groups. Optional grouping available in F12.");
             }
             catch (Exception ex) { Warn("registry", ex); }
+        }
+
+        // Escape forbidden config-key characters without collisions or unstable IDs.
+        private static string ConfigName(string value)
+        {
+            var result = new StringBuilder();
+            foreach (var c in value)
+                if (char.IsLetterOrDigit(c) || c == '-' || c == '_') result.Append(c);
+                else result.Append('~').Append(((int)c).ToString("X4"));
+            return result.ToString();
+        }
+
+        private static Color GeneratedColour(string role)
+        {
+            uint hash = 2166136261;
+            foreach (var c in role) hash = unchecked((hash ^ c) * 16777619);
+            // Stable bright colours: no per-session randomisation.
+            return new Color32((byte)(80 + hash % 160), (byte)(80 + (hash >> 8) % 160), (byte)(80 + (hash >> 16) % 160), 255);
+        }
+
+        internal static string ResolveGroup(int id, string fallback)
+        {
+            if (GroupOverrides.TryGetValue(id, out var entry))
+            {
+                if (entry.Value == NativeGroup) return null;
+                if (entry.Value != AutomaticGroup && Colours.ContainsKey(entry.Value)) return entry.Value;
+            }
+            return Roles.TryGetValue(id, out var group) ? group : fallback;
         }
 
         private static void MarkerCreated(object __0, string __1, Color __2, object __result)
@@ -162,7 +246,7 @@ namespace DynamicMapsExtended
             {
                 if (!(__result is Component marker) || marker == null || __0 == null) return;
                 // Never recolour the local player or a native friendly/team marker.
-                if (__1 == "Friendly Player" || !(Read(__0, "IsAI") is bool ai) || !ai) return;
+                if (__1 == "Friendly Player" || !IsBot(__0)) return;
                 ReadRegistry();
                 var profile = Read(__0, "Profile");
                 var role = Read(Read(Read(profile, "Info"), "Settings"), "Role");
@@ -178,8 +262,8 @@ namespace DynamicMapsExtended
                 var label = _labelProperty.GetValue(marker) as Graphic;
                 if (image == null) throw new MissingMemberException("DynamicMaps marker Image unavailable");
                 var tint = marker.GetComponent<FactionMarkerTint>() ?? marker.gameObject.AddComponent<FactionMarkerTint>();
-                tint.Initialize(image, label, faction, __2);
-                Trace("marker:" + id, $"Marker role={role}, id={id}, faction={faction}, category={__1}, sprite={image.sprite?.name}, outline={faction == "Black Division"}.");
+                tint.Initialize(image, label, faction, __2, id);
+                Trace("marker:" + id, $"Marker role={role}, id={id}, faction={faction}, category={__1}, sprite={image.sprite?.name}.");
             }
             catch (Exception ex) { Warn("marker-create", ex); }
         }
@@ -223,13 +307,13 @@ namespace DynamicMapsExtended
         internal static int Count => Active.Count;
         private Image _image;
         private Graphic _label;
-        private Outline _outline;
         private string _faction;
         private Color _native;
+        private int _roleId;
 
-        internal void Initialize(Image image, Graphic label, string faction, Color native)
+        internal void Initialize(Image image, Graphic label, string faction, Color native, int roleId)
         {
-            _image = image; _label = label; _faction = faction; _native = native;
+            _image = image; _label = label; _faction = faction; _native = native; _roleId = roleId;
             Active.Add(this);
             Apply();
         }
@@ -239,23 +323,11 @@ namespace DynamicMapsExtended
         internal void Apply(bool restore = false)
         {
             if (_image == null) return;
-            bool enabled = !restore && FactionColours.Enabled.Value;
-            var colour = enabled ? FactionColours.Colours[_faction].Value : _native;
+            var group = FactionColours.ResolveGroup(_roleId, _faction);
+            bool enabled = !restore && FactionColours.Enabled.Value && group != null;
+            var colour = enabled ? FactionColours.Colours[group].Value : _native;
             SetRgb(_image, colour);
             if (_label != null) SetRgb(_label, colour);
-            bool outline = enabled && _faction == "Black Division";
-            if (outline && _outline == null)
-            {
-                // Own component only; do not modify any effect supplied by another mod.
-                _outline = _image.gameObject.AddComponent<Outline>();
-                _outline.effectDistance = new Vector2(1.25f, -1.25f);
-                _outline.useGraphicAlpha = true;
-            }
-            if (_outline != null)
-            {
-                _outline.effectColor = FactionColours.OutlineColour.Value;
-                _outline.enabled = outline;
-            }
         }
 
         private static void SetRgb(Graphic graphic, Color colour)

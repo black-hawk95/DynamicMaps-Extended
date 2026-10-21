@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace DynamicMapsExtended
 {
-    [BepInPlugin("com.blackhawk.dynamicmapsextended", "DynamicMaps Extended", "2.5.0")]
+    [BepInPlugin("com.blackhawk.dynamicmapsextended", "DynamicMaps Extended", "2.5.1")]
     [BepInDependency("com.mpstark.dynamicmaps", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.lennoxp90.mapvariants", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.lennoxp90.factoryclassic", BepInDependency.DependencyFlags.SoftDependency)]
@@ -22,8 +22,8 @@ namespace DynamicMapsExtended
     {
         public const string Guid = "com.blackhawk.dynamicmapsextended";
         public const string Name = "DynamicMaps Extended";
-        public const string Version = "2.5.0";
-        public const string BuildLabel = "2.5.0";
+        public const string Version = "2.5.1";
+        public const string BuildLabel = "2.5.1";
 
         public const string DynamicMapsGuid = "com.mpstark.dynamicmaps";
         public const string MapVariantsGuid = "com.lennoxp90.mapvariants";
@@ -66,6 +66,10 @@ namespace DynamicMapsExtended
 
             MapStyleManager.Bind(Config);
 
+            _harmony = new Harmony(Guid);
+            _harmony.PatchAll();
+            FactionColours.Initialize(Config, _harmony);
+
             DebugLogging = Config.Bind(
                 "Debug",
                 "EnableDebugLogging",
@@ -84,10 +88,6 @@ namespace DynamicMapsExtended
                     Logger.LogInfo("[DMExt] Debug logging disabled.");
                 }
             };
-
-            _harmony = new Harmony(Guid);
-            _harmony.PatchAll();
-            FactionColours.Initialize(Config, _harmony);
 
             TilePackManager.Initialize();
             BundledAssetAvailability.Initialize();
