@@ -74,6 +74,26 @@ namespace DynamicMapsExtended
                 ["maps/styleassets/labyrinth/satellite/labyrinth-main.png"] = new Bounds2D(-52.0f, -37.0f, 53.0f, 76.0f),
             };
 
+        // Artwork authored in a different compass orientation than the DynamicMaps map definition
+        // that requests it. The value is the rotation the artwork itself needs, in the same
+        // convention as MapDef.CoordinateRotation.
+        //
+        // Labyrinth is the only current entry: the bundled Labyrinth.svg is authored for 90
+        // (Labyrinth_TarkovData.jsonc declares 90), while the Tarkov.dev raster substituted for it
+        // by the Satellite style is authored for 270. Swapping the sprite without correcting the
+        // transform drew the map 180 degrees away from the live markers.
+        //
+        // The correction is applied to the map layer's RectTransform only. DynamicMaps keeps
+        // ownership of marker placement, and the high-resolution tile canvas is a child of the same
+        // layer, so it inherits the correction and cannot drift out of sync with the preview.
+        // When the requested artwork is not listed, the map definition's own rotation is used, so
+        // switching back to native artwork restores the original orientation.
+        private static readonly Dictionary<string, float> ArtworkRotations =
+            new Dictionary<string, float>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["maps/styleassets/labyrinth/satellite/labyrinth-main.png"] = 270f,
+            };
+
         // DynamicMaps' normal Interchange SVGs are correctly calibrated to these older/native
         // bounds. Manimal "DynamicMaps Vanilla" intentionally uses those SVGs and therefore must
         // also use their bounds, even though Manimal Abstract/Satellite use the newer tarkov.dev
@@ -118,6 +138,82 @@ namespace DynamicMapsExtended
             return TryGetDefImageBounds(layerDef, out bounds);
         }
 
+        private static Type _mapViewType;
+        private static PropertyInfo _coordinateRotationProperty;
+
+        // Returns true when the layer rotation was changed. The desired value is always written when
+        // it differs, so a style refresh back to native artwork restores the map definition's own
+        // orientation without needing to remember a previous state.
+        private static bool ApplyArtworkRotation(Component layer, RectTransform rect, StyleResolution resolution)
+        {
+            var view = FindMapView(layer);
+            if (view == null)
+                return false;
+
+            _coordinateRotationProperty ??= AccessTools.Property(view.GetType(), "CoordinateRotation");
+            if (!(_coordinateRotationProperty?.GetValue(view) is float mapRotation))
+                return false;
+
+            var artRotation = mapRotation;
+            if (TryGetArtworkRotation(resolution.ResolvedPath, out var authored))
+                artRotation = authored;
+
+            // Counter-rotate by the artwork's own orientation rather than the map definition's.
+            // For natively authored artwork the two are equal and this is the value DynamicMaps
+            // already applied when it created the layer; for the swapped-in Labyrinth raster it
+            // flips the layer 180 degrees so the picture matches the marker coordinates.
+            var desired = -artRotation;
+
+            var current = rect.localEulerAngles.z;
+            if (Mathf.Abs(Mathf.DeltaAngle(current, desired)) < 0.01f)
+                return false;
+
+            rect.localRotation = Quaternion.Euler(0f, 0f, desired);
+            return true;
+        }
+
+        private static Component FindMapView(Component layer)
+        {
+            if (_mapViewType == null)
+            {
+                _mapViewType = AccessTools.TypeByName("DynamicMaps.UI.Components.MapView");
+                if (_mapViewType == null)
+                    return null;
+            }
+
+            // MapLayer sits under MapLayerContainer under MapView. Walk up rather than using
+            // GetComponentInParent so hidden (inactive) floors are handled the same way.
+            var transform = layer.transform;
+            for (var depth = 0; depth < 8 && transform != null; depth++)
+            {
+                var view = transform.GetComponent(_mapViewType);
+                if (view != null)
+                    return view;
+                transform = transform.parent;
+            }
+
+            return null;
+        }
+
+        private static bool TryGetArtworkRotation(string resolvedPath, out float rotation)
+        {
+            rotation = 0f;
+            if (string.IsNullOrWhiteSpace(resolvedPath))
+                return false;
+
+            var p = Normalize(resolvedPath);
+            foreach (var pair in ArtworkRotations)
+            {
+                if (p.EndsWith(pair.Key, StringComparison.OrdinalIgnoreCase))
+                {
+                    rotation = pair.Value;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         internal static void ApplyLayer(object mapLayer, StyleResolution resolution)
         {
             if (!(mapLayer is Component component))
@@ -130,13 +226,18 @@ namespace DynamicMapsExtended
             if (!(component.transform is RectTransform rect))
                 return;
 
+            // Must run before the extent calculation below: a non-180 correction would change the
+            // rotated footprint, and the layer rectangle has to be sized from the final angle.
+            var rotationChanged = ApplyArtworkRotation(component, rect, resolution);
+
             var size = desired.Size;
             var angle = rect.localEulerAngles.z * Mathf.Deg2Rad;
             var c = Mathf.Abs(Mathf.Cos(angle));
             var s = Mathf.Abs(Mathf.Sin(angle));
             var rotated = new Vector2(size.x * c + size.y * s, size.x * s + size.y * c);
 
-            var changed = (rect.sizeDelta - rotated).sqrMagnitude > 0.0001f ||
+            var changed = rotationChanged ||
+                          (rect.sizeDelta - rotated).sqrMagnitude > 0.0001f ||
                           (rect.anchoredPosition - desired.Midpoint).sqrMagnitude > 0.0001f;
 
             if (changed)
@@ -147,9 +248,9 @@ namespace DynamicMapsExtended
 
             if (changed && Plugin.DebugEnabled)
             {
-                var key = RasterSpritePatch.GetLayerImagePath(mapLayer) + "|" + resolution.Selected + "|" + desired;
+                var key = RasterSpritePatch.GetLayerImagePath(mapLayer) + "|" + resolution.Selected + "|" + desired + "|" + rect.localEulerAngles.z.ToString("0.###");
                 if (Logged.Add(key))
-                    Plugin.Debug($"Artwork bounds calibrated: map={resolution.Map}, style={resolution.Selected}, bounds={desired}");
+                    Plugin.Debug($"Artwork calibrated: map={resolution.Map}, style={resolution.Selected}, bounds={desired}, rotation={rect.localEulerAngles.z:0.###}");
             }
         }
 

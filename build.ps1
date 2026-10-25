@@ -11,7 +11,7 @@ function Rel([string]$Path) { return $Path.Replace('/', [IO.Path]::DirectorySepa
 
 try {
     Write-Host '============================================================='
-    Write-Host ' DynamicMaps Extended 2.1.0'
+    Write-Host ' DynamicMaps Extended 2.5.2'
     Write-Host '============================================================='
     Write-Host ''
     Write-Host 'Build is OFFLINE. It does not download map artwork.'
@@ -189,7 +189,7 @@ try {
     foreach ($doc in @('ARTWORK-MATRIX.md','BUNDLED-MAPS.md','TEST-STATUS.md')) { Copy-Item -LiteralPath (Join-Path $SourceRoot ('docs/' + $doc)) -Destination $docsOut }
 
     if (-not (Test-Path -LiteralPath $releaseRoot)) { New-Item -ItemType Directory -Force -Path $releaseRoot | Out-Null }
-    $zip=Join-Path $releaseRoot 'DynamicMaps-Extended-2.1.0-base.zip'
+    $zip=Join-Path $releaseRoot 'DynamicMaps-Extended-2.5.2-base.zip'
     if (Test-Path -LiteralPath $zip) { Remove-Item -LiteralPath $zip -Force }
     Compress-Archive -Path (Join-Path $stageRoot '*') -DestinationPath $zip -Force
 

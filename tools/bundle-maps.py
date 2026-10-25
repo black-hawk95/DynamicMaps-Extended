@@ -108,7 +108,7 @@ def main():
         snapshots = {key: (path.stat().st_size, path.stat().st_mtime_ns) for key, path in additions.items()}
         print(f'PASS: all {len(manifest["assets"])} layers match the runtime readiness checks.', flush=True)
         args.output.parent.mkdir(parents=True, exist_ok=True)
-        report = ('DynamicMaps Extended 2.1.0 - COMPLETE INSTALLATION\n\n'
+        report = ('DynamicMaps Extended 2.5.2 - COMPLETE INSTALLATION\n\n'
                   'Includes the release DLL and all 42 prepared raster layers.\n'
                   'Requires original DynamicMaps, MapVariants and applicable map mods.\n'
                   'Exit SPT and extract into the SPT root, allowing overwrite.\n'

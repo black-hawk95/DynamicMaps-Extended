@@ -1,4 +1,4 @@
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace DynamicMapsExtended
 {
-    [BepInPlugin("com.blackhawk.dynamicmapsextended", "DynamicMaps Extended", "2.5.1")]
+    [BepInPlugin("com.blackhawk.dynamicmapsextended", "DynamicMaps Extended", "2.5.2")]
     [BepInDependency("com.mpstark.dynamicmaps", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.lennoxp90.mapvariants", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.lennoxp90.factoryclassic", BepInDependency.DependencyFlags.SoftDependency)]
@@ -22,8 +22,8 @@ namespace DynamicMapsExtended
     {
         public const string Guid = "com.blackhawk.dynamicmapsextended";
         public const string Name = "DynamicMaps Extended";
-        public const string Version = "2.5.1";
-        public const string BuildLabel = "2.5.1";
+        public const string Version = "2.5.2";
+        public const string BuildLabel = "2.5.2";
 
         public const string DynamicMapsGuid = "com.mpstark.dynamicmaps";
         public const string MapVariantsGuid = "com.lennoxp90.mapvariants";

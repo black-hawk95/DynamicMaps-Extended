@@ -23,6 +23,12 @@ Artwork credits and licences are included.
 
 # Changelog
 
+## 2.5.2
+
+- Fixed Labyrinth Satellite artwork being drawn 180 degrees out of phase with the map's coordinate rotation. Player, extract, lever and locked-door markers now line up with the rooms instead of the opposite side of the map.
+- Native DynamicMaps artwork was never affected; only the Satellite style was misaligned.
+- The correction is applied to the artwork layer only, so markers, zoom, floor selection and the high-resolution tile overlay are unchanged. Switching back to native artwork restores the original orientation.
+
 ## 2.1.0
 
 - Bundle all 42 prepared raster layers in the complete installation ZIP.

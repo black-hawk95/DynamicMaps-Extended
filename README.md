@@ -4,6 +4,10 @@ An addon for **DynamicMaps on SPT 4.1.x** that adds alternate map artwork, suppo
 
 [Download the latest release](https://github.com/black-hawk95/DynamicMaps-Extended/releases/latest) · [Release history](https://github.com/black-hawk95/DynamicMaps-Extended/releases)
 
+## New in 2.5.2
+
+- **Labyrinth map alignment fixed:** the Satellite artwork for the Labyrinth was drawn 180° out of phase with the map's coordinate rotation, which put the player arrow and every extract, lever and locked-door marker on the wrong rooms. The artwork is now rotated to match the layout. Native DynamicMaps artwork was never affected.
+
 ## New in 2.5.1
 
 These updates supersede the older Black Division colour and outline information below.
@@ -16,7 +20,7 @@ These updates supersede the older Black Division colour and outline information 
 - **Tidier F12 settings:** Enable faction colours comes first and Debug is last.
 - Faction mods must be installed separately. Restart after adding new mods. Automatic discovery cannot distinguish mods that reuse vanilla bot identities without separate registered roles.
 
-For this release, download **DynamicMaps-Extended-2.5.1-SPT4.1.zip**. A clean install is preferred when using the full ZIP. The small Update ZIP requires an existing complete installation; keep its artwork folders.
+For this release, download **DynamicMaps-Extended-2.5.2-SPT4.1.zip**. A clean install is preferred when using the full ZIP. The small Update ZIP requires an existing complete installation; keep its artwork folders.
 
 If F12 displays an older version after updating, close the game and remove `BepInEx/cache/chainloader_typeloader.dat`, then restart to rebuild BepInEx's plugin cache.
 
@@ -92,7 +96,7 @@ Install Factory Classic, Manimal map mods and faction mods separately if you wan
 
 1. Close the game.
 2. If updating, remove the old `BepInEx/plugins/DynamicMaps-Extended` folder. Keep your dependency mods installed.
-3. Download the full `DynamicMaps-Extended-2.5.0-SPT4.1.zip` from Releases, rather than GitHub's automatically generated source-code ZIP.
+3. Download the full `DynamicMaps-Extended-2.5.2-SPT4.1.zip` from Releases, rather than GitHub's automatically generated source-code ZIP.
 4. Extract its `BepInEx` folder into your SPT game folder.
 5. Keep the included `Maps`, `Assets` and `AssetCache` folders alongside `DynamicMaps.Extended.dll`.
 6. Launch the game and configure artwork and faction colours in F12.
