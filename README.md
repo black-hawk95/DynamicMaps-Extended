@@ -73,6 +73,22 @@ DynamicMaps continues to handle live player and bot tracking, friendly-player ma
 
 Extended adds its files in a separate plugin folder and does not replace the original DynamicMaps installation. It does not patch Fika networking or replace player synchronisation. The client/UI addon disables itself on Fika Headless.
 
+### Public API for other mods
+
+Extended exposes `DynamicMapsExtended.Api.Maps.MapInternalName(string locationId, bool backport)` for mods that need the internal DynamicMaps map name for a supported alternate map.
+
+- When `backport` is `true`, `interchange` resolves to `dmext_interchange_backport` and `laboratory` resolves to `dmext_laboratory_backport`.
+- For the original variant, unknown location IDs, and unsupported variants, the input location ID is returned unchanged.
+- This is a name lookup only. It does not determine the selected variant or verify that the relevant backport plugin and Extended assets are installed. Use MapVariants (or the relevant variant provider) to determine which variant was selected before requesting a backport name.
+
+The API is public and additive; Extended's existing map-selection logic is unchanged. Its API contract version is available as `DynamicMapsExtended.Api.Maps.ApiVersion`.
+
+Example:
+
+```csharp
+string mapName = DynamicMapsExtended.Api.Maps.MapInternalName(locationId, backportSelected);
+```
+
 ### Performance and diagnostics
 
 - Prepared local artwork, asynchronous raster loading and bounded detail-tile caches.
