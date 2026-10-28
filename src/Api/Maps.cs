@@ -1,4 +1,5 @@
 using System;
+using DynamicMapsExtended;
 
 namespace DynamicMapsExtended.Api
 {
